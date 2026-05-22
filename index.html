@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歸維邦 Josh Kuei · PM Portfolio</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5580;
+    --primary-bg: #f4f7fb;
+    --accent: #4a90c2;
+    --success: #2e8b57;
+    --warning: #d97706;
+    --border: #d1d5db;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.7;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 48px 24px; }
+
+  header { border-bottom: 3px solid var(--primary); padding-bottom: 20px; margin-bottom: 28px; }
+  header h1 { margin: 0 0 4px 0; color: var(--primary); font-size: 30px; font-weight: 700; }
+  header .role { color: var(--text-muted); font-size: 15px; }
+  header .intro { margin-top: 14px; font-size: 14px; line-height: 1.8; }
+  header .intro strong { color: var(--primary); }
+  .badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge { display: inline-block; padding: 2px 10px; background: var(--primary-bg); color: var(--primary); font-size: 12px; border-radius: 12px; border: 1px solid #c7d8eb; }
+
+  .thesis {
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .thesis .label { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .thesis .quote { font-size: 17px; color: var(--primary); font-weight: 600; margin-bottom: 8px; }
+  .thesis p { font-size: 13px; margin: 4px 0 0 0; color: var(--text); }
+
+  h2 { color: var(--primary); font-size: 18px; margin: 32px 0 12px 0; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+
+  .cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .case-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    padding: 18px 22px;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .case-card:hover { box-shadow: 0 6px 20px -8px rgba(26,58,92,0.35); transform: translateY(-2px); }
+  .case-card .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .case-card h3 { margin: 0; color: var(--primary); font-size: 17px; }
+  .case-card .kind { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+  .case-card .desc { font-size: 14px; margin: 8px 0 10px 0; }
+  .case-card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .case-card .tags span { font-size: 11px; padding: 2px 8px; background: var(--primary-bg); color: var(--primary); border-radius: 10px; border: 1px solid #c7d8eb; }
+  .case-card .arrow { color: var(--accent); font-weight: 700; font-size: 13px; margin-top: 10px; display: inline-block; }
+
+  .contact { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 14px; }
+  .contact a { color: var(--primary); text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+  .contact .row { margin: 4px 0; }
+  .contact .label { color: var(--text-muted); display: inline-block; min-width: 72px; }
+
+  footer { margin-top: 32px; font-size: 12px; color: var(--text-muted); text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>歸維邦 <span style="font-size:20px; color:var(--text-muted); font-weight:500;">Josh Kuei</span></h1>
+  <div class="role">Product Manager · PMP · PSM I · 桃園市楊梅區</div>
+  <div class="intro">
+    行銷本科出身，<strong>9 年以上商業實戰</strong>橫跨品牌創業、通路營運與市場開發，
+    近半年將商業判斷延伸到 <strong>AI 產品開發</strong>。
+    擅長把客戶需求、現場問題與跨部門任務，整理成可追蹤、可溝通、可落地的工作。
+  </div>
+  <div class="badges">
+    <span class="badge">GTM 通路策略</span>
+    <span class="badge">B2B / B2C 產品</span>
+    <span class="badge">AI 應用</span>
+    <span class="badge">Unit Economics</span>
+    <span class="badge">PMP · PSM I</span>
+  </div>
+</header>
+
+<div class="thesis">
+  <div class="label">貫穿三個專案的 PM 簽名</div>
+  <div class="quote">真正難的不是知道要做什麼，是知道什麼時候該停。</div>
+  <p>良野（營收成長時婉拒投資、主動收手）、保險 Bot（嚴格砍範圍、列 Non-Goals）、TOEIC Snack（刻意停在 MVP 不躁進）。三種規模，同一種紀律：有意識地不做某些事。</p>
+</div>
+
+<h2>Case Studies</h2>
+<div class="cards">
+
+  <a class="case-card" href="liangye-7eleven.html">
+    <div class="card-top">
+      <h3>良野豆乳冰品 × 7-Eleven 全國通路</h3>
+      <span class="kind">B2C / GTM · 創辦人</span>
+    </div>
+    <div class="desc">
+      用「讓通路主動找上門」的 pull 策略進入 7-Eleven 全國通路，用 unit economics 反推產品決策，並在營收成長時做出紀律性收手。
+    </div>
+    <div class="tags">
+      <span>GTM 通路策略</span><span>Unit Economics</span><span>Vegan</span><span>社會企業</span>
+    </div>
+    <span class="arrow">閱讀 case study →</span>
+  </a>
+
+  <a class="case-card" href="insurance-bot.html">
+    <div class="card-top">
+      <h3>保險續保 LINE Bot</h3>
+      <span class="kind">B2B AI 應用 · PM</span>
+    </div>
+    <div class="desc">
+      為小型產險經紀辦公室打造的 AI 續保工具。以 The Mom Test 紀律訪談，把初版 PRD 假設校準為 v2.0，含 TAM 分析、資費估算與 ADR 決策紀錄。
+    </div>
+    <div class="tags">
+      <span>B2B SaaS</span><span>User Research</span><span>TAM 分析</span><span>ADR-Driven</span>
+    </div>
+    <span class="arrow">閱讀 case study →</span>
+  </a>
+
+  <a class="case-card" href="toeic-snack.html">
+    <div class="card-top">
+      <h3>TOEIC Snack</h3>
+      <span class="kind">AI Multi-Agent 開發 · PM</span>
+    </div>
+    <div class="desc">
+      用多 Agent AI 工作流（Claude Code × Gemini CLI + 自製 HANDOFF 協議）交付的 TOEIC 閱讀練習 App。13 螢幕、172 測試，誠實反思 build-first 的得失。
+    </div>
+    <div class="tags">
+      <span>AI Multi-Agent</span><span>Mobile</span><span>TDD</span><span>Harness</span>
+    </div>
+    <span class="arrow">閱讀 case study →</span>
+  </a>
+
+</div>
+
+<div class="contact">
+  <div class="row"><span class="label">Email</span><a href="mailto:kuei790802@gmail.com">kuei790802@gmail.com</a></div>
+  <div class="row"><span class="label">GitHub</span><a href="https://github.com/kuei790802">github.com/kuei790802</a></div>
+  <div class="row"><span class="label">居住地</span>桃園市楊梅區</div>
+  <div class="row"><span class="label">認證</span>PMP · PSM I · Google Project Management</div>
+</div>
+
+<footer>
+  歸維邦 Josh Kuei · PM Portfolio
+</footer>
+
+</div>
+</body>
+</html>

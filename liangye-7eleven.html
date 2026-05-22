@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>良野豆乳冰品 × 7-Eleven PM Case Study</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5580;
+    --primary-bg: #f4f7fb;
+    --accent: #4a90c2;
+    --success: #2e8b57;
+    --warning: #d97706;
+    --danger: #b91c1c;
+    --neutral: #6b7280;
+    --border: #d1d5db;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.7;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  header {
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  header h1 { margin: 0 0 4px 0; color: var(--primary); font-size: 28px; font-weight: 700; }
+  header .subtitle { color: var(--text-muted); font-size: 14px; }
+  header .pitch {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .meta-bar { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 13px; }
+  .meta-bar .item { display: inline-flex; align-items: center; gap: 6px; }
+  .meta-bar .label { color: var(--text-muted); }
+  .meta-bar .value { color: var(--primary); font-weight: 600; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tag {
+    display: inline-block; padding: 2px 10px; background: var(--primary-bg);
+    color: var(--primary); font-size: 12px; border-radius: 12px; border: 1px solid #c7d8eb;
+  }
+  .tag.alt { background: #fff; color: var(--text-muted); border-color: var(--border); }
+
+  .tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 24px; overflow-x: auto; flex-wrap: wrap; }
+  .tab-btn {
+    background: none; border: none; padding: 12px 18px; cursor: pointer;
+    font-family: inherit; font-size: 14px; color: var(--text-muted);
+    border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--primary); }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+  .tab-btn .star { color: var(--warning); margin-right: 2px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .panel-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+  .panel-header h2 { margin: 0; color: var(--primary); font-size: 22px; }
+  .panel-header .desc { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
+  .print-btn {
+    background: var(--primary); color: #fff; border: none; padding: 8px 16px;
+    border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 13px; white-space: nowrap;
+  }
+  .print-btn:hover { background: var(--primary-light); }
+
+  .section { margin: 24px 0; }
+  .section-title {
+    color: var(--primary); font-size: 17px; font-weight: 700; margin: 0 0 12px 0;
+    padding-bottom: 6px; border-bottom: 1px solid var(--border);
+  }
+  .section p { margin: 8px 0; font-size: 14px; }
+  .section ul, .section ol { font-size: 14px; padding-left: 22px; margin: 8px 0; }
+  .section li { margin-bottom: 6px; }
+
+  .callout {
+    background: var(--primary-bg); border-left: 4px solid var(--primary);
+    padding: 14px 18px; margin: 16px 0; border-radius: 0 4px 4px 0; font-size: 14px;
+  }
+  .callout.warn { background: #fef3c7; border-left-color: var(--warning); }
+  .callout.danger { background: #fee2e2; border-left-color: var(--danger); }
+  .callout.success { background: #d1fae5; border-left-color: var(--success); }
+  .callout strong { color: var(--primary); }
+  .callout.warn strong { color: #92400e; }
+  .callout.danger strong { color: var(--danger); }
+  .callout.success strong { color: #065f46; }
+
+  blockquote {
+    margin: 16px 0; padding: 14px 20px; background: #fafbfc;
+    border-left: 4px solid var(--accent); font-style: italic; color: var(--text); font-size: 14px;
+  }
+  blockquote cite { display: block; margin-top: 6px; font-size: 12px; color: var(--text-muted); font-style: normal; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 768px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0; }
+  .stat-card {
+    background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--primary);
+    padding: 12px 16px; border-radius: 4px;
+  }
+  .stat-card .label { font-size: 12px; color: var(--text-muted); }
+  .stat-card .value { font-size: 20px; color: var(--primary); font-weight: 700; margin-top: 4px; line-height: 1.3; }
+  .stat-card .value.small { font-size: 14px; line-height: 1.5; }
+
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 8px 0; }
+  .card.accent { border-top: 4px solid var(--primary); }
+  .card.success { border-top: 4px solid var(--success); }
+  .card.warn { border-top: 4px solid var(--warning); }
+  .card.danger { border-top: 4px solid var(--danger); }
+  .card h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 15px; font-weight: 600; }
+  .card .card-tag { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .card p { font-size: 13px; margin: 6px 0; }
+
+  .compare { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 16px; margin: 16px 0; }
+  .compare .col { background: #fff; border: 1px solid var(--border); padding: 16px; border-radius: 6px; }
+  .compare .col.before { border-top: 4px solid var(--neutral); }
+  .compare .col.after { border-top: 4px solid var(--success); }
+  .compare .col h4 { margin: 0 0 8px 0; color: var(--primary); font-size: 15px; }
+  .compare .col ul { margin: 8px 0 0 0; padding-left: 18px; font-size: 13px; }
+  .compare .col ul li { margin-bottom: 3px; }
+  .compare .arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 24px; font-weight: 700; }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } .compare .arrow { transform: rotate(90deg); padding: 4px 0; } }
+
+  .flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; gap: 8px; margin: 16px 0; }
+  .flow-step { background: var(--primary-bg); border: 1px solid #c7d8eb; border-radius: 6px; padding: 12px 10px; text-align: center; }
+  .flow-step .step-num { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+  .flow-step .step-title { font-size: 14px; color: var(--primary); font-weight: 600; margin-bottom: 2px; }
+  .flow-step .step-desc { font-size: 11px; color: var(--text-muted); }
+  .flow .arrow-r { color: var(--primary); font-size: 20px; font-weight: 700; text-align: center; }
+  @media (max-width: 768px) { .flow { grid-template-columns: 1fr; } .flow .arrow-r { transform: rotate(90deg); padding: 4px 0; } }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  table.data th, table.data td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  table.data th { background: var(--primary-bg); color: var(--primary); font-weight: 600; }
+
+  .adr-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 18px 20px; margin: 16px 0; border-top: 4px solid var(--primary); }
+  .adr-card .adr-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .adr-card .adr-id { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
+  .adr-card .adr-status { display: inline-block; background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .adr-card h4 { margin: 4px 0 8px 0; color: var(--primary); font-size: 16px; }
+  .adr-card .adr-row { margin: 6px 0; font-size: 13px; line-height: 1.6; }
+  .adr-card .adr-row strong { color: var(--primary); display: inline-block; min-width: 70px; }
+  .adr-card .quote { margin-top: 14px; padding: 10px 14px; background: var(--primary-bg); border-left: 3px solid var(--primary); font-style: italic; font-size: 13px; color: var(--primary); }
+
+  .lesson-card { background: #fff; border: 1px solid var(--border); border-top: 4px solid var(--primary); padding: 18px 22px; margin: 16px 0; border-radius: 4px; }
+  .lesson-card h4 { margin: 0 0 8px 0; color: var(--primary); font-size: 16px; }
+
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); text-align: center; }
+  footer a { color: var(--primary); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media print {
+    .tabs, .print-btn { display: none !important; }
+    .tab-panel { display: block !important; page-break-before: always; }
+    .tab-panel:first-of-type { page-break-before: auto; }
+    body { font-size: 11px; line-height: 1.5; }
+    .container { padding: 8px; max-width: 100%; }
+    a { color: var(--primary); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>良野豆乳冰品 × 7-Eleven 全國通路 PM Case Study</h1>
+  <div class="subtitle">B2C 食品品牌 GTM 實戰｜讓大型通路主動找上門的 pull 策略</div>
+  <div class="pitch">
+    一個豆漿基底的純素冰品品牌，如何用「<strong>讓通路主動來找</strong>」的 pull 策略進入 7-Eleven 全國通路，
+    用 unit economics 反推產品決策，並在營收成長、有人願投資 300 萬時，做出收手的紀律性決定。
+    這個案例的核心不是「做了純素冰品」，而是三個商業判斷：通路策略、產品取捨、何時該停。
+  </div>
+  <div class="meta-bar">
+    <div class="item"><span class="label">期間：</span><span class="value">2017/09 至 2023/01（5 年 5 個月）</span></div>
+    <div class="item"><span class="label">角色：</span><span class="value">創辦人 / 總經理</span></div>
+    <div class="item"><span class="label">通路：</span><span class="value">7-Eleven 全國 + 19 縣市</span></div>
+    <div class="item"><span class="label">團隊：</span><span class="value">3 名員工 + 外部夥伴（共約 6 人）</span></div>
+  </div>
+  <div class="tag-row">
+    <span class="tag">GTM 通路策略</span>
+    <span class="tag">B2C / FMCG</span>
+    <span class="tag">Unit Economics</span>
+    <span class="tag">Vegan 純素</span>
+    <span class="tag">社會企業</span>
+    <span class="tag alt">HACCP</span>
+    <span class="tag alt">Pull-not-Push</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="strategy"><span class="star">★</span>Market &amp; Strategy</button>
+  <button class="tab-btn" data-tab="play">The 7-Eleven Play</button>
+  <button class="tab-btn" data-tab="ops">Operations &amp; Economics</button>
+  <button class="tab-btn" data-tab="decisions">Key Decisions</button>
+  <button class="tab-btn" data-tab="reflection"><span class="star">★</span>Reflection</button>
+</div>
+
+<!-- ============== TAB 1: OVERVIEW ============== -->
+<section class="tab-panel active" id="tab-overview">
+  <div class="panel-header">
+    <div>
+      <h2>Overview</h2>
+      <div class="desc">良野豆乳冰品：豆漿基底的純素冰品品牌</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">產品</h3>
+    <p>
+      良野豆乳冰品是一個<strong>以豆漿為主體的純素（vegan）冰品品牌</strong>。
+      選豆漿而非其他植物奶，原因是豆漿在植物奶中營養成分最佳，且台灣消費者對豆漿極為熟悉，教育成本低。
+    </p>
+    <table class="data">
+      <tr><th style="width:22%;">產品線</th><th>規格</th><th style="width:18%;">市價</th><th style="width:18%;">毛利率</th></tr>
+      <tr><td>義式 Gelato</td><td>10 口味，3.5 oz 杯裝</td><td>NT$ 90</td><td>約 78%</td></tr>
+      <tr><td>雪糕</td><td>10 口味</td><td>NT$ 45</td><td>約 78%</td></tr>
+      <tr><td>B2B 商業盆裝</td><td>2000ml / 盆</td><td>NT$ 450 至 600</td><td>約 50 至 67%</td></tr>
+    </table>
+    <p style="font-size:13px; color:var(--text-muted);">產品組合約 50 個 SKU。財務以毛利率與實體化銷量呈現，絕對營收數字不公開。</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">關鍵成就</h3>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="label">通路</div><div class="value small">7-Eleven<br>全國通路</div></div>
+      <div class="stat-card"><div class="label">鋪貨範圍</div><div class="value">19 縣市</div></div>
+      <div class="stat-card"><div class="label">毛利率（主力品項）</div><div class="value">約 78%</div></div>
+      <div class="stat-card"><div class="label">SKU 數</div><div class="value">約 50</div></div>
+      <div class="stat-card"><div class="label">里程碑</div><div class="value small">全台首款上架連鎖超商全國通路的純素冰品</div></div>
+      <div class="stat-card"><div class="label">外部肯定</div><div class="value small">KPMG 社會企業輔導（競賽第 2 名）</div></div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>銷量實體化</strong>：我習慣把抽象數字變成可感知的畫面。
+    用 3.5 oz 冰淇淋球數疊算，賣掉的義式冰品約 <strong>1.5 座台北 101</strong> 的高度；
+    賣掉的雪糕約 <strong>3 座台北 101</strong> 的高度。
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">這個 case study 想呈現的三件事</h3>
+    <div class="three-col">
+      <div class="card accent">
+        <div class="card-tag">01 · 通路策略</div>
+        <h4>Pull-not-Push</h4>
+        <p>不去推銷大通路，而是設計讓 7-Eleven 主動找上門。</p>
+      </div>
+      <div class="card accent">
+        <div class="card-tag">02 · 產品取捨</div>
+        <h4>用 Unit Economics 反推</h4>
+        <p>明知客戶想要杯裝，卻因冷鏈退貨會虧本而力勸改雪糕。</p>
+      </div>
+      <div class="card accent">
+        <div class="card-tag">03 · 何時該停</div>
+        <h4>紀律性收手</h4>
+        <p>營收成長、有人要投 300 萬時，基於清醒判斷主動結束。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TAB 2: MARKET & STRATEGY ============== -->
+<section class="tab-panel" id="tab-strategy">
+  <div class="panel-header">
+    <div>
+      <h2>Market &amp; Strategy ★</h2>
+      <div class="desc">為什麼是純素豆乳冰品，以及這個案例最核心的 pull-not-push 通路策略</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">市場洞察：為什麼是純素豆乳冰品（2017）</h3>
+    <div class="two-col">
+      <div>
+        <p><strong>趨勢時間差假設</strong></p>
+        <ul>
+          <li>2017 年觀察到歐美 vegan 文化興起</li>
+          <li>判斷歐美流行到台灣有時間差，可以提前佈局</li>
+          <li>這個「時間差」後來真的兌現（見 7-Eleven 主動找上門）</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>市場與條件</strong></p>
+        <ul>
+          <li>台灣素食人口約 11%</li>
+          <li>素食市場約 600 至 800 億；冰品市場約 50 億</li>
+          <li>亞熱帶氣候，冰品販售期長</li>
+          <li>義式冰品製作門檻低，易學易控品質</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      為什麼選豆漿：植物奶中豆漿營養成分最佳，且台灣消費者對豆漿熟悉，<strong>教育成本最低</strong>。
+      個人本身認同 vegan 理念（大學吃素多年），確保長期投入的動機一致。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">核心策略：讓大通路主動來找（Pull-not-Push）</h3>
+    <p>
+      轉型網路通路後，我的目標是進全台大型通路。但我清楚<strong>自己主動去談的劣勢</strong>
+      （太太曾在大型 FMCG 彩妝品牌做行銷，提供了通路端的真實視角）：
+    </p>
+    <div class="three-col">
+      <div class="card danger">
+        <div class="card-tag">劣勢 01</div>
+        <h4>要付上架費</h4>
+        <p>主動求上架，議價地位弱，上架費難免。</p>
+      </div>
+      <div class="card danger">
+        <div class="card-tag">劣勢 02</div>
+        <h4>通路條件難談</h4>
+        <p>分潤、檔期、結帳條件都對小品牌不利。</p>
+      </div>
+      <div class="card danger">
+        <div class="card-tag">劣勢 03</div>
+        <h4>不一定理你</h4>
+        <p>小品牌主動接觸，大通路不一定回應。</p>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;"><strong>所以我反過來操作：不去推銷，而是製造能見度，讓通路自己看見並來找。</strong></p>
+
+    <div class="compare">
+      <div class="col before">
+        <div class="card-tag">一般做法（Push）</div>
+        <h4>帶著產品去敲通路的門</h4>
+        <ul>
+          <li>準備提案、找窗口、排會議</li>
+          <li>議價地位弱，被收上架費</li>
+          <li>條件被通路主導</li>
+        </ul>
+      </div>
+      <div class="arrow">→</div>
+      <div class="col after">
+        <div class="card-tag">我的做法（Pull）</div>
+        <h4>製造能見度，讓通路來找我</h4>
+        <ul>
+          <li>與微型網紅合作曝光</li>
+          <li>一台行動三輪冰淇淋車跑全台文創 / 素食市集</li>
+          <li>散布各地的 B2B 餐廳 / 咖啡廳 / 素食超商擴散能見度</li>
+          <li>等大通路自己看見</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout success">
+      <strong>策略兌現</strong>：當時 7-Eleven 正積極進入素食市場（2017 預測的趨勢時間差出現了），
+      在市集與通路上看見良野的能見度後<strong>主動找上門洽談</strong>。
+      因為是通路主動邀約，<strong>利潤空間比預期好，而且沒有被收上架費</strong>，議價地位完全翻轉。
+    </div>
+  </div>
+</section>
+
+<!-- ============== TAB 3: THE 7-ELEVEN PLAY ============== -->
+<section class="tab-panel" id="tab-play">
+  <div class="panel-header">
+    <div>
+      <h2>The 7-Eleven Play</h2>
+      <div class="desc">4 個月上架過程中的兩個關鍵決策：拒絕杯裝、包裝攻防</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">時間軸</h3>
+    <p>從 7-Eleven 主動接觸到正式上架，約 <strong>4 個月</strong>。整體順利：他們開規格，我們大致都符合，未符合的部分也很快補上。真正的兩個關卡不在規格，在「賣哪個產品」與「包裝」。</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">關鍵決策 1：拒絕客戶想要的杯裝</h3>
+    <div class="callout warn">
+      7-Eleven 原本想引進我們的<strong>杯裝義式冰品</strong>。但我清楚以當時的冷鏈物流，
+      杯裝的退貨率會高到虧本的程度。<strong>所以我反過來說服他們改採雪糕系列。</strong>
+    </div>
+    <p>
+      這是一個用 unit economics 反推的決策。對客戶說「不要你想要的那個」需要底氣，
+      但如果接了一個會虧本的 SKU，上架只是把問題放大。寧可少賣一條產品線，也不要賠錢上架。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">關鍵決策 2：包裝攻防（7 個工作天的設計衝刺）</h3>
+    <p>問題來了：當時雪糕的包裝很陽春，是 MVP 等級（透明袋正反面各貼一張貼紙）。7-Eleven 一開始不打算採納。</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-num">情境</div>
+        <div class="step-title">被拒</div>
+        <div class="step-desc">雪糕包裝太陽春，7-Eleven 不採納</div>
+      </div>
+      <div class="arrow-r">›</div>
+      <div class="flow-step">
+        <div class="step-num">出招</div>
+        <div class="step-title">爭取兩週</div>
+        <div class="step-desc">告訴他們「新包裝設計稿快好了，請等兩週」</div>
+      </div>
+      <div class="arrow-r">›</div>
+      <div class="flow-step">
+        <div class="step-num">執行</div>
+        <div class="step-title">7 天設計衝刺</div>
+        <div class="step-desc">找熟識設計師，給 7 個工作天</div>
+      </div>
+      <div class="arrow-r">›</div>
+      <div class="flow-step">
+        <div class="step-num">結果</div>
+        <div class="step-title">通過上架</div>
+        <div class="step-desc">兩週內交件，7-Eleven 認可設計感</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>誠實揭露這段的「臨場決斷」</strong>：我跟 7-Eleven 說「設計稿快好了」的時候，
+      其實當下還沒有這個計畫。掛掉電話後我立刻找熟識的設計師，用「<strong>你的設計會出現在 7-Eleven 的冰箱裡</strong>」
+      作為激勵，只給 7 個工作天。兩週內把全新雪糕包裝交給 7-Eleven，他們覺得有設計感，才通過上架申請。
+    </div>
+    <p style="font-size:13px; color:var(--text-muted);">
+      我把這段完整寫出來，因為它真實呈現了創業現場的決斷：在機會窗口前先承諾、再用執行力把承諾補上。
+      這是計算過的風險（我有把握找得到設計師、做得出來），不是空頭支票。
+    </p>
+  </div>
+</section>
+
+<!-- ============== TAB 4: OPERATIONS & ECONOMICS ============== -->
+<section class="tab-panel" id="tab-ops">
+  <div class="panel-header">
+    <div>
+      <h2>Operations &amp; Unit Economics</h2>
+      <div class="desc">冷鏈退貨、檔期成本、HACCP 與毛利結構</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">冷鏈物流：最難控制的變因</h3>
+    <div class="compare">
+      <div class="col before">
+        <div class="card-tag">問題</div>
+        <h4>夏季退貨率約 15%</h4>
+        <ul>
+          <li>夏天高溫，配送途中冰品狀態難控制</li>
+          <li>退貨直接侵蝕利潤</li>
+          <li>這也是我拒絕杯裝、改推雪糕的原因之一</li>
+        </ul>
+      </div>
+      <div class="arrow">→</div>
+      <div class="col after">
+        <div class="card-tag">改善</div>
+        <h4>退貨率降到約 7%</h4>
+        <ul>
+          <li>不斷嘗試新的包裝方式與包材</li>
+          <li>把退貨率從 15% 壓到 7%</li>
+          <li>利潤結構明顯改善</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">食品認證：把難事變成相對容易</h3>
+    <div class="callout success">
+      食品認證對很多廠商是大關卡，對我們相對容易，因為<strong>一開始建廠就自學依 HACCP 規範設計</strong>
+      （自己上課研究，再跟廠商溝通自建），所以很快通過 7-Eleven 要求的 SGS 相關檢測。
+      這是「在事前把規格做對，事後就省力」的典型案例。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">隱藏成本：通路檔期活動</h3>
+    <p>
+      因為是 7-Eleven 主動邀約，利潤空間本來比預期好、也沒被收上架費。
+      但有一個事前沒料到的變因：<strong>7-Eleven 有許多強迫廠商參與的優惠檔期活動，費用由廠商承擔</strong>。
+      檔期多的時候，利潤會變得很微薄。這是上架大通路的真實成本，事前的利潤模型必須把它算進去。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">毛利結構</h3>
+    <table class="data">
+      <tr><th>品項</th><th>市價</th><th>成本</th><th>毛利率</th></tr>
+      <tr><td>義式 Gelato（3.5 oz 杯）</td><td>NT$ 90</td><td>NT$ 20</td><td>約 78%</td></tr>
+      <tr><td>雪糕</td><td>NT$ 45</td><td>NT$ 10</td><td>約 78%</td></tr>
+      <tr><td>B2B 商業盆裝（2000ml）</td><td>NT$ 450 至 600</td><td>NT$ 150 至 300</td><td>約 50 至 67%</td></tr>
+    </table>
+    <p style="font-size:13px; color:var(--text-muted);">
+      帳面毛利率健康，但真實獲利要扣掉冷鏈退貨與通路檔期成本。
+      這也是為什麼「退貨率從 15% 降到 7%」與「拒絕會虧本的杯裝」這兩個決策如此重要。
+    </p>
+  </div>
+</section>
+
+<!-- ============== TAB 5: KEY DECISIONS ============== -->
+<section class="tab-panel" id="tab-decisions">
+  <div class="panel-header">
+    <div>
+      <h2>Key Decisions</h2>
+      <div class="desc">三個定義這個事業的關鍵決策</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="adr-card">
+    <div class="adr-head">
+      <div class="adr-id">決策 01 · GO-TO-MARKET</div>
+      <div class="adr-status">● 成功兌現</div>
+    </div>
+    <h4>用 Pull 策略讓 7-Eleven 主動來找，而非主動推銷</h4>
+    <div class="adr-row"><strong>背景</strong>小品牌主動去談大通路有三個劣勢：上架費、條件難談、不一定理你。</div>
+    <div class="adr-row"><strong>決策</strong>不去推銷，改用微網紅 + 行動冰淇淋車跑市集 + B2B 鋪能見度，等通路自己看見並來找。</div>
+    <div class="adr-row"><strong>結果</strong>7-Eleven 主動邀約，利潤空間比預期好、未被收上架費，議價地位翻轉。</div>
+  </div>
+
+  <div class="adr-card">
+    <div class="adr-head">
+      <div class="adr-id">決策 02 · PRODUCT &amp; UNIT ECONOMICS</div>
+      <div class="adr-status">● 成功兌現</div>
+    </div>
+    <h4>拒絕客戶想要的杯裝，力勸改採雪糕</h4>
+    <div class="adr-row"><strong>背景</strong>7-Eleven 想引進杯裝義式冰品，但以當時冷鏈，杯裝退貨率會高到虧本。</div>
+    <div class="adr-row"><strong>決策</strong>對客戶說不，主動把他們導向退貨風險較低的雪糕系列。</div>
+    <div class="adr-row"><strong>原則</strong>接一個會虧本的 SKU 不是成長，是把問題放大。寧可少賣一條產品線，也不賠錢上架。</div>
+  </div>
+
+  <div class="adr-card">
+    <div class="adr-head">
+      <div class="adr-id">決策 03 · WHEN TO STOP</div>
+      <div class="adr-status" style="background:#fef3c7; color:#92400e;">● 紀律性收手</div>
+    </div>
+    <h4>在營收成長、有人要投 300 萬時，主動結束事業</h4>
+    <div class="adr-row"><strong>背景</strong>2023 初營收仍在成長，且有外部資金願投 300 萬，但現金流快見底。</div>
+    <div class="adr-row"><strong>決策</strong>婉拒投資、結束事業。基於護城河不足、純素市場現實、個人永續性三項判斷（詳見 Reflection）。</div>
+    <div class="quote">
+      婉拒 300 萬是最難的一步，也是我最確定的一步：如果護城河與市場天花板的判斷是對的，那筆錢只會延長一個我已看到終點的賽局。
+    </div>
+  </div>
+</section>
+
+<!-- ============== TAB 6: REFLECTION ============== -->
+<section class="tab-panel" id="tab-reflection">
+  <div class="panel-header">
+    <div>
+      <h2>Reflection</h2>
+      <div class="desc">B 型企業精神、為什麼收手，以及貫穿我所有專案的紀律</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">B 型企業精神：把使命寫進每一個紙箱</h3>
+    <p>
+      我們配送用紙箱，不用業界常見的保麗龍箱。紙箱一打開，會看到留給消費者的一段話：
+    </p>
+    <blockquote>
+      感謝您的購買。因為您的選擇，母雞可以休息 XX 天、乳牛不必產乳 XX 天，
+      同時節省了 X 座標準泳池的水資源，與 X 座大安森林公園可消化的二氧化碳量。
+      <cite>（實際數字已隨時間淡忘，但這是我們想傳達的訊息）</cite>
+    </blockquote>
+    <p style="font-size:13px; color:var(--text-muted);">
+      不確定每個消費者都會讀，但這是我們的定位選擇：把社會使命做成產品體驗的一部分，而不只是行銷話術。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">KPMG 社會企業輔導的收穫</h3>
+    <p>
+      創業早期參加屏東縣政府的社會企業創業輔導，結業競賽 23 組企業上台報告，前三名可獲 KPMG 一個月輔導，我們得第二名。
+    </p>
+    <div class="callout">
+      <strong>最大收穫</strong>：KPMG 用許多模型與工具，把社會企業那些<strong>質化、難以呈現的概念，
+      轉成可量化、有邏輯的呈現</strong>。不論對外找投資或跟銀行貸款，都更有機會說服對方。
+      這個「把質化變量化」的訓練，後來成為我做產品時的習慣。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">為什麼在營收成長時收手</h3>
+    <p>
+      2023 年初，心邦營收其實還在成長，當時也有外部資金願意投資 300 萬。我婉拒了，選擇結束事業。
+      這不是撐不下去，是基於三個判斷的主動決定：
+    </p>
+    <ol>
+      <li><strong>護城河不足</strong>：純素豆乳冰品易被大廠模仿。一旦被模仿，以大廠的成本控制與產線速度，我守不住。</li>
+      <li><strong>市場現實</strong>：台灣素食市場很大，但「純素 vegan」這個切角不夠大，vegan 風潮的擴張速度與持久度都不如我 2017 年的預期。</li>
+      <li><strong>個人永續性</strong>：我幾乎 7/24 投入、沒有家庭生活，當時太太準備生第二胎，這樣的工時與現金流無法長期維持。</li>
+    </ol>
+    <div class="callout warn">
+      婉拒 300 萬是最難的一步，也是我最確定的一步：如果護城河與市場天花板的判斷是對的，那筆錢只會延長一個我已看到終點的賽局。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">貫穿我所有專案的紀律</h3>
+    <div class="lesson-card">
+      <h4>真正難的不是知道要做什麼，是知道什麼時候該停</h4>
+      <p>這個收手的決定，跟我後來的兩個專案是同一條紀律：</p>
+      <ul>
+        <li><strong>良野</strong>：營收成長、有人要投 300 萬，仍主動收手</li>
+        <li><strong>TOEIC Snack</strong>：MVP 完成後，刻意停在 MVP 不躁進上架</li>
+        <li><strong>保險續保 LINE Bot</strong>：嚴格列出 Non-Goals、砍掉紙本追蹤，縮小 Phase 1 範圍</li>
+      </ul>
+      <p>
+        三個專案、三種規模，同一個 PM 簽名：<strong>有紀律地不做某些事</strong>。
+        「做」永遠是 default，「不做」需要主動承擔取捨。這是我認為自己最穩定的判斷能力。
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Contact</h3>
+    <p style="font-size: 14px;">
+      <strong>姓名</strong>：歸維邦（Josh Kuei）<br>
+      <strong>Email</strong>：<a href="mailto:kuei790802@gmail.com" style="color: var(--primary);">kuei790802@gmail.com</a><br>
+      <strong>GitHub</strong>：<a href="https://github.com/kuei790802">github.com/kuei790802</a><br>
+      <strong>居住地</strong>：桃園市楊梅區<br>
+      <strong>認證</strong>：PMP · PSM I · Google Project Management
+    </p>
+  </div>
+</section>
+
+<footer>
+  良野豆乳冰品 × 7-Eleven PM Case Study · 格式風格與 TOEIC Snack、保險 Bot Case Study 對齊<br>
+  內容均基於真實創業經歷，財務以毛利率與實體化銷量呈現，絕對營收數字不公開。
+</footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

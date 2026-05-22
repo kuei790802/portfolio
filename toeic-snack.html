@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEIC Snack PM Portfolio</title>
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5580;
+    --primary-bg: #f4f7fb;
+    --accent: #4a90c2;
+    --success: #2e8b57;
+    --warning: #d97706;
+    --danger: #b91c1c;
+    --neutral: #6b7280;
+    --border: #d1d5db;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --highlight: #fef3c7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.7;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  header {
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  header h1 {
+    margin: 0 0 4px 0;
+    color: var(--primary);
+    font-size: 28px;
+    font-weight: 700;
+  }
+  header .subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  header .pitch {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .meta-bar .item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .meta-bar .label { color: var(--text-muted); }
+  .meta-bar .value { color: var(--primary); font-weight: 600; }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--primary-bg);
+    color: var(--primary);
+    font-size: 12px;
+    border-radius: 12px;
+    border: 1px solid #c7d8eb;
+  }
+  .tag.alt { background: #fff; color: var(--text-muted); border-color: var(--border); }
+  .tag.warn { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 24px;
+    overflow-x: auto;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 3px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--primary); }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
+  }
+  .tab-btn .star {
+    color: var(--warning);
+    margin-right: 2px;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 16px;
+  }
+  .panel-header h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 22px;
+  }
+  .panel-header .desc {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .print-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .print-btn:hover { background: var(--primary-light); }
+
+  /* Section blocks */
+  .section { margin: 24px 0; }
+  .section-title {
+    color: var(--primary);
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title small {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .section p { margin: 8px 0; font-size: 14px; }
+  .section ul { font-size: 14px; padding-left: 22px; margin: 8px 0; }
+  .section li { margin-bottom: 4px; }
+
+  /* Callout / quote */
+  .callout {
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+  }
+  .callout.warn { background: #fef3c7; border-left-color: var(--warning); }
+  .callout.danger { background: #fee2e2; border-left-color: var(--danger); }
+  .callout strong { color: var(--primary); }
+  .callout.warn strong { color: #92400e; }
+  .callout.danger strong { color: var(--danger); }
+
+  /* Two-column grid */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  /* Stats / KPI cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 4px;
+  }
+  .stat-card .label { font-size: 12px; color: var(--text-muted); }
+  .stat-card .value { font-size: 22px; color: var(--primary); font-weight: 700; margin-top: 4px; line-height: 1.3; }
+  .stat-card .value.small { font-size: 14px; line-height: 1.5; }
+
+  /* Contribution bar */
+  .contrib-bar-wrap { margin: 8px 0; }
+  .contrib-bar {
+    display: flex;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .contrib-bar .seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 30px;
+  }
+  .contrib-bar .seg.you { background: var(--primary); }
+  .contrib-bar .seg.ai { background: #94a3b8; }
+  .contrib-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+    font-size: 13px;
+  }
+  .contrib-row .role { width: 200px; color: var(--text); font-weight: 500; flex-shrink: 0; }
+  .contrib-row .bar-area { flex: 1; }
+
+  /* WBS Tree */
+  .wbs-tree { font-size: 14px; }
+  .wbs-tree details { margin: 4px 0; }
+  .wbs-tree summary {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    list-style: none;
+    position: relative;
+    padding-left: 28px;
+  }
+  .wbs-tree summary::-webkit-details-marker { display: none; }
+  .wbs-tree summary::before {
+    content: "▶";
+    position: absolute;
+    left: 10px;
+    font-size: 10px;
+    color: var(--primary);
+    transition: transform 0.15s;
+  }
+  .wbs-tree details[open] > summary::before { transform: rotate(90deg); }
+  .wbs-tree .level-1 > summary {
+    background: var(--primary);
+    color: #fff;
+    font-size: 16px;
+    margin-top: 12px;
+  }
+  .wbs-tree .level-1 > summary::before { color: #fff; }
+  .wbs-tree .level-2 > summary {
+    background: var(--primary-bg);
+    color: var(--primary);
+    margin-left: 20px;
+    font-weight: 600;
+  }
+  .wbs-tree .level-3 {
+    margin-left: 60px;
+    padding: 4px 12px;
+    color: var(--text);
+    border-left: 2px solid var(--border);
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+  .wbs-tree .level-3 .item-title { font-weight: 500; }
+  .wbs-tree .level-3 .item-note { color: var(--text-muted); font-size: 12px; }
+  .wbs-tree .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: 1px;
+  }
+  .badge.done { background: var(--success); color: #fff; }
+  .badge.count { background: var(--accent); color: #fff; }
+
+  /* Gantt */
+  .gantt-wrap { overflow-x: auto; }
+  .gantt {
+    min-width: 980px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+  }
+  .gantt th, .gantt td {
+    border-bottom: 1px solid var(--border);
+    padding: 8px 6px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .gantt th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+  }
+  .gantt .sprint-name { font-weight: 600; color: var(--primary); white-space: nowrap; }
+  .gantt .sprint-dates { color: var(--text-muted); white-space: nowrap; font-size: 11px; }
+  .gantt-track {
+    position: relative;
+    height: 32px;
+    background: #f9fafb;
+    border-radius: 3px;
+  }
+  .gantt-bar {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    background: var(--success);
+    border-radius: 3px;
+    min-width: 6px;
+  }
+  .gantt-bar.discovery { background: var(--neutral); }
+  .gantt-bar.pause { background: repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 6px, #f3f4f6 6px, #f3f4f6 12px); border: 1px dashed #9ca3af; }
+  .gantt .deliverable {
+    font-size: 11px;
+    color: var(--text);
+    padding: 8px 8px;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+  .gantt .deliverable.pause-text {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .gantt-axis {
+    position: relative;
+    height: 32px;
+    background: #fff;
+  }
+  .gantt-axis-tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid var(--border);
+    padding-left: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 32px;
+  }
+  .legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 2px; }
+  .legend-swatch.done { background: var(--success); }
+  .legend-swatch.discovery { background: var(--neutral); }
+  .legend-swatch.pause { background: repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 4px, #f3f4f6 4px, #f3f4f6 8px); border: 1px dashed #9ca3af; }
+  .legend-swatch.milestone { background: transparent; border-left: 2px dashed var(--danger); height: 16px; width: 0; margin: 0 6px; }
+
+  /* Tables */
+  .summary-table, .risk-table, .adr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .summary-table th, .risk-table th, .adr-table th {
+    background: var(--primary);
+    color: #fff;
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+  }
+  .summary-table td, .risk-table td, .adr-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .summary-table tr:nth-child(even) td,
+  .risk-table tr:nth-child(even) td,
+  .adr-table tr:nth-child(even) td { background: #fafbfc; }
+  .summary-table tr.total-row td {
+    background: var(--primary-bg) !important;
+    font-weight: 600;
+    color: var(--primary);
+    border-top: 2px solid var(--primary);
+  }
+  .summary-table .sprint-cell, .risk-table .id-cell, .adr-table .id-cell { white-space: nowrap; color: var(--primary); font-weight: 600; }
+  .summary-table .date-cell { white-space: nowrap; color: var(--text-muted); font-size: 12px; }
+  .summary-table .deliverables ul { margin: 0; padding-left: 18px; }
+  .summary-table .deliverables li { margin-bottom: 2px; }
+  .summary-table .num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+  .summary-table .note-cell { font-size: 12px; color: var(--text-muted); }
+
+  .pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pill.high { background: #fee2e2; color: #b91c1c; }
+  .pill.med { background: #fef3c7; color: #92400e; }
+  .pill.low { background: #d1fae5; color: #065f46; }
+  .pill.closed { background: #d1fae5; color: #065f46; }
+  .pill.open { background: #fee2e2; color: #b91c1c; }
+  .pill.accepted { background: #dbeafe; color: #1e40af; }
+  .pill.exp { background: #ede9fe; color: #5b21b6; }
+
+  /* Workflow diagram */
+  .workflow-diagram {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: stretch;
+    margin: 16px 0;
+  }
+  .workflow-box {
+    background: var(--primary-bg);
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .workflow-box.gemini {
+    background: #f3e8ff;
+    border-color: #7c3aed;
+  }
+  .workflow-box h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    font-size: 15px;
+  }
+  .workflow-box.gemini h4 { color: #7c3aed; }
+  .workflow-box ul { margin: 4px 0 0 0; padding-left: 18px; font-size: 13px; }
+  .workflow-arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  .workflow-arrows .arrow-line {
+    font-size: 24px;
+    line-height: 1;
+    color: var(--primary);
+  }
+  @media (max-width: 720px) {
+    .workflow-diagram { grid-template-columns: 1fr; }
+    .workflow-arrows { transform: rotate(90deg); padding: 8px 0; }
+  }
+
+  /* Lesson cards */
+  .lesson-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--primary);
+    padding: 18px 22px;
+    margin: 16px 0;
+    border-radius: 4px;
+  }
+  .lesson-card h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    font-size: 16px;
+  }
+  .lesson-card .evidence {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  footer a { color: var(--primary); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media print {
+    .tabs, .print-btn { display: none !important; }
+    .tab-panel { display: block !important; page-break-before: always; }
+    .tab-panel:first-of-type { page-break-before: auto; }
+    body { font-size: 11px; line-height: 1.5; }
+    .container { padding: 8px; max-width: 100%; }
+    .gantt-wrap { overflow: visible; }
+    .gantt { min-width: 0; font-size: 10px; }
+    a { color: var(--primary); }
+    details { open: ""; }
+    details > * { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>TOEIC Snack PM Portfolio</h1>
+  <div class="subtitle">React Native + Expo + NestJS + Supabase · Solo + AI Multi-Agent · 個人 Side Project</div>
+  <div class="pitch">
+    我用 <strong>多 Agent AI 工作流</strong>（Claude Code × Gemini CLI，配合自製 HANDOFF 協議）在約 6 週的有效工作天內，交付一個 13 螢幕的 React Native MVP。
+    過程中我寫了 0% 的產品 code，但負責了 80% 的規格、60% 的架構決策、50% 的 prompt 設計。
+    這份文件用 PM 的視角回頭分析整個專案，包含我做對的事、發現的問題，以及面對 AI 時代的 PM 該如何重新定義自己的角色。
+  </div>
+  <div class="meta-bar">
+    <div class="item"><span class="label">期間：</span><span class="value">2026-01-22 → 2026-05-08</span></div>
+    <div class="item"><span class="label">有效工作天：</span><span class="value">~25 天（非連續）</span></div>
+    <div class="item"><span class="label">交付：</span><span class="value">13 screens · 172 tests · 0 TS errors</span></div>
+    <div class="item"><span class="label">User testers：</span><span class="value">5 人（家人 + 同事）</span></div>
+    <div class="item"><span class="label">狀態：</span><span class="value">MVP Hold · 未上架</span></div>
+  </div>
+  <div class="tag-row">
+    <span class="tag">Multi-Agent Orchestration</span>
+    <span class="tag">PMP · PSM I</span>
+    <span class="tag">Solo Builder</span>
+    <span class="tag">React Native + NestJS</span>
+    <span class="tag">TDD-driven</span>
+    <span class="tag alt">Build-first（誠實標註）</span>
+    <span class="tag warn">未做 Discovery（已 Reflect）</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="wbs">WBS</button>
+  <button class="tab-btn" data-tab="gantt">Gantt</button>
+  <button class="tab-btn" data-tab="burndown">Burndown</button>
+  <button class="tab-btn" data-tab="iteration">Iteration Log</button>
+  <button class="tab-btn" data-tab="ai"><span class="star">★</span>AI Workflow</button>
+  <button class="tab-btn" data-tab="risks">Risks &amp; Decisions</button>
+  <button class="tab-btn" data-tab="reflections"><span class="star">★</span>Reflections</button>
+</div>
+
+<!-- ============== TAB 1: OVERVIEW ============== -->
+<section class="tab-panel active" id="tab-overview">
+  <div class="panel-header">
+    <div>
+      <h2>Overview</h2>
+      <div class="desc">從個人痛點到 AI Multi-Agent 實驗：這個專案的真實故事</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">起源：一個真實的個人痛點</h3>
+    <p>
+      我聽力幾乎滿分，閱讀偏弱。平時有閱讀英文新聞與社群的習慣，但實際考試時抓不到節奏。
+      多益閱讀練習題本「<strong>又厚又重，不方便攜帶</strong>」。我想要的是在通勤、午休、等飯這些碎片時段就能練的工具。
+    </p>
+    <p>
+      市面上現有 APP 大多是「學習導向」（單字、文法）或「聽力＋閱讀混合」，<strong>沒有純做閱讀衝刺、能精準控制時間的 APP</strong>。
+      不然就是訂閱費太貴。在 PTT 與 Dcard 也看到不少人有相同抱怨。
+    </p>
+    <div class="callout">
+      <strong>產品定位</strong>：把多益閱讀的方法論濃縮成 APP，讓使用者在 5/10/15/20 分鐘的時間限制下做題，模擬真實考試的時間壓迫感。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">User Validation（小規模但真實）</h3>
+    <div class="two-col">
+      <div>
+        <p><strong>5 位 dogfood 使用者</strong>（老婆、妹妹、3 位同事）</p>
+        <ul>
+          <li>一致回饋：「如果要準備多益會想用」</li>
+          <li>5 人中 0 人提出「為什麼是這個時間區間」的疑問，時間設計命中需求</li>
+          <li>我自己使用約 10 次，做了 ~80 題</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>已知 limitation（誠實標註）</strong></p>
+        <ul>
+          <li>n=5 不具統計意義</li>
+          <li>都是身邊熟人，有 social desirability bias</li>
+          <li>沒有做正式 user interview、沒有 JTBD 框架訪談</li>
+          <li>沒有問「願意付多少錢」「會替代你現在的哪個工具」</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Contribution Split<small>角色聚焦於 spec / 架構 / review，工程實作交給 AI agent</small></h3>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      我完成過資展國際 582 小時 Java 工程師養成班，具備 Spring Boot / React / SQL / RESTful API 等基礎技能。
+      但在 TOEIC Snack 中我<strong>有意識地將工程實作交給 AI agent 執行</strong>，自己聚焦於 spec、架構與審查層。
+      這不是能力限制，而是想驗證「AI 時代的 PM 角色：把問題定義到 Agent 能執行的程度」這個假設。
+    </p>
+
+    <div style="margin-top: 16px;">
+      <div class="contrib-row">
+        <div class="role">規格定義（PRD / Wireframe）</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 80%;">我 80%</div>
+            <div class="seg ai" style="width: 20%;">AI 20%</div>
+          </div>
+        </div>
+      </div>
+      <div class="contrib-row">
+        <div class="role">架構決策（技術選型 / Schema）</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 60%;">我 60%</div>
+            <div class="seg ai" style="width: 40%;">AI 40%</div>
+          </div>
+        </div>
+      </div>
+      <div class="contrib-row">
+        <div class="role">Prompt / Handoff Spec 撰寫</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 50%;">我 50%</div>
+            <div class="seg ai" style="width: 50%;">AI 50%</div>
+          </div>
+        </div>
+      </div>
+      <div class="contrib-row">
+        <div class="role">Code Review（review Agent 產出）</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 25%;">我 25%</div>
+            <div class="seg ai" style="width: 75%;">AI 75%</div>
+          </div>
+        </div>
+      </div>
+      <div class="contrib-row">
+        <div class="role">親手 Debug / Fix</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 1%;">0%</div>
+            <div class="seg ai" style="width: 99%;">AI 100%</div>
+          </div>
+        </div>
+      </div>
+      <div class="contrib-row">
+        <div class="role">親手寫產品 Code</div>
+        <div class="bar-area">
+          <div class="contrib-bar">
+            <div class="seg you" style="width: 1%;">0%</div>
+            <div class="seg ai" style="width: 99%;">AI 100%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">關鍵數字</h3>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="label">App Screens</div><div class="value">13</div></div>
+      <div class="stat-card"><div class="label">Tests Passing</div><div class="value">172</div></div>
+      <div class="stat-card"><div class="label">TypeScript Errors</div><div class="value">0</div></div>
+      <div class="stat-card"><div class="label">已知 Bugs (QA)</div><div class="value">11<span style="font-size:14px;"> (4 closed)</span></div></div>
+      <div class="stat-card"><div class="label">配套 Repo</div><div class="value small">TOEIC_<br>Question_Generator</div></div>
+      <div class="stat-card"><div class="label">Tech Stack</div><div class="value small">RN · Expo · NestJS<br>Supabase · NativeWind</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">配套生態：另一個 AI Multi-Model 實驗</h3>
+    <div class="callout">
+      <strong>TOEIC_Question_Generator</strong>（獨立 GitHub repo）是專門服務於 TOEIC Snack 的 AI 出題管線。
+      使用<strong>多模型協作</strong>架構：<strong>高階模型</strong>（Sonnet）負責生成題目，<strong>低階模型</strong>（Haiku）負責驗證與核對，
+      通過後同步寫入 Supabase 資料庫。實際已產出數百題，本 APP 即從這個資料庫拉題目。
+    </div>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      這個獨立 repo 的存在本身是個 PM 決策：把<strong>內容生產 pipeline 與產品 runtime 分離</strong>，避免 schema 與題庫管理耦合。
+      也是我第二個 multi-agent 設計（第一個是 Snack 本身的 CC × Gemini）。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">目前狀態：MVP Hold</h3>
+    <p>
+      MVP 已完成核心練習迴圈、placement test、history、profile、settings、offline queue、error boundary。
+      經 dogfood 與 iOS 真機測試後，<strong>選擇停留在 MVP 階段</strong>，不立即送 App Store。
+    </p>
+    <div class="callout warn">
+      <strong>為什麼不上架？</strong>
+      上架後實際營運要投入金錢（App Store 開發者帳號、Server cost、客服）與大量時間。
+      同期還在找工作、處理搬遷桃園、姊夫委託的 LINE bot 案、以及 PMP 考試準備。
+      <strong>這是一個有意識的「不上架」決策</strong>，而非半途而廢。
+    </div>
+  </div>
+</section>
+
+<!-- ============== TAB 2: WBS ============== -->
+<section class="tab-panel" id="tab-wbs">
+  <div class="panel-header">
+    <div>
+      <h2>Work Breakdown Structure</h2>
+      <div class="desc">5 大階段 × 功能模組 × 具體工作項目（資料來源：git log + ROADMAP.md + plan.md）</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="wbs-tree">
+
+    <details class="level-1" open>
+      <summary>1. Discovery &amp; Foundation：探索與奠基</summary>
+      <details class="level-2">
+        <summary>1.1 專案初始化</summary>
+        <div class="level-3"><div class="item-title">Initial commit + 專案結構</div><div class="item-note">2026-01-22 · Initial commit with project structure</div></div>
+        <div class="level-3"><div class="item-title">CLAUDE.md（AI 協作規則）</div><div class="item-note">2026-02-02 · Add comprehensive CLAUDE.md for AI assistant guidance</div></div>
+        <div class="level-3"><div class="item-title">PRD v3.0（MVP 規格）</div><div class="item-note">5/10/15/20 min 練習、Streak、Mock TOEIC Score、3 張表 Schema</div></div>
+        <div class="level-3"><div class="item-title">AI 分工規則（CC × Gemini）+ HANDOFF 協議</div><div class="item-note">2026-02-24 · docs: establish AI collaboration rules</div></div>
+      </details>
+      <details class="level-2">
+        <summary>1.2 設計系統</summary>
+        <div class="level-3"><div class="item-title">Dark mode UI/UX（Brilliant-style）</div><div class="item-note">2026-02-02 · 等級色 Green/Blue/Gold + 深色背景 tokens</div></div>
+        <div class="level-3"><div class="item-title">NativeWind / Tailwind 設定</div><div class="item-note">2026-02-03 · feat: configure tailwind</div></div>
+        <div class="level-3"><div class="item-title">Design System v2.0（dual mode + font system）</div><div class="item-note">2026-02-28 · docs: update design system v2.0</div></div>
+      </details>
+    </details>
+
+    <details class="level-1">
+      <summary>2. Backend：NestJS + Supabase <span class="badge done">已完成</span></summary>
+      <details class="level-2">
+        <summary>2.1 Auth Service</summary>
+        <div class="level-3"><div class="item-title">Supabase Auth 整合（取代 custom API auth）</div><div class="item-note">2026-02-28 · feat(auth): integrate Supabase Auth</div></div>
+        <div class="level-3"><div class="item-title">首次 JWT 驗證自動建立 user record</div><div class="item-note">2026-03-08 · feat(auth): auto-create user record on first JWT validation</div></div>
+        <div class="level-3"><div class="item-title">JWT_SECRET 修正 + .env 安全</div><div class="item-note">2026-03-08~09 · fix(backend): correct JWT_SECRET and add .gitignore</div></div>
+        <div class="level-3"><div class="item-title">Optional JWT Guard for Guest Submit</div><div class="item-note">2026-05-07 · fix(backend): allow guest training submit（dogfood 發現）</div></div>
+      </details>
+      <details class="level-2">
+        <summary>2.2 Training Service（出題演算法）</summary>
+        <div class="level-3"><div class="item-title">POST /training/generate（依時長動態出題）</div><div class="item-note">Phase 3 · 5/10/15/20 min mix</div></div>
+        <div class="level-3"><div class="item-title">Level Filtering（Green / Blue / Gold + Adjacent fallback）<span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">20-Min Duration Mix 補洞 <span class="badge count">1 test</span></div></div>
+        <div class="level-3"><div class="item-title">最近重複題目避免 <span class="badge count">1 test</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>2.3 Submit &amp; History API</summary>
+        <div class="level-3"><div class="item-title">POST /training/submit（算分 + 寫 study_sessions）</div></div>
+        <div class="level-3"><div class="item-title">GET /user/history</div></div>
+        <div class="level-3"><div class="item-title">MVP 欄位擴充（user, study_session）</div><div class="item-note">2026-03-16 · feat(db): add MVP fields</div></div>
+      </details>
+    </details>
+
+    <details class="level-1">
+      <summary>3. Frontend：React Native (Expo) <span class="badge done">已完成</span></summary>
+      <details class="level-2">
+        <summary>3.1 Auth &amp; Onboarding <span class="badge count">~45 tests</span></summary>
+        <div class="level-3"><div class="item-title">Login Screen UI（Google/Apple/Email/Guest）<span class="badge count">6 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Google Sign-In Logic <span class="badge count">5 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Apple Sign-In（expo-apple-authentication）<span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Email Authentication <span class="badge count">6 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Session Management <span class="badge count">4 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.2 Placement Test <span class="badge count">~20 tests</span></summary>
+        <div class="level-3"><div class="item-title">usePlacementSession（15 題流程）<span class="badge count">6 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Question Display（Part 5/6/7）<span class="badge count">5 tests</span></div></div>
+        <div class="level-3"><div class="item-title">usePlacementScoring（Level 分配）<span class="badge count">5 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Placement Test UI（3 screens）</div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.3 Core Practice Engine <span class="badge count">~20 tests</span></summary>
+        <div class="level-3"><div class="item-title">usePracticeSession（Timer + Time Bank + Answers）<span class="badge count">6 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Timer &amp; Time Bank <span class="badge count">5 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Question Display + Paper crumpling 動畫 <span class="badge count">5 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Results &amp; Scoring <span class="badge count">4 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.4 History &amp; Profile <span class="badge count">~27 tests</span></summary>
+        <div class="level-3"><div class="item-title">useHistory <span class="badge count">15 tests</span></div></div>
+        <div class="level-3"><div class="item-title">useProfile <span class="badge count">12 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.5 Settings &amp; Account <span class="badge count">~15 tests</span></summary>
+        <div class="level-3"><div class="item-title">useSettings（持久化 6 偏好）<span class="badge count">7 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Manual Level Change <span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">Delete Account / Retake Placement <span class="badge count">4 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.6 Visual Polish</summary>
+        <div class="level-3"><div class="item-title">useColors() 動態主題遷移</div></div>
+        <div class="level-3"><div class="item-title">Emoji → Lucide icons</div></div>
+        <div class="level-3"><div class="item-title">ThemeContext + NativeWind sync</div><div class="item-note">2026-03-18 · feat(ui): implement ThemeContext</div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.7 Engagement <span class="badge count">~16 tests</span></summary>
+        <div class="level-3"><div class="item-title">useAchievements <span class="badge count">7 tests</span></div></div>
+        <div class="level-3"><div class="item-title">useNotifications <span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">useReviewSession（重練錯題）<span class="badge count">5 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.8 Production Auth <span class="badge count">~13 tests</span></summary>
+        <div class="level-3"><div class="item-title">useGuestMigration <span class="badge count">8 tests</span></div></div>
+        <div class="level-3"><div class="item-title">JWT Token Refresh <span class="badge count">2 tests</span></div></div>
+        <div class="level-3"><div class="item-title">API 401 Retry Interceptor <span class="badge count">3 tests</span></div></div>
+      </details>
+      <details class="level-2">
+        <summary>3.9 Launch Prep（Phase 6）<span class="badge count">~12 tests</span></summary>
+        <div class="level-3"><div class="item-title">useNetworkRetry <span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">useOfflineQueue <span class="badge count">4 tests</span></div></div>
+        <div class="level-3"><div class="item-title">ErrorBoundary <span class="badge count">4 tests</span></div></div>
+      </details>
+    </details>
+
+    <details class="level-1">
+      <summary>4. QA &amp; Dogfood：真機驗證 <span class="badge done">部分完成</span></summary>
+      <details class="level-2">
+        <summary>4.1 內部小規模 Dogfood（n=5）</summary>
+        <div class="level-3"><div class="item-title">老婆、妹妹、3 位同事試用</div><div class="item-note">統一回饋：「如果要準備多益會想用」</div></div>
+      </details>
+      <details class="level-2">
+        <summary>4.2 iOS Simulator 真機 QA（2026-05-06 ~ 05-08）</summary>
+        <div class="level-3"><div class="item-title">11 個 QA findings（QA-001 ~ QA-011）</div><div class="item-note">High×1 closed · High×2 open · Medium×5 · Low×2</div></div>
+        <div class="level-3"><div class="item-title">QA-002 完整修補流程（Bug → Fix → Railway Deploy → 真機 retest）</div><div class="item-note">Guest Submit 因 JwtAuthGuard 阻擋，發現後改 Optional JWT</div></div>
+        <div class="level-3"><div class="item-title">QA-011 長文 Part 6/7 隱藏選項問題</div><div class="item-note">含 Gemini agent hung 12.9 小時的 AI 失敗紀錄</div></div>
+      </details>
+    </details>
+
+    <details class="level-1">
+      <summary>5. Infra &amp; Deployment <span class="badge done">已完成</span></summary>
+      <details class="level-2">
+        <summary>5.1 Railway（Backend）</summary>
+        <div class="level-3"><div class="item-title">初版部署 + bind 0.0.0.0</div><div class="item-note">2026-03-08</div></div>
+        <div class="level-3"><div class="item-title">Health check + config 優化</div><div class="item-note">2026-04-14</div></div>
+        <div class="level-3"><div class="item-title">GitHub Actions CI/CD workflow（需設 RAILWAY_TOKEN）</div><div class="item-note">2026-05-08</div></div>
+      </details>
+      <details class="level-2">
+        <summary>5.2 Cloudflare Tunnel（取代 ngrok）</summary>
+        <div class="level-3"><div class="item-title">Tunnel 腳本 + EXPO_PACKAGER_PROXY_URL</div><div class="item-note">2026-04-14</div></div>
+      </details>
+      <details class="level-2">
+        <summary>5.3 開發工具鏈</summary>
+        <div class="level-3"><div class="item-title">Orchestrator: iTerm2 3-pane dashboard</div><div class="item-note">2026-03-08</div></div>
+        <div class="level-3"><div class="item-title">Loop script（auto-merge + 每階段建新 branch）</div><div class="item-note">2026-03-08</div></div>
+      </details>
+    </details>
+
+  </div>
+</section>
+
+<!-- ============== TAB 3: GANTT ============== -->
+<section class="tab-panel" id="tab-gantt">
+  <div class="panel-header">
+    <div>
+      <h2>Gantt Chart</h2>
+      <div class="desc">9 個 Iteration + 2 段 Pause（誠實標註）· 軸長 107 天</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="gantt-wrap">
+    <table class="gantt">
+      <colgroup>
+        <col style="width: 130px;">
+        <col style="width: 110px;">
+        <col style="width: 220px;">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Iteration</th>
+          <th>日期區間</th>
+          <th>主要交付</th>
+          <th>進度軸</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3" style="background:#fff;"></td>
+          <td><div class="gantt-axis" id="gantt-axis"></div></td>
+        </tr>
+
+        <tr>
+          <td class="sprint-name">I-0<br>Discovery</td>
+          <td class="sprint-dates">2026-01-22<br>至 02-23</td>
+          <td class="deliverable">PRD、CLAUDE.md、Design System</td>
+          <td><div class="gantt-track" data-start="0" data-end="33"><div class="gantt-bar discovery"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-1<br>Auth + Placement</td>
+          <td class="sprint-dates">2026-02-24<br>至 02-27</td>
+          <td class="deliverable">TDD 啟動，新增 45 tests</td>
+          <td><div class="gantt-track" data-start="33" data-end="37"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-2<br>Core Practice</td>
+          <td class="sprint-dates">2026-02-28</td>
+          <td class="deliverable">Practice Engine，新增 20 tests</td>
+          <td><div class="gantt-track" data-start="37" data-end="38"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-3<br>History/Profile/Settings</td>
+          <td class="sprint-dates">2026-03-05<br>至 03-06</td>
+          <td class="deliverable">Phase 1 至 Phase 3，新增 51 tests</td>
+          <td><div class="gantt-track" data-start="43" data-end="45"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-4<br>Engagement + Auth</td>
+          <td class="sprint-dates">2026-03-07<br>至 03-08</td>
+          <td class="deliverable">Phase 4 至 Phase 5，新增 29 tests</td>
+          <td><div class="gantt-track" data-start="45" data-end="47"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-5<br>Launch Prep</td>
+          <td class="sprint-dates">2026-03-08</td>
+          <td class="deliverable">Phase 6，新增 12 tests</td>
+          <td><div class="gantt-track" data-start="46" data-end="47"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-6<br>MVP Hardening</td>
+          <td class="sprint-dates">2026-03-09<br>至 03-18</td>
+          <td class="deliverable">MVP 欄位擴充、ThemeContext</td>
+          <td><div class="gantt-track" data-start="47" data-end="56"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name" style="color: var(--text-muted);">Pause 1</td>
+          <td class="sprint-dates">2026-03-19<br>至 04-13</td>
+          <td class="deliverable pause-text">本業忙碌、育兒、PMP 考試準備</td>
+          <td><div class="gantt-track" data-start="56" data-end="83"><div class="gantt-bar pause"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-7<br>Infra &amp; Portfolio</td>
+          <td class="sprint-dates">2026-04-14<br>至 04-23</td>
+          <td class="deliverable">Railway、Cloudflare、Portfolio</td>
+          <td><div class="gantt-track" data-start="83" data-end="92"><div class="gantt-bar"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name" style="color: var(--text-muted);">Pause 2</td>
+          <td class="sprint-dates">2026-04-24<br>至 05-06</td>
+          <td class="deliverable pause-text">離職、搬遷桃園、姊夫 LINE bot 案、PMP</td>
+          <td><div class="gantt-track" data-start="92" data-end="105"><div class="gantt-bar pause"></div></div></td>
+        </tr>
+        <tr>
+          <td class="sprint-name">I-8<br>iOS Dogfood &amp; QA</td>
+          <td class="sprint-dates">2026-05-07<br>至 05-08</td>
+          <td class="deliverable">找出 11 個 bug，已修 4 個，建立 CI workflow</td>
+          <td><div class="gantt-track" data-start="106" data-end="107"><div class="gantt-bar"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch discovery"></span>探索期（無測試）</div>
+    <div class="legend-item"><span class="legend-swatch done"></span>已完成 Iteration</div>
+    <div class="legend-item"><span class="legend-swatch pause"></span>Pause（明確標註原因）</div>
+    <div class="legend-item"><span class="legend-swatch milestone"></span>里程碑</div>
+  </div>
+
+  <div class="callout">
+    <strong>關於 Pause 的誠實註記</strong>：傳統 portfolio 會把 gap 隱藏起來，我選擇明確標出。
+    Pause 1 是工作 + 育兒 + 考 PMP；Pause 2 是離職轉職期。<strong>有效工作天合計約 25 天</strong>（非 107 天），這才是真實的 throughput。
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="label">MVP 功能完成</div><div class="value">2026-02-28</div></div>
+    <div class="stat-card"><div class="label">All 6 Phases Complete</div><div class="value">2026-03-08</div></div>
+    <div class="stat-card"><div class="label">真機 dogfood 結束</div><div class="value">2026-05-08</div></div>
+    <div class="stat-card"><div class="label">有效工作天</div><div class="value">~25 天</div></div>
+  </div>
+</section>
+
+<!-- ============== TAB 4: BURNDOWN ============== -->
+<section class="tab-panel" id="tab-burndown">
+  <div class="panel-header">
+    <div>
+      <h2>Burndown Chart</h2>
+      <div class="desc">172 個 TDD 測試的燃盡進度（plan.md 規劃 160，實際交付 172）</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div style="background:#fafbfc; padding: 24px; border-radius: 6px; border: 1px solid var(--border);">
+    <div style="display: flex; gap: 24px; margin-bottom: 16px; font-size: 13px;">
+      <span><span style="display:inline-block; width:32px; height:0; border-top: 3px dashed var(--neutral); vertical-align:middle; margin-right:6px;"></span>Ideal Burndown</span>
+      <span><span style="display:inline-block; width:32px; height:0; border-top: 3px solid var(--primary); vertical-align:middle; margin-right:6px;"></span>Actual Burndown</span>
+    </div>
+
+    <svg viewBox="0 0 800 420" style="width:100%; height:auto; background:#fff; border:1px solid var(--border); border-radius:4px;">
+      <line x1="60" y1="20" x2="60" y2="370" stroke="#1f2937" stroke-width="1.5"/>
+      <line x1="60" y1="370" x2="760" y2="370" stroke="#1f2937" stroke-width="1.5"/>
+
+      <g font-family="Noto Sans TC, sans-serif" font-size="11" fill="#6b7280">
+        <line x1="55" y1="370" x2="60" y2="370" stroke="#6b7280"/><text x="50" y="374" text-anchor="end">0</text>
+        <line x1="55" y1="283" x2="60" y2="283" stroke="#6b7280"/><text x="50" y="287" text-anchor="end">40</text>
+        <line x1="55" y1="195" x2="60" y2="195" stroke="#6b7280"/><text x="50" y="199" text-anchor="end">80</text>
+        <line x1="55" y1="108" x2="60" y2="108" stroke="#6b7280"/><text x="50" y="112" text-anchor="end">120</text>
+        <line x1="55" y1="20" x2="60" y2="20" stroke="#6b7280"/><text x="50" y="24" text-anchor="end">160</text>
+        <text x="20" y="195" text-anchor="middle" transform="rotate(-90 20 195)" fill="#1a3a5c" font-weight="600">剩餘測試數</text>
+      </g>
+
+      <g stroke="#e5e7eb" stroke-width="1">
+        <line x1="60" y1="283" x2="760" y2="283"/>
+        <line x1="60" y1="195" x2="760" y2="195"/>
+        <line x1="60" y1="108" x2="760" y2="108"/>
+      </g>
+
+      <g font-family="Noto Sans TC, sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">
+        <text x="60" y="390">I-0</text><text x="148" y="390">I-1</text><text x="235" y="390">I-2</text>
+        <text x="323" y="390">I-3</text><text x="410" y="390">I-4</text><text x="498" y="390">I-5</text>
+        <text x="585" y="390">I-6</text><text x="673" y="390">I-7</text><text x="760" y="390">I-8</text>
+      </g>
+
+      <line x1="60" y1="20" x2="498" y2="370" stroke="#6b7280" stroke-width="2" stroke-dasharray="6,4"/>
+
+      <polyline points="60,20 148,20 148,118 235,162 323,274 410,337 498,370 585,370 673,370 760,370"
+                fill="none" stroke="#1a3a5c" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <g fill="#1a3a5c">
+        <circle cx="60" cy="20" r="4"/><circle cx="148" cy="20" r="4"/><circle cx="148" cy="118" r="4"/>
+        <circle cx="235" cy="162" r="4"/><circle cx="323" cy="274" r="4"/><circle cx="410" cy="337" r="4"/>
+        <circle cx="498" cy="370" r="4"/><circle cx="585" cy="370" r="3"/><circle cx="673" cy="370" r="3"/><circle cx="760" cy="370" r="3"/>
+      </g>
+
+      <g font-family="Noto Sans TC, sans-serif" font-size="11" fill="#1a3a5c">
+        <text x="155" y="14">160 (TDD 開始)</text>
+        <text x="240" y="158">95</text>
+        <text x="330" y="270">44</text>
+        <text x="415" y="333">15</text>
+        <text x="450" y="385" fill="#2e8b57" font-weight="700">✓ 0 left</text>
+      </g>
+
+      <g>
+        <rect x="540" y="40" width="200" height="74" fill="#f4f7fb" stroke="#1a3a5c" stroke-width="1" rx="4"/>
+        <text x="640" y="60" font-family="Noto Sans TC, sans-serif" font-size="13" font-weight="700" fill="#1a3a5c" text-anchor="middle">Final Status</text>
+        <text x="640" y="76" font-family="Noto Sans TC, sans-serif" font-size="11" fill="#1f2937" text-anchor="middle">172 tests passing</text>
+        <text x="640" y="91" font-family="Noto Sans TC, sans-serif" font-size="11" fill="#1f2937" text-anchor="middle">0 TypeScript errors</text>
+        <text x="640" y="106" font-family="Noto Sans TC, sans-serif" font-size="10" fill="#b91c1c" text-anchor="middle">⚠ 但 screen-level coverage 不足（QA-004）</text>
+      </g>
+    </svg>
+
+    <div class="callout warn" style="margin-top: 16px;">
+      <strong>關於這條太完美的曲線，誠實說明</strong><br>
+      I-3（單 sprint +51 tests/2 天）與 I-5（+12 tests 同日完成 Phase 6）的速度，
+      <strong>不是傳統 solo dev 的 TDD 節奏，是 AI multi-agent 加速的產物</strong>。
+      Burndown 沒有 scope creep、estimation miss 的鋸齒，因為這專案沒有 sprint planning meeting、沒有 PO 介入、沒有跨團隊依賴，
+      只有「定義清楚 → AI 執行 → review」的線性 pipeline。
+      <br><br>
+      這條線的真實含意不是「PM 估點神準」，而是「<strong>當 AI 把執行變 commodity，限制 throughput 的就只剩 spec quality</strong>」。
+    </div>
+
+    <div class="callout danger">
+      <strong>後續發現的「假完成」陷阱</strong><br>
+      Burndown 顯示 2026-03-08 燃盡完成，但 2026-05-07 真機 dogfood 才發現 <strong>Phase 5 的 Guest Submit 從未真的能用</strong>（QA-002）。
+      原因：JwtAuthGuard 擋掉了 guest 的 /training/submit，但這個 case 不在單元測試的覆蓋範圍。
+      <br><br>
+      <strong>Lesson</strong>：Test pass ≠ User-validated。詳見 Reflections tab 的 Lesson 2。
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="label">規劃測試</div><div class="value">160</div></div>
+      <div class="stat-card"><div class="label">實際交付</div><div class="value">172</div></div>
+      <div class="stat-card"><div class="label">最高產出 Iteration</div><div class="value">I-3 +51 / 2 天</div></div>
+      <div class="stat-card"><div class="label">TDD 跨越天數</div><div class="value">13 天</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TAB 5: ITERATION LOG ============== -->
+<section class="tab-panel" id="tab-iteration">
+  <div class="panel-header">
+    <div>
+      <h2>Iteration Log</h2>
+      <div class="desc">9 個 Iteration 的交付物與測試累計</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="callout">
+    <strong>關於命名：為什麼是「Iteration」不是「Sprint」</strong><br>
+    我有 PSM I 認證，知道真正的 Scrum sprint 是固定 1-2 週節奏，配合 Planning / Review / Retrospective ceremony。
+    這專案的「衝刺」長度從 1 天到 33 天都有，且全程只有我自己 + AI agents，沒有 ceremony。
+    所以本文件稱為 <strong>Iteration</strong>（Adapted Lean methodology for solo + AI pair），
+    而非假裝是嚴謹 Scrum。誠實標註方法論，是 PM 基本功。
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr><th>Iteration</th><th>日期</th><th>主要交付物</th><th class="num-cell">新增測試</th><th class="num-cell">累計</th><th>備註</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="sprint-cell">I-0<br>Discovery</td>
+        <td class="date-cell">2026-01-22<br>→ 02-23<br>(33 天)</td>
+        <td><ul><li>Initial commit + 專案結構</li><li>PRD v3.0（MVP 規格）</li><li>CLAUDE.md（AI 協作規則）</li><li>Dark mode 設計系統</li></ul></td>
+        <td class="num-cell">0</td><td class="num-cell">0</td>
+        <td class="note-cell">純探索 + 工具鏈設定。PR #1, #2 為 UI design exploration。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-1<br>Auth + Placement</td>
+        <td class="date-cell">2026-02-24<br>→ 02-27<br>(4 天)</td>
+        <td><ul><li>Jest + React Native Testing Library</li><li>LoginScreen + Google/Apple/Email Auth</li><li>Session Management（AuthContext）</li><li>Placement Test hooks（15 題、時限、Level 分配）</li></ul></td>
+        <td class="num-cell">~45</td><td class="num-cell">~45</td>
+        <td class="note-cell">TDD 首次啟動。完成 Week 3-4。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-2<br>Core Practice</td>
+        <td class="date-cell">2026-02-28<br>(1 天密集)</td>
+        <td><ul><li>usePracticeSession（timer + time bank + answers）</li><li>PracticeScreen + Part 5/6/7 渲染</li><li>Results 算分</li><li>useHistory + useProfile</li><li>Supabase Auth 取代 custom auth</li></ul></td>
+        <td class="num-cell">~20</td><td class="num-cell">~65</td>
+        <td class="note-cell">MVP 核心練習迴圈成形。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-3<br>Polish + Settings + DB</td>
+        <td class="date-cell">2026-03-05<br>→ 03-06<br>(2 天)</td>
+        <td><ul><li>Placement Test UI（3 screens）</li><li>useColors() 動態主題遷移</li><li>useSettings（持久化 6 偏好）</li><li>Backend Level Filtering + 20-min mix + repeat avoidance</li><li>ROADMAP.md 6 phases 定稿</li></ul></td>
+        <td class="num-cell">~51</td><td class="num-cell">~116</td>
+        <td class="note-cell">單 Iteration 最高產出。Phase 1/2/3 同步完成。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-4<br>Engagement + Auth</td>
+        <td class="date-cell">2026-03-07<br>→ 03-08<br>(2 天)</td>
+        <td><ul><li>useAchievements（5 種徽章）</li><li>useNotifications（Expo Notifications）</li><li>useReviewSession（重練錯題）</li><li>useGuestMigration（三入口）</li><li>JWT refresh + 401 retry</li><li>Orchestrator: iTerm2 3-pane</li></ul></td>
+        <td class="num-cell">~29</td><td class="num-cell">~145</td>
+        <td class="note-cell">Phase 4+5 同期完成。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-5<br>Launch Prep</td>
+        <td class="date-cell">2026-03-08<br>(同日)</td>
+        <td><ul><li>useNetworkRetry（exponential backoff）</li><li>useOfflineQueue（AsyncStorage 持久化）</li><li>ErrorBoundary</li><li>Railway 初版部署</li></ul></td>
+        <td class="num-cell">~15</td><td class="num-cell">160 ✓</td>
+        <td class="note-cell"><strong>達標</strong>。STATUS.yml 標 Phase 6 completed。<br>後續發現 QA-002 表示「完成」定義有瑕疵。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-6<br>MVP Hardening</td>
+        <td class="date-cell">2026-03-09<br>→ 03-18<br>(10 天)</td>
+        <td><ul><li>Practice 網路錯誤 home escape</li><li>Placement level 寫入 Supabase</li><li>MVP fields（user + study_session）</li><li>ThemeContext + NativeWind sync</li></ul></td>
+        <td class="num-cell">0</td><td class="num-cell">160</td>
+        <td class="note-cell">純 hardening。PR #8 merged。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell" style="color: var(--neutral);">Pause 1</td>
+        <td class="date-cell">2026-03-19<br>→ 04-13<br>(26 天)</td>
+        <td><ul><li>本業密集 + 育兒</li><li>PMP 認證考試準備</li><li>專案 hold</li></ul></td>
+        <td class="num-cell">0</td><td class="num-cell">160</td>
+        <td class="note-cell">非工作時段。誠實標註。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-7<br>Infra &amp; Portfolio</td>
+        <td class="date-cell">2026-04-14<br>→ 04-23<br>(10 天)</td>
+        <td><ul><li>Railway health check + config 優化</li><li>Cloudflare tunnel script（取代 ngrok）</li><li>EXPO_PACKAGER_PROXY_URL</li><li>Portfolio presentation 雛形</li></ul></td>
+        <td class="num-cell">0</td><td class="num-cell">160</td>
+        <td class="note-cell">功能凍結，轉部署 + 求職素材。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell" style="color: var(--neutral);">Pause 2</td>
+        <td class="date-cell">2026-04-24<br>→ 05-06<br>(13 天)</td>
+        <td><ul><li>離職 + 搬遷桃園</li><li>姊夫保險辦公室 LINE bot 案討論</li><li>PMP 考試最後衝刺</li><li>評估是否繼續推上架</li></ul></td>
+        <td class="num-cell">0</td><td class="num-cell">160</td>
+        <td class="note-cell">職涯轉換期。決定先 hold MVP。</td>
+      </tr>
+      <tr>
+        <td class="sprint-cell">I-8<br>iOS Dogfood &amp; QA</td>
+        <td class="date-cell">2026-05-07<br>→ 05-08<br>(2 天)</td>
+        <td><ul><li>iOS Simulator 真機 QA</li><li>11 個 bug findings（QA-001~011）</li><li>QA-002 Guest Submit 從發現到 Railway deploy 完整修補</li><li>Backend Railway CI/CD workflow</li><li>3 份 retest 報告 close</li></ul></td>
+        <td class="num-cell">+12<br>(screen tests)</td><td class="num-cell">172</td>
+        <td class="note-cell">真機驗證階段。揭露 Definition of Done 瑕疵。</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="3" style="text-align:right;">總計 (Total)</td>
+        <td class="num-cell">172</td><td class="num-cell">172 ✓</td>
+        <td class="note-cell">9 iterations + 2 pauses · 有效 ~25 天</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============== TAB 6: AI WORKFLOW (NEW, the differentiator) ============== -->
+<section class="tab-panel" id="tab-ai">
+  <div class="panel-header">
+    <div>
+      <h2>AI Multi-Agent Workflow ★</h2>
+      <div class="desc">這個專案最有價值的部分：我不小心摸出了「harness」框架的雛形</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="callout">
+    <strong>背景</strong>：開始這專案時（2026-01），社群還沒有大規模討論 AI Agent 的「harness」概念。
+    我為了管理 Claude Code 與 Gemini CLI 兩個 agent 之間的協作，設計了一套 HANDOFF 檔案協議 + STATUS.yml + loop control。
+    後來研究 harness 框架時，才發現自己摸索的方向與業界趨勢一致。
+    這套架構還很原始，但<strong>誤打誤撞踩到了前沿 AI 應用的關鍵設計問題</strong>。
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">分工架構</h3>
+    <div class="workflow-diagram">
+      <div class="workflow-box">
+        <h4>Claude Code（CC）</h4>
+        <ul>
+          <li>規劃 / 邏輯層</li>
+          <li>Hooks / Stores / Context</li>
+          <li>TDD 測試撰寫</li>
+          <li>API client / 演算法</li>
+          <li>Review Gemini 的 UI 實作</li>
+        </ul>
+      </div>
+      <div class="workflow-arrows">
+        <div>HANDOFF-CC.md</div>
+        <div class="arrow-line">→</div>
+        <div class="arrow-line">←</div>
+        <div>HANDOFF-GEMINI.md</div>
+      </div>
+      <div class="workflow-box gemini">
+        <h4>Gemini CLI</h4>
+        <ul>
+          <li>UI 實作 / 樣式</li>
+          <li>NativeWind / Tailwind</li>
+          <li>Lucide Icons 整合</li>
+          <li>Git 操作（commit / branch）</li>
+          <li>HANDOFF 歸檔到 .handoffs/</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">HANDOFF 協議的設計動機</h3>
+    <p>傳統 multi-agent 系統最大問題是<strong>狀態管理</strong>：兩個 agent 各自有 context，無法共享，重啟後遺失。我用<strong>文件系統作為共享狀態</strong>解決：</p>
+    <ul>
+      <li><code>HANDOFF-CC.md</code>：CC 寫完邏輯後，留下給 Gemini 的交接單（含 wireframe 路徑、hooks 介面、注意事項）</li>
+      <li><code>HANDOFF-GEMINI.md</code>：Gemini 完成 UI 後，回報結果給 CC</li>
+      <li><code>STATUS.yml</code>：兩個 agent 共讀的進度狀態（current_task、progress、blockers、loop_control）</li>
+      <li><code>plan.md</code>：TDD checklist，當作 source of truth</li>
+      <li><code>.handoffs/YYYY-MM-DD-{agent}-{topic}.md</code>：完成後歸檔，可追溯</li>
+    </ul>
+    <div class="callout">
+      <strong>關鍵洞察</strong>：把 agent 間的協作<strong>具現化為檔案</strong>，不只解決狀態問題，還順便解決：
+      （1）<strong>可審計</strong>：所有決策有紙本，（2）<strong>可中斷可恢復</strong>：session crash 後重讀檔案即恢復脈絡，（3）<strong>人類可介入</strong>：我隨時可以手動編輯 HANDOFF 介入流程。
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Loop Control 與 Auto Mode</h3>
+    <p>
+      STATUS.yml 有一個 <code>loop_control: continue | stop</code> 旗標。
+      當 CC 被用 <code>-p</code> 旗標（非互動模式）呼叫時，會檢查這個值決定是否寫下一份 HANDOFF-CC.md 讓閉環繼續。
+      搭配 <code>frontend/scripts/orchestrator</code> 啟動的 iTerm2 3-pane dashboard，
+      可以實現<strong>自主開發循環</strong>：CC 寫 → Gemini 實作 → Gemini 提交 → CC 接下一輪。
+    </p>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      I-3 的單日 +51 tests 與 I-5 的同日完成 Phase 6，<strong>就是這個 auto-loop 跑出來的</strong>。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">真實的 AI 失敗案例 <small>（不藏拙）</small></h3>
+    <div class="callout danger">
+      <strong>QA-011：Gemini CLI worker hung 12.9 hours</strong><br>
+      QA 階段發現 Part 6/7 長文閱讀題的選項會被隱藏在 fold 之下，使用者看不到。
+      我把這個 bug 開了 handoff 給 Gemini CLI 修，<strong>Gemini 卡了 12.9 小時沒有任何輸出與檔案變更</strong>，最後被 Kermes（另一個 QA agent）終止。
+      <br><br>
+      <strong>恢復策略</strong>：QA agent 直接接手實作了 frontend guard（未答題時 disable Next/Submit + 提示捲動），
+      並補上 <code>PracticeScreen.test.tsx</code> 的 regression coverage。最終 iOS Simulator 視覺 retest 通過。
+      <br><br>
+      <strong>PM 學到的教訓</strong>：multi-agent 系統需要設計 <strong>fail-over 機制</strong>。
+      不能假設每個 agent 都會成功，要有 timeout、有 escalation path、有 fallback executor。
+    </div>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      其他 AI 出包的時刻還有約 10 次（記憶模糊），常見於：
+      （a）spec 描述不夠精準導致 agent 走偏，
+      （b）跨檔案的 implicit dependency 沒在 HANDOFF 註明，
+      （c）測試的 mock 與真實 API 行為偏離（QA-002 的根因之一）。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">配套：TOEIC_Question_Generator 的多模型協作</h3>
+    <p>
+      除了 Snack 本身的 CC × Gemini，我還設計了另一個獨立 repo 的 multi-agent 架構：
+    </p>
+    <div class="workflow-diagram">
+      <div class="workflow-box">
+        <h4>Sonnet（高階）</h4>
+        <ul>
+          <li>生成 Part 5/6/7 題目</li>
+          <li>包含 passage、選項、解析</li>
+          <li>標註 difficulty level</li>
+        </ul>
+      </div>
+      <div class="workflow-arrows">
+        <div>JSON</div>
+        <div class="arrow-line">→</div>
+        <div>驗證結果</div>
+        <div class="arrow-line">→</div>
+      </div>
+      <div class="workflow-box gemini" style="background: #fef3c7; border-color: #d97706;">
+        <h4 style="color: #92400e;">Haiku（低階）</h4>
+        <ul>
+          <li>驗證題目格式</li>
+          <li>核對答案邏輯</li>
+          <li>通過後寫入 Supabase</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size: 13px;">
+      這是<strong>成本最佳化的 multi-model 設計</strong>：用便宜模型把關品質，用昂貴模型做創意產出。
+      目前已產出數百題進入 production 資料庫。
+    </p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">這個架構對 PM 工作的啟示</h3>
+    <ul>
+      <li><strong>Spec 是新 Code</strong>：當 AI 能執行任何明確需求，PM 的競爭力就在「能不能寫出可被執行的 spec」</li>
+      <li><strong>檔案是新 API</strong>：agent 之間用檔案溝通比用 message passing 穩定（可中斷可恢復）</li>
+      <li><strong>HANDOFF 是新 Sprint Review</strong>：每次 handoff 就是一次小型 review，迫使把工作明確化</li>
+      <li><strong>Loop Control 是新 Backlog Grooming</strong>：用 <code>continue / stop</code> 旗標決定下一輪做什麼，比每天開會更輕量</li>
+      <li><strong>Audit Trail 內建</strong>：.handoffs/ 目錄等於 sprint history，未來給 stakeholder 看一目了然</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============== TAB 7: RISKS & DECISIONS ============== -->
+<section class="tab-panel" id="tab-risks">
+  <div class="panel-header">
+    <div>
+      <h2>Risks &amp; Decisions</h2>
+      <div class="desc">Risk Register + Architecture Decision Records · PM hygiene 文件</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Risk Register</h3>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      這份是<strong>事後重建</strong>的，專案執行當時沒有正式 risk register，這是 Reflections 反思之一。
+      呈現方式：依嚴重度排列，含 mitigation。
+    </p>
+
+    <table class="risk-table">
+      <thead>
+        <tr><th style="width: 80px;">ID</th><th>Risk</th><th style="width: 90px;">Severity</th><th style="width: 90px;">Status</th><th>Mitigation / Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="id-cell">R-01</td>
+          <td><strong>題庫規模不足</strong><br>ROADMAP 標 46 題（後續 Generator 上傳數百題），離留存所需的「練 30 天不重複」還很遠。一個用戶若密集使用，幾天就刷完所有題。</td>
+          <td><span class="pill high">High</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>已建立配套 repo（TOEIC_Question_Generator）持續產出，但需建立 SLA：每週新增 X 題</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-02</td>
+          <td><strong>Definition of Done 不一致</strong><br>Phase 5 標 completed（2026-03-08），但 2026-05-07 真機 dogfood 才發現 Guest Submit 從未真的能用（JwtAuthGuard 擋掉）。</td>
+          <td><span class="pill high">High</span></td>
+          <td><span class="pill closed">Closed</span></td>
+          <td>QA-002 已修補 + Railway deploy 驗證通過。Lesson：DoD 必須包含 user-validated（詳見 Reflections）</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-03</td>
+          <td><strong>Bus Factor = 1</strong><br>整個專案只有我一個人類 + AI agents。我離開或 AI 服務中斷，無人能接手。</td>
+          <td><span class="pill high">High</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>HANDOFF 協議 + 文件化規格 + git history 已盡可能降低，但仍未有 co-maintainer</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-04</td>
+          <td><strong>Discovery 規模偏小，未做正式 user interview</strong><br>User validation 為 5 人 dogfood（家人 + 同事）+ 自身作為 target user 的深度使用（10 次 session、80 題）+ 論壇觀察。PRD 偏向 spec-first，沒做正式 JTBD 訪談、競品 hands-on benchmark、定價研究。下一個專案（保險 Bot）已採用 The Mom Test 紀律補上。</td>
+          <td><span class="pill high">High</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>已在 Reflections 標註，並列為下一輪首要補洞。F2 規劃：harness 架好之後反過來做 discovery</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-05</td>
+          <td><strong>無 Outcome Metrics 追蹤</strong><br>追蹤 output（測試數、TS errors），但沒有 DAU、retention、accuracy distribution、avg session length、crash rate、API p99、bundle size、cold start。PRD 寫「最流暢」但無數據佐證。</td>
+          <td><span class="pill high">High</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>應導入 Expo Analytics 或 Mixpanel / PostHog。MVP 階段先用自訂事件 + Supabase 表追蹤</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-06</td>
+          <td><strong>Screen-Level Test Coverage 不足</strong><br>172 tests 多在 hooks 層，screen 層只有 LoginScreen + EmailAuthScreen 有測試。Home / Practice / Result 等 P0 螢幕無 integration test。</td>
+          <td><span class="pill med">Medium</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>QA-004 已列入 iteration plan，I-8 部分補上 PracticeScreen.test.tsx</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-07</td>
+          <td><strong>首次使用者 Placement 流程被繞過</strong><br>LoginScreen.handleGuestMode() 直接導向 Home，未經 Placement。Home 預設 userLevel = green。新用戶可能拿到不合適難度。</td>
+          <td><span class="pill med">Medium</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>QA-003。需要明確設計 guest placement policy（強制 / 可跳過 / 預設 Green + 提示重做）</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-08</td>
+          <td><strong>Production 設定殘留 placeholder</strong><br>LoginScreen 的 TERMS_URL / PRIVACY_URL 還是 example.com；OAuth fallback 用 dummy 值；Expo 缺 production scheme。</td>
+          <td><span class="pill med">Medium</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>QA-006、QA-009。上架前 must-fix</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-09</td>
+          <td><strong>Roadmap Retrofit</strong><br>ROADMAP.md 是 2026-03-06 才定稿，但 commit 顯示 Auth / Placement / Core 都先做完了。傳統 PMI 視角這是 anti-pattern。</td>
+          <td><span class="pill med">Medium</span></td>
+          <td><span class="pill closed">Accepted</span></td>
+          <td>誠實承認 build-first 策略。對 solo + AI prototype 是合理的，但需 timebox</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-10</td>
+          <td><strong>未上架成本未驗證</strong><br>選擇 hold MVP，但 App Store fee、Server cost、客服 capacity 都沒實際算過 unit economics。</td>
+          <td><span class="pill med">Medium</span></td>
+          <td><span class="pill closed">Accepted</span></td>
+          <td>已決定先 hold，不上架 ≠ 失敗。但若未來上架需先做 financial modeling</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-11</td>
+          <td><strong>Vendor Lock-in（Supabase + Railway + Expo + Cloudflare）</strong><br>單一 PaaS 失效會直接斷掉整個 stack。Supabase 同時是 Auth + DB + Storage。</td>
+          <td><span class="pill low">Low</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>MVP 階段可接受。Scale 時應評估 abstraction layer</td>
+        </tr>
+        <tr>
+          <td class="id-cell">R-12</td>
+          <td><strong>未合併的 feature branches 散落 origin</strong><br>QA report 列出 5 個 remote branch 未 merge 也無 PR：claude/fix-schema-mismatch、setup-frontend-qrcode、login-screen-enhancements、ui-navigation-back-buttons、qa/practice-screen-coverage。</td>
+          <td><span class="pill low">Low</span></td>
+          <td><span class="pill open">Open</span></td>
+          <td>需 grooming：判斷 abandon vs revive。AI 產出的 branch 容易遺忘</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Architecture Decision Records (ADR)</h3>
+    <p style="font-size: 13px; color: var(--text-muted);">
+      事後整理的關鍵技術決策，呈現選型理由。
+    </p>
+
+    <table class="adr-table">
+      <thead>
+        <tr><th style="width: 80px;">ID</th><th>Decision</th><th style="width: 90px;">Status</th><th>Rationale / Trade-off</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="id-cell">ADR-01</td>
+          <td><strong>NestJS over Express / Fastify</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>Type-safe、modular DI、有 Guard / Pipe 等規約對 AI agent 友善（agent 寫 controller 不會跑偏）。Trade-off：比 Express 重，但 solo dev 不在意</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-02</td>
+          <td><strong>Supabase over Self-hosted Postgres</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>Auth + DB + Storage 一站式，lean MVP 不要花時間架設。Trade-off：vendor lock-in（R-11）；Supabase 故障 = 全掛</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-03</td>
+          <td><strong>NativeWind / Tailwind over styled-components</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>Utility-first 對 AI agent 友善（class string 比 CSS-in-JS object 容易產生）。Trade-off：複雜動畫較不便</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-04</td>
+          <td><strong>TDD with Jest + React Native Testing Library</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>強迫先寫 spec，AI agent 需要明確 acceptance criteria 才能執行。Trade-off：plan.md 完成後才發現 screen-level coverage 不足（R-06）</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-05</td>
+          <td><strong>Multi-Agent (CC × Gemini) over Single Agent</strong></td>
+          <td><span class="pill exp">Experimental</span></td>
+          <td>專長分工：CC 強邏輯，Gemini 強 UI。實測 throughput 提升明顯。Trade-off：HANDOFF 設計成本、Gemini hung 風險（QA-011 案例）</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-06</td>
+          <td><strong>HANDOFF Protocol as Shared State</strong></td>
+          <td><span class="pill exp">Experimental</span></td>
+          <td>用檔案系統而非 message queue 做 agent 通訊。可中斷可恢復、可審計、人類可介入。Trade-off：non-real-time、需手動歸檔</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-07</td>
+          <td><strong>Question Generator 拆成獨立 Repo</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>內容產生 pipeline 與產品 runtime 解耦。允許獨立迭代 AI 出題策略、不污染 APP 部署。Trade-off：跨 repo schema 同步要靠紀律</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-08</td>
+          <td><strong>Cloudflare Tunnel over ngrok</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>固定網域 bykuei.com、無 connection limit、免費。Trade-off：設定比 ngrok 複雜一次</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-09</td>
+          <td><strong>Lucide-only Icons（禁用 Emoji）</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>iOS/Android emoji 渲染不一致，影響 UX 一致性。例外允許 🔥🎉（streak / celebration）。寫進 CLAUDE.md 防止 AI 走偏</td>
+        </tr>
+        <tr>
+          <td class="id-cell">ADR-10</td>
+          <td><strong>Hold MVP, No Immediate Launch</strong></td>
+          <td><span class="pill accepted">Accepted</span></td>
+          <td>App Store 上架 = 持續金錢 + 客服投入。同期我在找工作、姊夫委託案、PMP 考試，capacity 不足。決定先停在 MVP，未來視情況決定</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== TAB 8: REFLECTIONS ============== -->
+<section class="tab-panel" id="tab-reflections">
+  <div class="panel-header">
+    <div>
+      <h2>Reflections</h2>
+      <div class="desc">3 個 PM Lessons · What I'd Do Differently · 未來方向</div>
+    </div>
+    <button class="print-btn" onclick="window.print()">列印此頁</button>
+  </div>
+
+  <div class="callout">
+    <strong>誠實前置</strong>：這專案<strong>一開始不是以 PM 視角執行</strong>，而是「測試 multi-agent 開發」的工程實驗。
+    它能變成 PM portfolio，是因為事後我用 PM 的角度反思了它的缺失與啟發。
+    這份 Reflections 是 portfolio 中<strong>對自己最誠實的一節</strong>。
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">3 個 PM Lessons</h3>
+
+    <div class="lesson-card">
+      <h4>Lesson 1：PM 的價值是「描述清楚需要被執行的事」</h4>
+      <p>
+        我有 Java 全端工程訓練基礎，但在這個專案選擇將工程實作交給 AI agent 執行，自己聚焦於 80% 的規格、60% 的架構決策、50% 的 prompt 設計。
+        AI 把「執行」變成 commodity 之後，<strong>限制 throughput 的就只剩 spec quality</strong>。
+        Spec 寫得清楚 → AI 線性放大；spec 模糊 → 不管多少 agent 都救不了。
+      </p>
+      <p>
+        傳統 PM 訓練重視「跨團隊溝通」「stakeholder management」，這些依然重要。
+        但 AI 時代多了一個技能：<strong>把需求精確到 agent 可以執行</strong>。
+        這需要工程理解、邊界條件思維、測試 case 想像力，這也是為什麼這份 portfolio 能用 TDD checklist 當作 spec 載體。
+      </p>
+      <div class="evidence">
+        證據：QA-011 案例顯示，Gemini 卡 12.9 小時的根因之一是 HANDOFF spec 對 "scroll-to-options" 的描述不夠具體。
+        後來我直接補了「未答題時 disable Next/Submit + 顯示提示」這個具體 acceptance criteria，問題才解決。
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h4>Lesson 2：Velocity 是 vanity metric，Outcome 才是 KPI</h4>
+      <p>
+        13 天跑完 160 tests / 6 phases 的速度，遮蔽了一個事實：
+        <strong>MVP 完成 2 個月後，真機 dogfood 才發現 Guest Submit 從未真的能用</strong>（QA-002）。
+        Phase 5 的核心 acquisition flow 在我宣稱 "completed" 時是壞的。
+      </p>
+      <p>
+        根因：Definition of Done 只定義為「測試通過 + TS 0 errors」，沒有包含「user-validated」。
+        單元測試 mock 掉了 JwtAuthGuard，所以 guest submit 在測試環境永遠通過，但在真實 API 環境是 401。
+      </p>
+      <p>
+        <strong>下一輪會做的事</strong>：每個 phase 的 exit criteria 必須包含至少一次 end-to-end real-device dogfood pass。
+        每個 user-facing 功能必須對應一個 outcome metric（DAU、completion rate、retention），不只 output metric（test count）。
+      </p>
+      <div class="evidence">
+        證據：STATUS.yml 標 phase6-launch-prep completed at 2026-03-08，但 QA-002 在 2026-05-07 才被發現並 close。
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h4>Lesson 3：Build-first vs Plan-first 不是非黑即白</h4>
+      <p>
+        ROADMAP.md 是 MVP 完成後才定稿的（2026-03-06，commit hash 顯示）。
+        傳統 PMI 視角這是 anti-pattern，認為「應該先 plan 再 execute」。
+        我在 PMP / PSM I 訓練中也被教這套。
+      </p>
+      <p>
+        但這專案的實際經驗讓我重新思考：對 <strong>solo + AI 的 lean prototype</strong>，
+        build-first 可能更誠實，先建一個能跑的 MVP 來驗證 spec 與工具鏈，再用 retrospective roadmap 規劃下一輪。
+        理由：（a）solo 沒有跨團隊溝通成本，plan 的邊際效益低，
+        （b）AI 工具行為仍在快速演化，過度提前規劃容易過時，
+        （c）prototype 本身就是最便宜的 prototype，比 plan 更能揭露未知。
+      </p>
+      <p>
+        <strong>學到的不是「以後一定 plan first」</strong>，而是分清楚場景：
+      </p>
+      <ul>
+        <li><strong>必須 plan-first</strong>：跨團隊、高風險、有 compliance、有金錢承諾、user-facing launch</li>
+        <li><strong>可以 build-first</strong>：個人原型、技術未知、unit cost 低、可拋棄</li>
+      </ul>
+      <div class="evidence">
+        證據：ROADMAP.md "Last updated: 2026-03-06"，但 git log 顯示 Auth / Placement / Core Practice 在 2026-02-24 ~ 02-28 就完成了。
+      </div>
+    </div>
+
+    <div class="lesson-card">
+      <h4>Lesson 4：不做什麼比做什麼更需要紀律</h4>
+      <p>
+        TOEIC Snack 跑完 6 個 phase / 172 個測試，但 MVP 至今沒有上架。
+        事後反省：很多東西其實不該做進 MVP，例如完整的 OAuth 三入口、achievements 5 種徽章、notifications 排程。
+        這些都增加了複雜度，但對驗證「碎片時間練習有沒有市場」這個核心假設毫無貢獻。
+      </p>
+      <p>
+        <strong>「不做什麼」需要更強的紀律，因為「做」是 default、「不做」要主動承擔取捨</strong>。
+        PM 最常見的錯誤是「什麼都想做」，把 backlog 塞滿後再來「優先序排序」，但這已經輸了，
+        因為團隊的精力與情緒成本是不可逆的。
+      </p>
+      <p>
+        下一個專案（保險 Bot）我嚴格實踐了這條：明確列出 Non-Goals（壽險、客戶端自助、自動發訊息、多租戶、Email 分流）放進 PRD，
+        Phase 1 砍掉「紙本續保單追蹤」整套流程，因為訪談發現根本沒人在追。
+        範圍縮減反而讓 Pilot 在 4/30 截止前能聚焦完成。
+      </p>
+      <div class="evidence">
+        證據：保險 Bot ADR-003「Phase 1 不做紙本追蹤流程」明確紀錄此判斷，PRD 中的 Non-Goals 區塊與目標區塊同等重要。
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">What I'd Do Differently（如果重做一次）</h3>
+    <ol style="font-size: 14px;">
+      <li style="margin-bottom: 12px;">
+        <strong>Harness First, MVP Second</strong><br>
+        先把 multi-agent harness 架構完整建好（loop control、fail-over、自動 escalation、metrics dashboard），
+        再讓 agent 從規格自動跑到 MVP。我全程不介入，等收到 MVP 再 review。
+        這次是<strong>邊做邊架 harness</strong>，浪費很多重工。
+      </li>
+      <li style="margin-bottom: 12px;">
+        <strong>Discovery 補做（已在保險 Bot 落地）</strong><br>
+        TOEIC Snack 的 Discovery 規模偏小（5 人 dogfood + 自身使用驗證 + 論壇觀察），未做正式 user interview。
+        運氣好命中需求，但這不可複製。<strong>下一個專案（保險 Bot）我用《The Mom Test》紀律補上</strong>：
+        正式訪談 3 位從業人員、區分直接證據與推論的分級框架、訪談結果直接推翻初版 PRD 並校準為 v2.0。
+        Discovery 不能跳，但可以分階段補做。
+      </li>
+      <li style="margin-bottom: 12px;">
+        <strong>Outcome Metrics Day 0 就接</strong><br>
+        即使沒有正式 analytics，至少自己手動追：每天用了幾次、做了幾題、答對率、平均 session 長度、有無 crash。
+        這次是 0 metric 跑了 3.5 個月才在 dogfood 發現一堆問題。
+      </li>
+      <li style="margin-bottom: 12px;">
+        <strong>Definition of Done 必含 user-validated</strong><br>
+        每個 phase 完成要包含至少 1 次 real-device dogfood pass，不只測試綠燈。
+      </li>
+      <li>
+        <strong>Risk Register 從 Day 0 維護</strong><br>
+        不是事後重建（這次是事後重建）。每週更新一次。
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">未來方向</h3>
+    <p><strong>本 APP</strong>：先停在 MVP 階段，視就業狀況、市場機會、姊夫案的進度，再決定是否上架。不上架 ≠ 失敗，這是有意識的 capacity allocation 決策。</p>
+    <p><strong>Multi-Agent Workflow</strong>：這套 HANDOFF 協議的概念，我打算在下個專案（不論 side project 或工作場景）繼續演化。可能會嘗試：</p>
+    <ul>
+      <li>引入 timeout + escalation（解 QA-011 那種 Gemini hung 問題）</li>
+      <li>把 HANDOFF 從 markdown 升級為 structured schema（YAML / JSON Schema）</li>
+      <li>加上 cost tracking（每個 iteration 的 token 用量與成本）</li>
+      <li>嘗試 3+ agent 協作（加入 reviewer / security 角色）</li>
+    </ul>
+    <p><strong>PM 職涯</strong>：希望第一個 PM 工作落在軟體、電信、智慧交通或 AI 應用導向的軟體公司。可以把這次的 multi-agent 經驗延伸到實際產品團隊，尤其在「<strong>怎麼用 AI 加速軟體交付而不犧牲品質</strong>」這個題目上。</p>
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">Contact</h3>
+    <p style="font-size: 14px;">
+      <strong>Email</strong>：kuei790802@gmail.com<br>
+      <strong>GitHub</strong>：<a href="https://github.com/kuei790802">github.com/kuei790802</a><br>
+      <strong>主要 Repos</strong>：
+      <a href="https://github.com/kuei790802/TOEIC-Snack">TOEIC Snack</a> ·
+      <a href="https://github.com/kuei790802/TOEIC_Question_Generator">TOEIC Question Generator</a><br>
+      <strong>LinkedIn</strong>：[待補：請放上你的 LinkedIn URL]<br>
+      <strong>認證</strong>：PMP · PSM I
+    </p>
+  </div>
+</section>
+
+<footer>
+  TOEIC Snack PM Portfolio · 生成於 2026-05-20 · 資料來源：git log + ROADMAP.md + STATUS.yml + plan.md + PRD.md + docs/qa/*<br>
+  All content factually grounded in actual commits and QA artifacts. Where information was inferred or reconstructed retrospectively, it is explicitly labeled.
+</footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+      if (tab === 'gantt') renderGantt();
+    });
+  });
+
+  const TOTAL_DAYS = 107;
+  function renderGantt() {
+    document.querySelectorAll('#tab-gantt .gantt-track').forEach(track => {
+      if (track.dataset.rendered === '1') return;
+      const start = parseFloat(track.dataset.start);
+      const end = parseFloat(track.dataset.end);
+      const bar = track.querySelector('.gantt-bar');
+      if (!bar) return;
+      const leftPct = (start / TOTAL_DAYS) * 100;
+      const widthPct = Math.max(((end - start) / TOTAL_DAYS) * 100, 1.2);
+      bar.style.left = leftPct + '%';
+      bar.style.width = widthPct + '%';
+      track.dataset.rendered = '1';
+    });
+
+    const axis = document.getElementById('gantt-axis');
+    if (axis && !axis.dataset.rendered) {
+      const ticks = [
+        { day: 0, label: 'Jan 22' }, { day: 10, label: 'Feb' },
+        { day: 38, label: 'Mar' }, { day: 69, label: 'Apr' }, { day: 99, label: 'May' },
+      ];
+      const milestones = [
+        { day: 38, label: 'MVP Complete' },
+        { day: 46, label: 'All Phases Done' },
+        { day: 107, label: 'iOS Dogfood Close' },
+      ];
+      ticks.forEach(t => {
+        const el = document.createElement('div');
+        el.className = 'gantt-axis-tick';
+        el.style.left = (t.day / TOTAL_DAYS * 100) + '%';
+        el.textContent = t.label;
+        axis.appendChild(el);
+      });
+      milestones.forEach(m => {
+        const label = document.createElement('div');
+        label.style.position = 'absolute';
+        label.style.left = (m.day / TOTAL_DAYS * 100) + '%';
+        label.style.top = '0';
+        label.style.bottom = '0';
+        label.style.borderLeft = '2px dashed #b91c1c';
+        const tag = document.createElement('div');
+        tag.textContent = '★ ' + m.label;
+        tag.style.position = 'absolute';
+        tag.style.left = '4px';
+        tag.style.top = '4px';
+        tag.style.fontSize = '11px';
+        tag.style.color = '#b91c1c';
+        tag.style.fontWeight = '600';
+        tag.style.whiteSpace = 'nowrap';
+        label.appendChild(tag);
+        axis.appendChild(label);
+      });
+      axis.dataset.rendered = '1';
+    }
+  }
+  renderGantt();
+</script>
+</body>
+</html>
