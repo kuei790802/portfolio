@@ -503,7 +503,7 @@
   footer a:hover { text-decoration: underline; }
 
   @media print {
-    .tabs, .print-btn { display: none !important; }
+    .tabs, .print-btn, .topnav { display: none !important; }
     .tab-panel { display: block !important; page-break-before: always; }
     .tab-panel:first-of-type { page-break-before: auto; }
     body { font-size: 11px; line-height: 1.5; }
@@ -518,6 +518,8 @@
 </head>
 <body>
 <div class="container">
+
+<div class="topnav" style="margin-bottom:16px;"><a href="index.html" style="color:#4a90c2;text-decoration:none;font-size:13px;font-weight:600;">← 返回作品集首頁</a></div>
 
 <header>
   <h1>TOEIC Snack PM Portfolio</h1>
@@ -563,7 +565,7 @@
       <h2>Overview</h2>
       <div class="desc">從個人痛點到 AI Multi-Agent 實驗：這個專案的真實故事</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="section">
@@ -717,7 +719,7 @@
       <h2>Work Breakdown Structure</h2>
       <div class="desc">5 大階段 × 功能模組 × 具體工作項目（資料來源：git log + ROADMAP.md + plan.md）</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="wbs-tree">
@@ -867,7 +869,7 @@
       <h2>Gantt Chart</h2>
       <div class="desc">9 個 Iteration + 2 段 Pause（誠實標註）· 軸長 107 天</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="gantt-wrap">
@@ -989,7 +991,7 @@
       <h2>Burndown Chart</h2>
       <div class="desc">172 個 TDD 測試的燃盡進度（plan.md 規劃 160，實際交付 172）</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div style="background:#fafbfc; padding: 24px; border-radius: 6px; border: 1px solid var(--border);">
@@ -1085,7 +1087,7 @@
       <h2>Iteration Log</h2>
       <div class="desc">9 個 Iteration 的交付物與測試累計</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">
@@ -1194,7 +1196,7 @@
       <h2>AI Multi-Agent Workflow ★</h2>
       <div class="desc">這個專案最有價值的部分：我不小心摸出了「harness」框架的雛形</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">
@@ -1340,7 +1342,7 @@
       <h2>Risks &amp; Decisions</h2>
       <div class="desc">Risk Register + Architecture Decision Records · PM hygiene 文件</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="section">
@@ -1526,7 +1528,7 @@
       <h2>Reflections</h2>
       <div class="desc">3 個 PM Lessons · What I'd Do Differently · 未來方向</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">

@@ -511,7 +511,7 @@
   footer a:hover { text-decoration: underline; }
 
   @media print {
-    .tabs, .print-btn { display: none !important; }
+    .tabs, .print-btn, .topnav { display: none !important; }
     .tab-panel { display: block !important; page-break-before: always; }
     .tab-panel:first-of-type { page-break-before: auto; }
     body { font-size: 11px; line-height: 1.5; }
@@ -522,6 +522,8 @@
 </head>
 <body>
 <div class="container">
+
+<div class="topnav" style="margin-bottom:16px;"><a href="index.html" style="color:#4a90c2;text-decoration:none;font-size:13px;font-weight:600;">← 返回作品集首頁</a></div>
 
 <header>
   <h1>保險續保 LINE Bot PM Case Study</h1>
@@ -566,7 +568,7 @@
       <h2>產品願景與市場機會</h2>
       <div class="desc">分析碎片化且被忽視的 NT$ 10 至 33M 市場開發潛力</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="section">
@@ -655,7 +657,7 @@
       <h2>用戶研究：一場推翻我自己的訪談</h2>
       <div class="desc">三個讓 PRD 校準重練的訪談意外，以及紀律性的證據分級</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">
@@ -739,7 +741,7 @@
       <h2>定位演進：從「提醒工具」到「責任流轉系統」</h2>
       <div class="desc">v1.0 到 v2.0 的轉向與這次定位修正打開的護城河</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="compare">
@@ -818,7 +820,7 @@
       <h2>PRD 摘要（責任流轉版）</h2>
       <div class="desc">三角色、核心循環、F1 至 F10 功能、資料模型、技術棧</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">
@@ -960,7 +962,7 @@
       <h2>三個關鍵決策（Architecture Decision Records）</h2>
       <div class="desc">用不可變文件紀錄演進，未來協作者或未來的自己都可以追溯為什麼當時這樣決定</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="adr-card">
@@ -1038,7 +1040,7 @@
       <h2>Reflections</h2>
       <div class="desc">這個專案的核心設計原則、與 TOEIC Snack 的連結，以及帶到未來專案的三件事</div>
     </div>
-    <button class="print-btn" onclick="window.print()">列印此頁</button>
+    <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <blockquote style="font-style: normal; background: var(--primary-bg); border-left-color: var(--primary); padding: 18px 22px;">
