@@ -1049,21 +1049,21 @@
   </blockquote>
 
   <div class="section">
-    <h3 class="section-title">與 TOEIC Snack 的連結</h3>
     <p>
-      保險 Bot 是我做完 TOEIC Snack 之後的下一個專案。TOEIC Snack 我採用 build-first，
-      用 AI multi-agent 工作流快速跑完 MVP，但沒有做正式的 user discovery，事後反思認為這是最大缺口。
-      保險 Bot 是我用《The Mom Test》紀律補上這個缺口的實作。
+      保險續保最大的破口，是把追蹤責任壓在業務員的自律上。所以我把產品從「提醒工具」改成「責任流轉系統」，
+      用系統強制的領取與銷案流程，取代仰賴業務員自我管理的舊做法。
+      好工具的價值不是提醒人更努力，而是讓流程在沒有人盯著時也能自己往前走。
     </p>
-    <p>
-      兩個專案的設計思路其實是同一種：
-    </p>
-    <div class="callout">
-      <strong>保險 Bot</strong>：把業務員自律的續保追蹤，變成系統強制的責任閉環。<br>
-      <strong>TOEIC Snack</strong>：把使用者自律的每日刷題，變成系統會推著你走的習慣機制（連續紀錄、推播、Streak）。
+  </div>
+
+  <div class="section">
+    <h3 class="section-title">這個專案最大的未驗證風險</h3>
+    <div class="callout warn">
+      v2.0 的核心假設「業務員會接受系統強制的領取與銷案流程」目前只有<strong>中強度推論</strong>，還不是直接證據。
+      這是整個責任閉環能否成立的關鍵，我已明確標記為 Pilot 上線前必須另外訪談業務員驗證的項目。
     </div>
     <p style="font-size: 13px; color: var(--text-muted);">
-      兩個專案都在解「使用者本來就該自律，但實際做不到」這個問題，差別只在 B2B 與 B2C。
+      把最大的未知風險寫清楚，而不是假裝產品已經完美，是我認為負責任的 PM 該做的事。
     </p>
   </div>
 
@@ -1086,40 +1086,13 @@
   </div>
 
   <div class="section">
-    <h3 class="section-title">三個觀察（適用於下一個產品專案）</h3>
-    <div class="three-col">
-      <div class="card accent">
-        <div class="card-tag">01 · 用戶研究</div>
-        <h4>區分應然 vs 實然</h4>
-        <p>使用者會說「我希望系統根據我的弱點個人化出題」。
-        但真正驅動他們打開 App 的，可能是<strong>連續紀錄快中斷了</strong>、朋友提醒、或單純的碎片時間習慣。</p>
-        <p>這兩種答案導向的功能設計會完全不同。</p>
-      </div>
-      <div class="card accent">
-        <div class="card-tag">02 · 定位疑問</div>
-        <h4>比功能規格更重要</h4>
-        <p>產品的根本定位疑問（賣的是什麼？解決誰的什麼問題？）<strong>比任何 feature spec 都重要</strong>。
-        定位錯了，功能再完整也是錯方向。</p>
-        <p>把這些定位疑問變成訪談主軸，用真實行為校準產品方向。</p>
-      </div>
-      <div class="card accent">
-        <div class="card-tag">03 · 國際擴展</div>
-        <h4>當心文化落差</h4>
-        <p>不同市場用戶動機差異極大。日本上班族多為 TOEIC 升遷需求，學習風格穩定規律；
-        韓國則受 K-pop 與留學影響，年輕族群動機更多元。</p>
-        <p>跨市場時，建議先做<strong>在地化訪談</strong>而非直接複製模式，否則容易踩到「翻譯對了、設計卻不對胃口」的坑。</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
     <h3 class="section-title">Contact</h3>
     <p style="font-size: 14px;">
-      <strong>姓名</strong>：歸維邦 (Josh Kuei)<br>
-      <strong>Email</strong>：<a href="mailto:josh@bykuei.com" style="color: var(--primary);">josh@bykuei.com</a><br>
+      <strong>姓名</strong>：歸維邦（Josh Kuei）<br>
+      <strong>Email</strong>：<a href="mailto:kuei790802@gmail.com" style="color: var(--primary);">kuei790802@gmail.com</a><br>
       <strong>GitHub</strong>：<a href="https://github.com/kuei790802">github.com/kuei790802</a><br>
-      <strong>居住地</strong>：桃園市楊梅區（全遠端可）<br>
-      <strong>認證</strong>：PMP · PSM I · Google PM Certification
+      <strong>居住地</strong>：桃園市楊梅區<br>
+      <strong>認證</strong>：PMP · PSM I · Google Project Management
     </p>
   </div>
 </section>
