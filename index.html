@@ -34,6 +34,14 @@
   .badges { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .badge { display: inline-block; padding: 2px 10px; background: var(--primary-bg); color: var(--primary); font-size: 12px; border-radius: 12px; border: 1px solid #c7d8eb; }
 
+  .profile { margin: 24px 0; }
+  .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin-bottom: 12px; }
+  .highlight { font-size: 13px; padding: 7px 0; border-bottom: 1px dashed var(--border); }
+  .highlight strong { color: var(--primary); }
+  .kv { font-size: 13px; margin: 6px 0; line-height: 1.7; }
+  .kv .k { color: var(--text-muted); display: inline-block; min-width: 64px; vertical-align: top; }
+  @media (max-width: 640px) { .highlights { grid-template-columns: 1fr; } }
+
   .thesis {
     background: var(--primary-bg);
     border-left: 4px solid var(--primary);
@@ -96,6 +104,18 @@
     <span class="badge">PMP · PSM I</span>
   </div>
 </header>
+
+<section class="profile">
+  <h2>經歷亮點</h2>
+  <div class="highlights">
+    <div class="highlight"><strong>心邦國際 · 總經理</strong>：自有純素品牌進 7-Eleven 全國通路，兩年內鋪貨 19 縣市</div>
+    <div class="highlight"><strong>台灣菸酒 · 銷售專員</strong>：近 300 名通路客戶維護、訂單與物流協調</div>
+    <div class="highlight"><strong>政府委辦課程 · 講師</strong>：微型創業與政策轉譯，單場最高約 100 位學員</div>
+    <div class="highlight"><strong>近半年 · 數位產品</strong>：保險 Bot（B2B AI）與 TOEIC Snack（AI multi-agent）兩個專案</div>
+  </div>
+  <div class="kv"><span class="k">認證</span>PMP · PSM I · Google Project Management · Google Analytics · 資展國際 582 小時 Java 養成班</div>
+  <div class="kv"><span class="k">核心能力</span>GTM 通路策略 · 資費設計 · AI 應用產品 · 跨部門協調 · 需求訪談與 PRD</div>
+</section>
 
 <div class="thesis">
   <div class="label">貫穿三個專案的 PM 簽名</div>
