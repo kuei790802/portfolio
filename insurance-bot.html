@@ -574,12 +574,14 @@
   <div class="section">
     <h3 class="section-title">觸發這個專案的問題</h3>
     <blockquote>
-      「我們常常就是 Email 看一看、保單登記一下，結果就漏掉了。上個月有個客戶是自己打來問才知道保單快到期。」
-      <cite>來自小型保經辦公室從業人員訪談</cite>
+      「我們常常就是 Email 看一看、保單登記一下，結果就漏掉了。曾經有保戶是業務沒主動聯繫、自己又沒留意到保險公司的通知，結果產險就斷掉了，最後變成客訴。」
+      <cite>來自小型保經辦公室經營者訪談</cite>
     </blockquote>
     <p>
-      當客戶必須「<strong>自己打電話來問</strong>」才知道要續保，這已經不是偶爾的疏忽，而是整個流程的<strong>系統性失效</strong>。
-      我判斷這個現象在小型辦公室是普遍狀況，值得當成一個產品問題來解。
+      保險的續保理論上有<strong>雙重通知</strong>：產險公司會在到期前依規定通知保戶，保經業務員也應主動聯繫。但實務上這<strong>兩道防線會同時失效</strong>：業務沒跟進（第一道失效）加上保戶忽略了產險的簡訊、Email 或紙本通知（第二道失效），保單就真的斷保，輕則客訴、重則斷保期間出險無法理賠。
+    </p>
+    <p>
+      這不是偶爾的疏忽，而是<strong>把責任壓在「業務記得」與「保戶留意」這兩個都不可靠的人為環節上</strong>。我判斷這在小型辦公室是普遍狀況，值得用系統來解。
     </p>
   </div>
 
@@ -616,9 +618,9 @@
         <p>市場由數百家各自獨立的小辦公室組成，規模太小、太分散，大型 SaaS 玩家看不上，<strong>沒有人專門為「小型保經辦公室的內部協作」做工具</strong>。</p>
       </div>
       <div class="card accent">
-        <div class="card-tag">02 · 痛點集中</div>
-        <h4>同一個敘述被反覆說</h4>
-        <p>跟多位從業人員對話時，反覆聽到同樣幾件事，例如「漏單」或「客戶自己打來問」。</p>
+        <div class="card-tag">02 · 法定通知不夠</div>
+        <h4>產險會通知，但會被忽略</h4>
+        <p>產險公司依規定會在到期前通知保戶，但簡訊、Email、紙本都可能被忽略。<strong>法定通知不是萬無一失</strong>，所以保經的主動跟進才是關鍵防線。</p>
       </div>
       <div class="card accent">
         <div class="card-tag">03 · AI 落點</div>
@@ -696,9 +698,9 @@
       </div>
       <div class="card warn">
         <div class="card-tag">意外 03</div>
-        <h4>真痛點是「窗口期被吃掉」而非「漏單」</h4>
-        <p>續保有 2 週 buffer，但「保險公司 → 行政 → 業務員 → 客戶」的來回常把 buffer 吃光。</p>
-        <p>解法因此從「更早提醒」轉向「<strong>把 2 週 buffer 擴大到 6 週</strong>」，即在到期前 45 天就從加盟系統撈出主動推播。</p>
+        <h4>真痛點是「先手窗口被浪費」</h4>
+        <p>法規允許到期前 90 天就開始續保，到產險公司在 T-30 通知保戶之前，保經有約 60 天的<strong>獨佔先手窗口</strong>。但業務常拖到剩兩三週才動，把這段窗口浪費掉。</p>
+        <p>解法因此是<strong>在 T-90 就主動推播</strong>，把業務的起跑點從「拖到接近到期」拉回法規一開放就開始，確保先手不被浪費。</p>
       </div>
     </div>
   </div>
@@ -800,8 +802,8 @@
       </div>
       <div class="card success">
         <div class="card-tag">V2.0 指標</div>
-        <h4>「客戶來電詢問自己保單到期次數，從 N 次 / 月降為 0 次 / 月」</h4>
-        <p>客觀可測（只要數電話）、直接對應真實痛點（客戶打來問 = 系統失效）、不需額外儀表板。</p>
+        <h4>主指標：斷保客訴次數降為 0；輔助指標：保戶來電詢問自己保單到期的次數下降</h4>
+        <p>「斷保客訴」是最硬的結果指標，直接對應真實傷害（斷保 = 雙重防線失效）；「保戶來電詢問」則是系統失效的早期訊號。兩者都客觀可測、不需額外儀表板。</p>
       </div>
     </div>
   </div>
@@ -881,8 +883,8 @@
       <div class="arrow-r">›</div>
       <div class="flow-step">
         <div class="step-num">02</div>
-        <div class="step-title">推播（T-45）</div>
-        <div class="step-desc">Bot 推給對應業務員</div>
+        <div class="step-title">推播（T-90）</div>
+        <div class="step-desc">法規一開放即推給對應業務員</div>
       </div>
       <div class="arrow-r">›</div>
       <div class="flow-step">
@@ -898,7 +900,8 @@
       </div>
     </div>
     <div class="callout warn" style="margin-top:12px;">
-      <strong>例外路徑</strong>：若 T-15 仍未領取，<strong>逾期升級通知 Admin 介入</strong>。
+      <strong>分層升級機制</strong>（依真實作業時間軸設計）：
+      <strong>T-90</strong> 法規開放、系統推播起跑 → <strong>T-60</strong> 仍未處理則升級提醒業務 → <strong>T-45</strong> 仍未分配則 Admin（老闆）必須收到通知介入 → <strong>T-30</strong> 產險通知保戶、先手盡失的分水嶺。整套機制就是要趕在 T-30 之前讓保戶被妥善接觸。
     </div>
   </div>
 
