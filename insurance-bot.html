@@ -971,7 +971,7 @@
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-001 · PERSONA &amp; POSITIONING</div>
-      <div class="adr-status">● ACTIVE</div>
+      <div class="adr-status">● 採納中</div>
     </div>
     <h4>Persona 重新定義與產品定位修正</h4>
     <div class="adr-row"><strong>背景</strong>訪談發現三個意外（見「用戶研究」分頁）。</div>
@@ -989,7 +989,7 @@
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-002 · COMPLIANCE FRAMEWORK</div>
-      <div class="adr-status">● ACTIVE</div>
+      <div class="adr-status">● 採納中</div>
     </div>
     <h4>合規分級框架 A / B / C</h4>
     <div class="adr-row"><strong>背景</strong>訪談中發現資料來源決策涉及合規灰區（例如從加盟系統撈資料是否違反規範）。需要一個框架，而不是逐案處理。</div>
@@ -1020,15 +1020,15 @@
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-003 · SCOPE</div>
-      <div class="adr-status">● ACTIVE</div>
+      <div class="adr-status">● 採納中</div>
     </div>
     <h4>Phase 1 不做紙本追蹤流程</h4>
     <div class="adr-row"><strong>背景</strong>訪談前我預設「紙本續保單需要全生命週期追蹤」，但訪談證實<strong>根本沒人在追</strong>。</div>
     <div class="adr-row"><strong>決策</strong>Phase 1 完全砍掉紙本續保單追蹤相關功能。</div>
     <div class="adr-row">
       <strong>砍掉的理由</strong>
-      （1）沒有用戶真實需求；（2）Phase 1 時間緊迫（4/30 截止），必須縮小範圍；
-      （3）Excel 主動推播讓業務員提早 6 週處理，紙本到達時流程已走一半。
+      （1）沒有用戶真實需求；（2）Phase 1 時間緊迫（前導測試 4/30 上線目標），必須縮小範圍；
+      （3）系統在到期前 90 天就主動推播 Excel 名單給業務員，整個續保流程提早起跑，紙本到達時流程已走一半。
     </div>
     <div class="quote">
       不做什麼比做什麼更重要。PM 最常見的錯誤是「什麼都想做」。
@@ -1062,7 +1062,7 @@
   <div class="section">
     <h3 class="section-title">這個專案最大的未驗證風險與應對</h3>
     <div class="callout warn">
-      訪談階段已確認業務員可接受系統的領取與銷案流程，核心假設從「中強度推論」升級到「中高強度」。但<strong>真實營運下的閉環穩定性</strong>（連續走完到期前 90 天接觸、30 天分水嶺、銷案完成的完整週期，以及業務員會不會在第二、三個月後鬆懈）仍是最大的未知。
+      初期讓兩位業務員在<strong>無引導的情況下直接試用</strong>，他們都能直覺照畫面操作完成領取與銷案，沒有額外教學需求。核心假設從「中強度推論」升級到「中高強度」。但<strong>真實營運下的閉環穩定性</strong>（連續走完到期前 90 天接觸、30 天分水嶺、銷案完成的完整週期，以及業務員會不會在第二、三個月後鬆懈）仍是最大的未知。
     </div>
 
     <h4 style="color: var(--primary); font-size: 15px; margin-top: 16px;">風險應對（依 PMP 四種策略思考）</h4>
@@ -1102,7 +1102,7 @@
         非目標跟目標一樣重要，沒寫清楚不做什麼，就會什麼都想做。
       </li>
       <li>
-        <strong>決策紀錄的習慣</strong>：用 ADR（Architecture Decision Records）紀錄每個重要決策，
+        <strong>決策紀錄的習慣</strong>：用 ADR 紀錄每個重要決策，
         包含背景、決策、證據強度。不可變文件、可追溯的演進過程。
       </li>
     </ol>
