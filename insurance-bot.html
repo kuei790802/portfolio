@@ -974,7 +974,7 @@
       <div class="adr-status">● ACTIVE</div>
     </div>
     <h4>Persona 重新定義與產品定位修正</h4>
-    <div class="adr-row"><strong>背景</strong>訪談發現三個意外（見 User Research 分頁）。</div>
+    <div class="adr-row"><strong>背景</strong>訪談發現三個意外（見「用戶研究」分頁）。</div>
     <div class="adr-row">
       <strong>決策</strong>
       Persona 從 2 角色，轉向 3 角色；資料入口從「業務員上傳 PDF」改為「行政撈 Excel」；
@@ -1060,13 +1060,33 @@
   </div>
 
   <div class="section">
-    <h3 class="section-title">這個專案最大的未驗證風險</h3>
+    <h3 class="section-title">這個專案最大的未驗證風險與應對</h3>
     <div class="callout warn">
-      v2.0 的核心假設「業務員會接受系統強制的領取與銷案流程」目前只有<strong>中強度推論</strong>，還不是直接證據。
-      這是整個責任閉環能否成立的關鍵，我已明確標記為前導測試上線前必須另外訪談業務員驗證的項目。
+      訪談階段已確認業務員可接受系統的領取與銷案流程，核心假設從「中強度推論」升級到「中高強度」。但<strong>真實營運下的閉環穩定性</strong>（連續走完到期前 90 天接觸、30 天分水嶺、銷案完成的完整週期，以及業務員會不會在第二、三個月後鬆懈）仍是最大的未知。
     </div>
-    <p style="font-size: 13px; color: var(--text-muted);">
-      把最大的未知風險寫清楚，而不是假裝產品已經完美，是我認為負責任的 PM 該做的事。
+
+    <h4 style="color: var(--primary); font-size: 15px; margin-top: 16px;">風險應對（依 PMP 四種策略思考）</h4>
+
+    <div class="card accent">
+      <div class="card-tag">減輕 MITIGATE · 主要措施</div>
+      <h4>由負責人強力推行（最穩定的保底）</h4>
+      <p>保險經紀辦公室規模小、決策權集中，負責人本身就是這個專案<strong>最有利的利害關係人</strong>。系統的責任流轉規則由 Admin（姊夫）每週親自確認領取與銷案狀況，讓規則有組織背書、不只是工具強制。這是降低業務員鬆懈風險最直接、最有效的方式。</p>
+    </div>
+
+    <div class="card accent">
+      <div class="card-tag">接受 ACCEPT · 備援應變</div>
+      <h4>設定退場閾值與 v2.1 備援設計</h4>
+      <p>以<strong>前 30 筆保單的閉環完成率</strong>為主要指標（用業務量而非時間，因每月保單流量不穩定）。若低於設定門檻，觸發 v2.0 → v2.1 校準：例如把「未領取就鎖死」改成「未領取自動派給 Admin」，從硬規則改成半強制。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-tag">規避 AVOID 與 移轉 TRANSFER · 不採用</div>
+      <h4>策略不適用的理由</h4>
+      <p>規避等於放棄責任流轉這個核心價值；此設計風險也無法外部轉嫁。四種策略都評估過，明確選定減輕與接受為主軸。</p>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-muted); margin-top: 12px;">
+      <strong>驗證指標</strong>：閉環完成率、業務員主動回饋、續保銷案逾期次數，三者一起判斷風險是否兌現。
     </p>
   </div>
 
