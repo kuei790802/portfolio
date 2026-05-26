@@ -656,8 +656,8 @@
 <section class="tab-panel" id="tab-research">
   <div class="panel-header">
     <div>
-      <h2>用戶研究：一場推翻我自己的訪談</h2>
-      <div class="desc">三個讓 PRD 校準重練的訪談意外，以及紀律性的證據分級</div>
+      <h2>用戶研究：用初版 PRD 作為假設基線去驗證</h2>
+      <div class="desc">假設基線驗證的三個關鍵發現，以及證據分級的紀律</div>
     </div>
     <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
@@ -681,23 +681,23 @@
   </div>
 
   <div class="section">
-    <h3 class="section-title">三個訪談意外</h3>
+    <h3 class="section-title">假設基線驗證的三個關鍵發現</h3>
     <div class="three-col">
       <div class="card warn">
-        <div class="card-tag">意外 01</div>
+        <div class="card-tag">關鍵發現 01</div>
         <h4>Persona 從 2 角色擴展為 3 角色</h4>
         <p>原本預設為「業務員 + Admin」，但訪談 10 分鐘內取得直接證據：<strong>行政才是資料流的入口</strong>。業務員不主動管理客戶續保，真正處理保單登記、分案、通知的是行政。</p>
         <p style="color:var(--danger); font-size:12px;">沒有資料進入系統，整個責任流轉閉環無法啟動。</p>
       </div>
       <div class="card warn">
-        <div class="card-tag">意外 02</div>
+        <div class="card-tag">關鍵發現 02</div>
         <h4>「追蹤紙本續保單」根本沒人在做</h4>
         <p><strong>問：</strong>「你會怎麼追蹤紙本續保單被業務員處理的進度？」</p>
         <p style="background:#fef3c7; padding:6px 8px; border-radius:3px;"><strong>答：</strong>「我會看啊，但是我不會追。有看到的就處理，沒看到就漏掉了。」</p>
         <p>我將整個 PRD 的「紙本全生命週期追蹤流程」砍掉，將資源集中在「主動推播」。</p>
       </div>
       <div class="card warn">
-        <div class="card-tag">意外 03</div>
+        <div class="card-tag">關鍵發現 03</div>
         <h4>真痛點是「先手窗口被浪費」</h4>
         <p>法規允許到期前 90 天就開始續保，到產險公司在到期前 30 天通知保戶之前，保經有約 60 天的<strong>獨佔先手窗口</strong>。但業務常拖到剩兩三週才動，把這段窗口浪費掉。</p>
         <p>解法因此是<strong>在到期前 90 天就主動推播</strong>，把業務的起跑點從「拖到接近到期」拉回法規一開放就開始，確保先手不被浪費。</p>
@@ -705,9 +705,8 @@
     </div>
   </div>
 
-  <div class="callout warn">
-    <strong>關鍵體悟</strong>：PM 設計「應然流程」時，極容易把自己的推論當成用戶的實際需求。
-    避免這個陷阱的唯一方法，是用<strong>直接證據</strong>驗證每一個流程假設。
+  <div class="callout">
+    <strong>假設基線方法的價值</strong>：PRD v1 的「應然流程」若不主動驗證，容易與用戶實際行為脫節。所以我把 v1 當成「待驗證假設」而非「正確答案」，讓訪談的角色不是事後修正，而是事前的校準工具。
   </div>
 
   <div class="section">
@@ -730,8 +729,8 @@
       </div>
     </div>
     <p style="font-size:13px; color:var(--text-muted); margin-top:12px;">
-      這個分類讓我能明確標記 v2.0 的核心假設「業務員會接受強制的領取與銷案流程」為<strong>中強度推論</strong>，
-      需要在前導測試上線前另外安排業務員訪談驗證。
+      這個分類讓我能明確標記 v2.0 的核心假設「業務員會接受系統的領取與銷案流程」為<strong>中強度推論</strong>，
+      後續透過讓業務員無引導試用驗證，升級到中高強度（完整應對見反思分頁）。
     </p>
   </div>
 </section>
@@ -809,9 +808,10 @@
   </div>
 
   <div class="callout">
-    <strong>我不 100% 確定 v2.0 是對的，因為前導測試還沒上線</strong>。
-    但我用證據分級驗證每個新假設，例如「行政是資料入口」、「沒人在追蹤紙本」、「窗口期被吃掉」都有高強度直接證據。
-    而「業務員會接受強制流程」只有中強度，是目前最大的未知風險，已在 Phase 1 待決問題清單明確標記。
+    <strong>v2.0 的證據強度盤點</strong><br>
+    三個核心發現都有高強度直接證據：行政才是資料入口、紙本沒人追蹤、先手窗口被浪費（後續確認的到期前 90 / 60 / 45 / 30 天真實時間軸）。剩下的中強度推論「業務員會不會接受系統的領取與銷案流程」，已透過無引導試用驗證，升級到中高強度。
+    <br><br>
+    真實營運下的閉環穩定性是目前最大的未知，完整風險應對見反思分頁。
   </div>
 </section>
 
