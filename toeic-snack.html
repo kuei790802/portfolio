@@ -515,8 +515,9 @@
     details > * { display: block !important; }
   }
 </style>
+<link rel="stylesheet" href="portfolio-redesign.css">
 </head>
-<body>
+<body class="case-page">
 <div class="container">
 
 <div class="topnav" style="margin-bottom:16px;"><a href="index.html" style="color:#4a90c2;text-decoration:none;font-size:13px;font-weight:600;">← 返回作品集首頁</a></div>
@@ -546,6 +547,31 @@
     <span class="tag alt">交接檔案協議 (HANDOFF)</span>
   </div>
 </header>
+
+<section class="case-hero" aria-label="case brief">
+  <div class="proof-strip">
+    <div class="proof-item"><div class="value">13</div><div class="label">React Native MVP screens</div></div>
+    <div class="proof-item"><div class="value">172</div><div class="label">Tests passing，0 TypeScript errors</div></div>
+    <div class="proof-item"><div class="value">25 天</div><div class="label">非連續有效工作天完成主要交付</div></div>
+    <div class="proof-item"><div class="value">AI agents</div><div class="label">Claude Code × Gemini CLI × HANDOFF 協議</div></div>
+  </div>
+  <div class="case-brief-grid">
+    <div class="brief-card highlight">
+      <div class="section-eyebrow">Case Brief</div>
+      <h3>這個案例不是要證明我是純工程師，而是證明我能管理 AI 協作交付。</h3>
+      <p>我負責 spec、架構、prompt、review 與品質檢查，把實作、測試、文件拆給 AI agent 執行，並用 WBS、Gantt、燃盡圖、風險與 ADR 留下可審查的交付軌跡。</p>
+    </div>
+    <div class="brief-card">
+      <h3>PM 能力證據</h3>
+      <ul>
+        <li>定義多 Agent 分工與交接檔案協議</li>
+        <li>用 TDD、QA bug flow 與 CI/CD 維持交付品質</li>
+        <li>用 WBS、Gantt、Burndown 呈現工作拆解與進度</li>
+        <li>刻意停在 MVP Hold，避免未驗證前過度擴張</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <div class="tabs" role="tablist">
   <button class="tab-btn active" data-tab="overview">總覽</button>

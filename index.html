@@ -84,90 +84,143 @@
 
   footer { margin-top: 32px; font-size: 12px; color: var(--text-muted); text-align: center; }
 </style>
+<link rel="stylesheet" href="portfolio-redesign.css">
 </head>
-<body>
+<body class="home-page">
 <div class="container">
 
 <header>
-  <h1>歸維邦 <span style="font-size:20px; color:var(--text-muted); font-weight:500;">Josh Kuei</span></h1>
-  <div class="role">Product Manager · PMP · PSM I · 桃園市楊梅區</div>
-  <div class="intro">
-    行銷本科出身，<strong>約 9 年商業實戰</strong>橫跨品牌創業、通路營運與市場開發，
-    近半年將商業判斷延伸到 <strong>AI 產品開發</strong>。
-    擅長把客戶需求、現場問題與跨部門任務，整理成可追蹤、可溝通、可落地的工作。
-  </div>
-  <div class="badges">
-    <span class="badge">GTM 通路策略</span>
-    <span class="badge">B2B / B2C 產品</span>
-    <span class="badge">AI 應用</span>
-    <span class="badge">單位成本效益</span>
-    <span class="badge">PMP · PSM I</span>
+  <div class="home-hero-grid">
+    <div>
+      <div class="eyebrow">PM / BA Portfolio</div>
+      <h1>歸維邦 Josh Kuei</h1>
+      <div class="role">Operations-driven PM / BA · PMP · PSM I · 桃園市楊梅區</div>
+      <div class="intro">
+        我把通路營運、客戶溝通與跨部門協調經驗，轉化成可追蹤、可溝通、可交付的數位專案。
+        過去橫跨大型通路、B2B 流程工具與 AI multi-agent 產品實驗，強項是需求釐清、範圍取捨、時程控管與成果審查。
+      </div>
+      <div class="badges">
+        <span class="badge">數位專案管理</span>
+        <span class="badge">Business Analyst</span>
+        <span class="badge">產品營運</span>
+        <span class="badge">系統導入</span>
+        <span class="badge">AI 工具應用</span>
+      </div>
+    </div>
+    <aside class="focus-panel" aria-label="Portfolio focus">
+      <h2>快速定位</h2>
+      <ul class="focus-list">
+        <li>9 年以上客戶溝通、通路營運與跨部門協調經驗</li>
+        <li>曾推進自有品牌進入 7-Eleven 全國通路</li>
+        <li>具 PMP、PSM I，能用 PM 語言整理需求與交付物</li>
+        <li>能運用 AI 工具拆任務、審查成果並推進產品原型</li>
+      </ul>
+    </aside>
   </div>
 </header>
 
-<section class="profile">
-  <h2>經歷亮點</h2>
-  <div class="highlights">
-    <div class="highlight"><strong>心邦國際 · 總經理</strong>：自有純素品牌進 7-Eleven 全國通路，兩年內鋪貨 19 縣市</div>
-    <div class="highlight"><strong>台灣菸酒 · 銷售專員</strong>：近 300 名通路客戶維護、訂單與物流協調</div>
-    <div class="highlight"><strong>政府委辦課程 · 講師</strong>：微型創業與政策轉譯，單場最高約 100 位學員</div>
-    <div class="highlight"><strong>近半年 · 數位產品</strong>：保險 Bot（B2B AI）與 TOEIC Snack（AI multi-agent）兩個專案</div>
-  </div>
-  <div class="kv"><span class="k">認證</span>PMP · PSM I · Google Project Management · Google Analytics · 資展國際 582 小時 Java 養成班</div>
-  <div class="kv"><span class="k">核心能力</span>GTM 通路策略 · 資費設計 · AI 應用產品 · 跨部門協調 · 需求訪談與 PRD</div>
+<section class="proof-grid" aria-label="關鍵證據">
+  <div class="proof-item"><div class="value">9+ 年</div><div class="label">客戶溝通、通路營運、跨部門協調</div></div>
+  <div class="proof-item"><div class="value">300</div><div class="label">台灣菸酒近 300 名通路客戶維護</div></div>
+  <div class="proof-item"><div class="value">7-Eleven</div><div class="label">自有品牌進入全國通路與 19 縣市</div></div>
+  <div class="proof-item"><div class="value">PMP</div><div class="label">PMP、PSM I、Google PM、TOEIC 775</div></div>
+  <div class="proof-item"><div class="value">2</div><div class="label">AI / 數位產品專案：保險 Bot、TOEIC Snack</div></div>
 </section>
 
-<div class="thesis">
-  <div class="label">三個專案背後的決策邏輯</div>
-  <div class="quote">真正難的不是知道要做什麼，是知道什麼時候該停。</div>
-  <p>良野（營收成長時婉拒投資、主動收手）、保險 Bot（嚴格砍範圍、列非目標 (Non-Goals)）、TOEIC Snack（刻意停在 MVP 不躁進）。三種規模，同一種紀律：有意識地不做某些事。</p>
-</div>
-
-<h2>專案案例</h2>
-<div class="cards">
-
-  <a class="case-card" href="liangye-7eleven.html">
-    <div class="card-top">
-      <h3>良野豆乳冰品 × 7-Eleven 全國通路</h3>
-      <span class="kind">B2C / GTM · 創辦人</span>
+<section class="section-block">
+  <div class="section-heading">
+    <div>
+      <div class="section-eyebrow">Selected Case Studies</div>
+      <h2>三個案例，呈現同一種 PM 能力</h2>
     </div>
-    <div class="desc">
-      用「讓通路主動找上門」的拉式策略進入 7-Eleven 全國通路，用單位成本反推產品決策，並在營收成長時做出紀律性收手。
-    </div>
-    <div class="tags">
-      <span>通路開發策略</span><span>單位成本效益</span><span>純素 Vegan</span><span>社會企業</span>
-    </div>
-    <span class="arrow">閱讀 case study →</span>
-  </a>
+    <p>每個案例都不是只展示「做了什麼」，而是展示我如何判斷問題、設定範圍、協調資源，並在不確定中做取捨。</p>
+  </div>
+  <div class="case-grid">
+    <a class="case-card" href="liangye-7eleven.html">
+      <div class="case-index">01 · B2C / GTM</div>
+      <h3>良野豆乳冰品 × 7-Eleven</h3>
+      <div class="kind">角色：創辦人 / 總經理</div>
+      <p class="desc">小品牌如何用拉式策略進入大型通路，並用成本結構反推產品與退出決策。</p>
+      <div class="case-points">
+        <div class="case-point"><strong>問題</strong>缺乏大型通路資源，但需要建立市場可信度。</div>
+        <div class="case-point"><strong>決策</strong>先創造消費端拉力，再推進 7-Eleven 全國通路合作。</div>
+        <div class="case-point"><strong>證據</strong>全國通路、19 縣市、約 50 SKU、KPMG 社企輔導。</div>
+      </div>
+      <div class="tags">
+        <span>通路開發</span><span>單位成本</span><span>策略取捨</span>
+      </div>
+      <span class="arrow">閱讀 case study →</span>
+    </a>
 
-  <a class="case-card" href="insurance-bot.html">
-    <div class="card-top">
+    <a class="case-card" href="insurance-bot.html">
+      <div class="case-index">02 · B2B / AI Tool</div>
       <h3>保險續保 LINE Bot</h3>
-      <span class="kind">B2B AI 應用 · PM</span>
-    </div>
-    <div class="desc">
-      為小型產險經紀辦公室打造的 AI 續保工具。以 The Mom Test 紀律訪談，把初版 PRD 假設校準為 v2.0，含 潛在市場分析、資費估算與 ADR 決策紀錄。
-    </div>
-    <div class="tags">
-      <span>B2B SaaS</span><span>用戶研究</span><span>潛在市場分析</span><span>ADR 決策紀錄</span>
-    </div>
-    <span class="arrow">閱讀 case study →</span>
-  </a>
+      <div class="kind">角色：產品 / 專案規劃</div>
+      <p class="desc">把「提醒工具」重新校準成「責任流轉系統」，讓小型保經辦公室能追蹤續保任務。</p>
+      <div class="case-points">
+        <div class="case-point"><strong>問題</strong>續保流程分散，責任不清，容易漏追蹤。</div>
+        <div class="case-point"><strong>決策</strong>用訪談修正 Persona、PRD、MVP 與 Non-Goals。</div>
+        <div class="case-point"><strong>證據</strong>3 Persona、10 功能、3 ADR、資費與市場估算。</div>
+      </div>
+      <div class="tags">
+        <span>PRD</span><span>ADR</span><span>The Mom Test</span>
+      </div>
+      <span class="arrow">閱讀 case study →</span>
+    </a>
 
-  <a class="case-card" href="toeic-snack.html">
-    <div class="card-top">
+    <a class="case-card" href="toeic-snack-pm.html">
+      <div class="case-index">03 · AI Delivery</div>
       <h3>TOEIC Snack</h3>
-      <span class="kind">多 Agent AI 開發 · PM</span>
-    </div>
-    <div class="desc">
-      用多 Agent AI 工作流（Claude Code × Gemini CLI + 自製交接檔案協議 (HANDOFF)）交付的 TOEIC 閱讀練習 App。13 螢幕、172 個測試，示範如何用 AI 加速交付並維持品質。
-    </div>
-    <div class="tags">
-      <span>多 Agent 協作</span><span>行動 App</span><span>TDD</span><span>自製協作框架</span>
-    </div>
-    <span class="arrow">閱讀 case study →</span>
-  </a>
+      <div class="kind">角色：Spec / 架構 / Review</div>
+      <p class="desc">用 Claude Code、Gemini CLI 與自製交接協議，拆分 AI agent 任務並交付可測試 MVP。</p>
+      <div class="case-points">
+        <div class="case-point"><strong>問題</strong>如何用 AI 加速產品交付，又維持品質與可追蹤性。</div>
+        <div class="case-point"><strong>決策</strong>我負責規格、架構、prompt、審查，實作拆給 agent。</div>
+        <div class="case-point"><strong>證據</strong>13 screens、172 tests、0 TS errors、QA bug flow。</div>
+      </div>
+      <div class="tags">
+        <span>AI Agent</span><span>TDD</span><span>QA</span>
+      </div>
+      <span class="arrow">閱讀 case study →</span>
+    </a>
+  </div>
+</section>
 
+<section class="section-block">
+  <div class="section-heading">
+    <div>
+      <div class="section-eyebrow">Capability Matrix</div>
+      <h2>我想讓招募方快速看到的能力</h2>
+    </div>
+  </div>
+  <div class="capability-grid">
+    <div class="capability-card"><h3>需求釐清與規格化</h3><p>能把現場問題、客戶語言與營運流程整理成 PRD、流程、驗收條件與非目標。</p></div>
+    <div class="capability-card"><h3>跨部門與外部協作</h3><p>熟悉通路、物流、客戶、工程與外部合作窗口之間的時程與責任控管。</p></div>
+    <div class="capability-card"><h3>營運與成本判斷</h3><p>能從單位成本、供應鏈、使用者行為與商業可行性回推產品範圍。</p></div>
+    <div class="capability-card"><h3>PM artifacts</h3><p>實作過 WBS、Gantt、ADR、Risk Register、Non-Goals、測試與迭代紀錄。</p></div>
+    <div class="capability-card"><h3>AI 協作導入</h3><p>能把 AI 工具當成協作角色，拆任務、寫 spec、控品質、做交接與審查。</p></div>
+    <div class="capability-card"><h3>教育訓練與轉譯</h3><p>曾任政府創業課程講師，能把政策、技術或流程轉成可理解的教材與溝通內容。</p></div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading">
+    <div>
+      <div class="section-eyebrow">Target Roles</div>
+      <h2>適合優先評估的職位</h2>
+    </div>
+  </div>
+  <div class="role-grid">
+    <div class="role-card"><h3>數位專案 PM</h3><p>需求拆解、時程控管、跨角色交付。</p></div>
+    <div class="role-card"><h3>Business Analyst</h3><p>訪談、流程分析、PRD 與驗收條件。</p></div>
+    <div class="role-card"><h3>產品營運</h3><p>把營運問題轉成產品或流程改善。</p></div>
+    <div class="role-card"><h3>系統導入 PM</h3><p>協調使用者、供應商、工程與上線節奏。</p></div>
+    <div class="role-card"><h3>AI 應用 PM</h3><p>用 AI 工具加速規格、測試、文件與交付。</p></div>
+  </div>
+</section>
+
+<div class="scan-note">
+  <strong>我的 PM 主軸：</strong>真正難的不是知道要做什麼，而是知道什麼時候該停。良野、保險 Bot、TOEIC Snack 都在呈現同一種紀律：有意識地選擇不做某些事，讓專案能被交付。
 </div>
 
 <div class="contact">

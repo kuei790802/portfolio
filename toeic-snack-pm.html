@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEIC Snack PM Case Study</title>
+<style>
+  :root {
+    --ink: #172033;
+    --muted: #647084;
+    --line: #d7dde7;
+    --paper: #ffffff;
+    --wash: #f5f7fb;
+    --deep: #17324d;
+    --blue: #2f6f9f;
+    --teal: #0f766e;
+    --amber: #b45309;
+    --red: #b42318;
+    --green: #1f7a4d;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 12% 0%, rgba(47, 111, 159, 0.12), transparent 34%),
+      linear-gradient(180deg, #fbfcff 0%, #eef3f8 100%);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+  }
+
+  .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 28px 24px 44px;
+  }
+
+  .topnav {
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .topnav a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--deep), #224f70 58%, #0f766e);
+    color: #fff;
+    border-radius: 22px;
+    padding: 34px;
+    box-shadow: 0 18px 48px rgba(23, 50, 77, 0.22);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,0.32);
+    border-radius: 999px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.86);
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 54px);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  .hero .lead {
+    margin: 18px 0 0;
+    max-width: 860px;
+    font-size: 17px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero strong { color: #fff3b0; }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .meta-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 13px 14px;
+  }
+
+  .meta-card .label {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.68);
+  }
+
+  .meta-card .value {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    padding: 10px;
+    background: rgba(255,255,255,0.84);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(215,221,231,0.92);
+    border-radius: 16px;
+  }
+
+  .tab {
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: transparent;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .tab.active {
+    background: var(--deep);
+    color: #fff;
+  }
+
+  .panel {
+    display: none;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 12px 34px rgba(23, 32, 51, 0.08);
+  }
+
+  .panel.active { display: block; }
+
+  .panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--deep);
+    font-size: 25px;
+    letter-spacing: -0.02em;
+  }
+
+  .desc {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 26px 0 10px;
+    color: var(--deep);
+    font-size: 17px;
+  }
+
+  p, li, td, th {
+    font-size: 14px;
+  }
+
+  p { margin: 8px 0; }
+
+  ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+  }
+
+  li { margin: 4px 0; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    padding: 16px 18px;
+    background: #fff;
+  }
+
+  .card.tint { background: var(--wash); }
+
+  .card h4 {
+    margin: 0 0 6px;
+    color: var(--deep);
+    font-size: 15px;
+  }
+
+  .card p { color: var(--muted); }
+
+  .callout {
+    border-left: 5px solid var(--blue);
+    background: #eef6fb;
+    border-radius: 0 14px 14px 0;
+    padding: 15px 18px;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+
+  .callout.warn {
+    border-left-color: var(--amber);
+    background: #fff7ed;
+  }
+
+  .callout.danger {
+    border-left-color: var(--red);
+    background: #fff1f0;
+  }
+
+  .callout.good {
+    border-left-color: var(--green);
+    background: #effaf4;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .pill.good { color: #0f5132; background: #d8f3e4; }
+  .pill.warn { color: #7c2d12; background: #ffedd5; }
+  .pill.risk { color: #7f1d1d; background: #fee2e2; }
+  .pill.info { color: #164e63; background: #cffafe; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 6px;
+    font-size: 13px;
+  }
+
+  th {
+    text-align: left;
+    background: var(--deep);
+    color: #fff;
+    padding: 10px 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  th:last-child { border-right: 0; }
+
+  td {
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    vertical-align: top;
+    padding: 11px 12px;
+  }
+
+  td:last-child { border-right: 0; }
+
+  tr:nth-child(even) td { background: #fafbfc; }
+
+  .score {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .score .name {
+    color: var(--deep);
+    font-weight: 800;
+    font-size: 13px;
+  }
+
+  .bar {
+    height: 12px;
+    background: #e6ebf2;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+  }
+
+  .small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .split-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 14px;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .split-row .name {
+    color: var(--deep);
+    font-weight: 800;
+    font-size: 13px;
+  }
+
+  .split-bar {
+    display: flex;
+    height: 26px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .split-bar .seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .split-bar .seg.me { background: var(--deep); }
+  .split-bar .seg.ai { background: #94a3b8; }
+
+  code {
+    background: #eef2f7;
+    color: #19344f;
+    padding: 1px 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  footer {
+    margin-top: 22px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+  }
+
+  @media (max-width: 820px) {
+    .wrap { padding: 18px 14px 34px; }
+    .hero { padding: 24px; border-radius: 18px; }
+    .meta, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .panel { padding: 20px; }
+    .panel-head { display: block; }
+    .score { grid-template-columns: 1fr; }
+    .split-row { grid-template-columns: 1fr; }
+    table { display: block; overflow-x: auto; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .topnav, .nav { display: none; }
+    .panel { display: block !important; page-break-before: always; box-shadow: none; }
+    .panel:first-of-type { page-break-before: auto; }
+  }
+</style>
+<link rel="stylesheet" href="portfolio-redesign.css">
+</head>
+<body class="case-page pm-case-page">
+<div class="wrap">
+  <div class="topnav"><a href="index.html">← 返回作品集首頁</a></div>
+
+  <header class="hero">
+    <div class="eyebrow">PM Case Study · 工程專案轉產品判斷</div>
+    <h1>TOEIC Snack：用 AI 協作交付 MVP，並做出暫緩上架的產品判斷</h1>
+    <p class="lead">
+      這是一個把工程 side project 轉化成 PM case study 的產品實驗：
+      我如何從個人痛點出發，定義目標用戶與核心假設，做出可操作的 MVP，再根據驗證階段、營運成本與資源條件決定暫緩上架。
+      <strong>重點不是只做出一個 App，而是我如何用產品思維做取捨。</strong>
+    </p>
+
+    <div class="meta">
+      <div class="meta-card"><span class="label">產品狀態</span><span class="value">MVP Hold · 未上架</span></div>
+      <div class="meta-card"><span class="label">歷時 / 實際投入</span><span class="value">3.5 個月 / 約 25 天</span></div>
+      <div class="meta-card"><span class="label">交付成果</span><span class="value">13 screens · 172 tests</span></div>
+      <div class="meta-card"><span class="label">PM 核心訊息</span><span class="value">能交付，也能停下來</span></div>
+    </div>
+  </header>
+
+  <section class="case-hero pm-proof" aria-label="case proof">
+    <div class="proof-strip">
+      <div class="proof-item"><div class="value">13 screens</div><div class="label">MVP 範圍：完整練習、結果、歷史、設定與分級流程</div></div>
+      <div class="proof-item"><div class="value">172 tests</div><div class="label">品質門檻：用測試與 QA 支撐 AI agent 交付</div></div>
+      <div class="proof-item"><div class="value">5 testers</div><div class="label">早期驗證：小樣本試用，先確認方向與使用情境</div></div>
+      <div class="proof-item"><div class="value">MVP Hold</div><div class="label">產品取捨：未驗證付費、留存與題庫品質前暫緩上架</div></div>
+    </div>
+    <div class="case-actions" aria-label="related links">
+      <a class="primary-action" href="toeic-snack.html">查看完整交付紀錄</a>
+      <a class="secondary-action" href="index.html">返回作品集首頁</a>
+    </div>
+  </section>
+
+  <nav class="nav" role="tablist">
+    <button class="tab active" data-tab="summary">PM 摘要</button>
+    <button class="tab" data-tab="problem">問題與假設</button>
+    <button class="tab" data-tab="validation">驗證策略</button>
+    <button class="tab" data-tab="scope">範圍取捨</button>
+    <button class="tab" data-tab="delivery">交付流程</button>
+    <button class="tab" data-tab="next">下一步與聯絡</button>
+  </nav>
+
+  <section class="panel active" id="tab-summary">
+    <div class="panel-head">
+      <div>
+        <h2>PM 摘要</h2>
+        <div class="desc">如果面試官只看 3 分鐘，我希望他看到這些判斷</div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card tint">
+        <h4>我想解的問題</h4>
+        <p>多益閱讀考生不是只缺題目，而是缺一個能在碎片時間練習、同時保留時間壓迫感的工具。</p>
+      </div>
+      <div class="card tint">
+        <h4>我做的 MVP</h4>
+        <p>5/10/15/20 分鐘閱讀練習、placement test、歷史紀錄、設定與基本離線容錯。</p>
+      </div>
+      <div class="card tint">
+        <h4>我最後的決策</h4>
+        <p>暫緩上架。先把重點放在核心練習流程、題庫品質與使用情境驗證，避免過早進入正式營運與維護成本。</p>
+      </div>
+    </div>
+
+    <h3>這份 case 想證明的 PM 能力</h3>
+    <table>
+      <thead>
+        <tr><th>PM 能力</th><th>本案證據</th><th>成熟度判斷</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>問題定義</strong></td>
+          <td>從個人痛點、論壇二手研究、競品掃描，收斂到「限時閱讀練習」這個切角。</td>
+          <td><span class="pill good">可展示</span></td>
+        </tr>
+        <tr>
+          <td><strong>範圍收斂</strong></td>
+          <td>完成 MVP 後重新檢視 OAuth、徽章、通知等功能的驗證價值，後續專案已改成先列不做事項。</td>
+          <td><span class="pill good">可展示</span></td>
+        </tr>
+        <tr>
+          <td><strong>驗證意識</strong></td>
+          <td>5 位家人同事試用、自己使用約 10 次，並安排 iOS QA 找出 11 個問題。</td>
+          <td><span class="pill info">早期驗證</span></td>
+        </tr>
+        <tr>
+          <td><strong>風險判斷</strong></td>
+          <td>清楚列出下一階段要補的 outcome metrics、題庫品質、screen-level 測試與付費意願研究。</td>
+          <td><span class="pill good">可展示</span></td>
+        </tr>
+        <tr>
+          <td><strong>技術協作</strong></td>
+          <td>把需求拆到 AI agent 可執行，透過 handoff 文件、測試與 QA 控制交付品質。</td>
+          <td><span class="pill good">Technical PM 加分</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout good">
+      <strong>本案的 PM 定位</strong>：完整走到 MVP 的產品實驗，呈現從模糊痛點到假設、再到 MVP 交付與下一步驗證節奏的完整決策鏈。
+    </div>
+  </section>
+
+  <section class="panel" id="tab-problem">
+    <div class="panel-head">
+      <div>
+        <h2>問題與假設</h2>
+        <div class="desc">把個人痛點轉成可驗證的產品問題，而不是直接開始做功能</div>
+      </div>
+    </div>
+
+    <h3>起點：我自己的痛點，但不把 n=1 當市場</h3>
+    <p>
+      我聽力接近滿分，閱讀相對弱。平常會讀英文新聞與社群，但考試時容易抓不到時間節奏。
+      傳統題本厚重，不適合通勤、午休、等飯這些零碎時段。
+    </p>
+    <p>
+      這是一個真實痛點，但一開始只是 <strong>n=1 的個人經驗</strong>。
+      因此我先做二手研究與競品掃描，確認問題是否有機會擴大。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>二手研究</h4>
+        <p>從 PTT、Dcard 觀察到部分考生有類似情境：聽力高於閱讀、閱讀做不完、需要時間節奏訓練。</p>
+      </div>
+      <div class="card">
+        <h4>競品掃描</h4>
+        <p>多數 App 偏單字、文法或綜合練習，較少聚焦「限時閱讀衝刺」與碎片時間使用。</p>
+      </div>
+    </div>
+
+    <h3>核心產品假設</h3>
+    <table>
+      <thead>
+        <tr><th>假設</th><th>我如何轉成 MVP 功能</th><th>當時證據</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>使用者需要短時間練閱讀</strong></td>
+          <td>提供 5/10/15/20 分鐘練習入口，而不是完整模考。</td>
+          <td>個人痛點 + 論壇二手研究。</td>
+        </tr>
+        <tr>
+          <td><strong>時間壓迫是閱讀弱點的一部分</strong></td>
+          <td>練習流程內建 timer 與 time bank，讓使用者感受到考試節奏。</td>
+          <td>自身考試經驗 + 競品空缺。</td>
+        </tr>
+        <tr>
+          <td><strong>難度需要被分層</strong></td>
+          <td>設計 placement test 與 Green / Blue / Gold 分級。</td>
+          <td>產品直覺，尚缺正式驗證。</td>
+        </tr>
+        <tr>
+          <td><strong>題庫可以用 AI pipeline 補足</strong></td>
+          <td>另建 TOEIC_Question_Generator，將內容生產與 App runtime 分離。</td>
+          <td>技術可行，但題目品質仍需人工與使用者驗證。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <strong>分階段驗證</strong>：這些假設足以支持我先做 MVP 與小規模試用；若要上架與商業化，下一階段會補上付費意願、留存與題庫品質驗證。
+      這也是我選擇先 hold、而不是急著上架的主因。
+    </div>
+  </section>
+
+  <section class="panel" id="tab-validation">
+    <div class="panel-head">
+      <div>
+        <h2>驗證策略</h2>
+        <div class="desc">先用低成本方式確認方向，再把更重的驗證留給下一階段</div>
+      </div>
+    </div>
+
+    <h3>我實際做過的驗證</h3>
+    <table>
+      <thead>
+        <tr><th>驗證方式</th><th>得到什麼</th><th>證據強度</th><th>我的判斷</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>個人使用</strong></td>
+          <td>自己使用約 10 次，做約 80 題，確認核心流程能支援碎片時間練習。</td>
+          <td><span class="pill info">早期</span></td>
+          <td>確認核心流程可用，作為後續外部驗證的基礎。</td>
+        </tr>
+        <tr>
+          <td><strong>論壇二手研究</strong></td>
+          <td>確認閱讀速度、時間配置、閱讀做不完是常見討論。</td>
+          <td><span class="pill info">方向性</span></td>
+          <td>支持問題存在，下一步再驗證解法採用意願。</td>
+        </tr>
+        <tr>
+          <td><strong>5 位家人同事試用</strong></td>
+          <td>一致回饋「如果準備多益會想用」，未質疑時間區間設計。</td>
+          <td><span class="pill good">方向性</span></td>
+          <td>確認使用情境有共鳴，適合作為 MVP 往下一階段推進的依據。</td>
+        </tr>
+        <tr>
+          <td><strong>iOS QA</strong></td>
+          <td>找出 11 個問題，修復 4 個；其中 guest submit 問題已完成部署與複測。</td>
+          <td><span class="pill good">功能驗證</span></td>
+          <td>證明測試全綠不等於使用者走得通，完成定義要包含端到端驗證。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>下一階段要補強的驗證</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>付費意願</h4>
+        <p>規劃用 pricing test、landing page conversion、訪談或預購，確認使用者是否願意付費。</p>
+      </div>
+      <div class="card">
+        <h4>留存</h4>
+        <p>接上 DAU、retention、平均 session length、連續使用天數等 outcome metrics。</p>
+      </div>
+      <div class="card">
+        <h4>題庫品質</h4>
+        <p>AI 產題已驗證可行，下一步會系統化檢查題目準確性、難度分布與解析品質。</p>
+      </div>
+      <div class="card">
+        <h4>營運成本</h4>
+        <p>上架前補 App Store、server、題庫維護、客服與錯題回報流程的成本試算。</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <strong>暫緩上架是產品節奏選擇</strong>：
+      MVP 已能展示核心流程，但在商業假設完成驗證前，我選擇先保留彈性，把資源留給更高優先序的驗證與求職作品整理。
+    </div>
+  </section>
+
+  <section class="panel" id="tab-scope">
+    <div class="panel-head">
+      <div>
+        <h2>範圍取捨</h2>
+        <div class="desc">完成 MVP 後，我重新檢視哪些功能真正服務核心假設</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>完成後的取捨調整</strong>：
+      OAuth、徽章、通知、離線佇列等功能讓 MVP 更完整，也讓我更清楚看到一件事：
+      早期產品最重要的不是完整度，而是每個功能是否直接服務核心假設。
+    </div>
+
+    <h3>如果重做一次，我會這樣切 MVP</h3>
+    <table>
+      <thead>
+        <tr><th>功能</th><th>原本做法</th><th>現在的 PM 判斷</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>限時閱讀練習</strong></td>
+          <td>已做 5/10/15/20 分鐘練習。</td>
+          <td><span class="pill good">保留</span> 這是核心假設。</td>
+        </tr>
+        <tr>
+          <td><strong>題目與解析</strong></td>
+          <td>AI 題庫 pipeline + Supabase 題庫。</td>
+          <td><span class="pill good">保留但縮小</span> 先做少量高品質題目與人工驗證。</td>
+        </tr>
+        <tr>
+          <td><strong>Placement test</strong></td>
+          <td>15 題分級流程。</td>
+          <td><span class="pill warn">簡化</span> 初期可改成自選難度，避免 onboarding 太重。</td>
+        </tr>
+        <tr>
+          <td><strong>OAuth 三入口</strong></td>
+          <td>Google / Apple / Email / Guest。</td>
+          <td><span class="pill warn">延後</span> 早期用 guest 或 email magic link 即可。</td>
+        </tr>
+        <tr>
+          <td><strong>徽章與通知</strong></td>
+          <td>做 achievements 與 notification scheduling。</td>
+          <td><span class="pill warn">延後</span> 留存驗證前，先不要過早做 engagement 包裝。</td>
+        </tr>
+        <tr>
+          <td><strong>離線佇列</strong></td>
+          <td>做 offline queue 與 retry。</td>
+          <td><span class="pill warn">視情境</span> 若先做 TestFlight 小樣本，可以暫時不做完整離線策略。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>我後來怎麼修正這個工作習慣</h3>
+    <p>
+      在後續保險續保 LINE Bot 專案，我把這個教訓轉成具體做法：
+      PRD 一開始就列出不做事項，並把不做事項視為和功能需求同等重要。
+      例如壽險、多租戶、客戶端自助、Email 分流、紙本續保追蹤都先排除，讓第一階段聚焦在最能降低人工作業負擔的流程。
+    </p>
+
+    <div class="callout good">
+      <strong>PM 能力不是把清單排滿，而是讓團隊聚焦在最重要的事。</strong>
+      多做功能通常比較容易被看見，但真正成熟的產品判斷，是能把資源集中在最能推進驗證的地方。
+    </div>
+  </section>
+
+  <section class="panel" id="tab-delivery">
+    <div class="panel-head">
+      <div>
+        <h2>交付流程</h2>
+        <div class="desc">Solo + 多 agent 的交付方式，這段經驗也是我面試 AI 公司的差異化武器</div>
+      </div>
+    </div>
+
+    <h3>交付結果</h3>
+    <div class="grid-3">
+      <div class="card"><h4>App 範圍</h4><p>13 screens，包含練習、結果、歷史、設定、profile、placement test。</p></div>
+      <div class="card"><h4>品質檢查</h4><p>172 tests passing、0 TypeScript errors，並補 iOS QA。</p></div>
+      <div class="card"><h4>狀態</h4><p>MVP 完成但不上架，保留為可 demo、可討論的產品原型。</p></div>
+    </div>
+
+    <h3>AI Contribution Split：我刻意把工程工作交出去</h3>
+    <p>
+      我有 Java / Spring Boot / React / SQL / RESTful API 基礎，這個專案刻意把工程實作整段交給 AI agent。
+      這不是能力空白，而是 PM 取捨：我把時間集中在規格、架構與品質卡控，讓「PM 把問題拆到 agent 可執行」這個假設被真正驗證一次。
+    </p>
+
+    <div class="split-row">
+      <div class="name">規格定義（PRD / 驗收條件）</div>
+      <div class="split-bar">
+        <div class="seg me" style="width:80%;">我 80%</div>
+        <div class="seg ai" style="width:20%;">AI 20%</div>
+      </div>
+    </div>
+    <div class="split-row">
+      <div class="name">架構與資料結構決策</div>
+      <div class="split-bar">
+        <div class="seg me" style="width:60%;">我 60%</div>
+        <div class="seg ai" style="width:40%;">AI 40%</div>
+      </div>
+    </div>
+    <div class="split-row">
+      <div class="name">Code Review / Agent 產出驗收</div>
+      <div class="split-bar">
+        <div class="seg me" style="width:25%;">我 25%</div>
+        <div class="seg ai" style="width:75%;">AI 75%</div>
+      </div>
+    </div>
+    <div class="split-row">
+      <div class="name">親手寫產品 code / debug</div>
+      <div class="split-bar">
+        <div class="seg me" style="width:1%;"></div>
+        <div class="seg ai" style="width:99%;">AI 100%</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>關於「親手寫 code 0%」</strong>：
+      這是有意識的取捨，不是能力限制。守住兩件事就能保證品質：規格寫到 agent 能執行、Review 時能判斷產出對不對。
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>我主導</th><th>AI 協助</th><th>我如何驗收</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRD、MVP 範圍、驗收條件、風險判斷。</td>
+          <td>程式實作、測試生成、UI 實作、重複性修正。</td>
+          <td>檢查功能是否符合使用情境、測試是否通過、QA 是否能重現與關閉。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>配套管線：多模型 AI 出題</h3>
+    <p>
+      App 的題目來自另一個獨立 repo <code>TOEIC_Question_Generator</code>。
+      這是我第二個多 agent 設計：用 Sonnet 生成題目，再用 Haiku 做驗證與核對，通過後同步寫進 Supabase，已實際產出數百題。
+    </p>
+    <div class="grid-2">
+      <div class="card">
+        <h4>為什麼分兩個模型</h4>
+        <p>生成模型負責創造力，驗證模型負責規則與一致性。讓便宜模型做檢查，可以把單題成本壓低，並把錯誤攔在寫進資料庫之前。</p>
+      </div>
+      <div class="card">
+        <h4>為什麼拆成獨立 repo</h4>
+        <p>內容生產 pipeline 與 App runtime 解耦，schema 變動、模型替換、出題策略調整都不會波及 App 部署。這是刻意的 PM 架構決策。</p>
+      </div>
+    </div>
+    <h3>我設計的交接機制</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>交接文件</h4>
+        <p><code>HANDOFF-CC.md</code>、<code>HANDOFF-GEMINI.md</code> 記錄規格、介面、注意事項與完成狀態。</p>
+      </div>
+      <div class="card">
+        <h4>狀態檔</h4>
+        <p><code>STATUS.yml</code> 管理 current task、progress、blockers 與 loop control，降低 session 中斷風險。</p>
+      </div>
+      <div class="card">
+        <h4>測試清單</h4>
+        <p><code>plan.md</code> 作為 TDD checklist，讓需求不是口頭描述，而是可執行的驗收條件。</p>
+      </div>
+      <div class="card">
+        <h4>可追溯紀錄</h4>
+        <p><code>.handoffs/</code> 歸檔每次交接，讓決策與交付過程能被回看。</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="panel" id="tab-next">
+    <div class="panel-head">
+      <div>
+        <h2>下一步與聯絡</h2>
+        <div class="desc">如果這份產品要繼續推進，下一階段會做的事</div>
+      </div>
+    </div>
+
+    <p>
+      MVP 已展示核心練習迴圈與 AI 出題管線的可行性。
+      下一階段的優先序不是再加功能，而是把<strong>付費意願、留存指標、題庫品質、外部用戶試用</strong>這四件事的證據補齊。
+      在這之前選擇先 hold，把資源留給更高優先序的工作。
+    </p>
+
+    <h3>聯絡方式</h3>
+    <p class="small">
+      歸維邦（Josh Kuei） · <a href="mailto:kuei790802@gmail.com">kuei790802@gmail.com</a> ·
+      <a href="https://github.com/kuei790802">github.com/kuei790802</a> · PMP · PSM I · Google Project Management
+    </p>
+  </section>
+
+  <footer>TOEIC Snack PM Case Study · 新版定位稿，不覆蓋原始工程導向版本</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach((button) => {
+    button.addEventListener('click', () => {
+      const tab = button.dataset.tab;
+      document.querySelectorAll('.tab').forEach((item) => item.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach((panel) => panel.classList.remove('active'));
+      button.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
