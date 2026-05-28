@@ -3,8 +3,8 @@ import { cases } from "@/data/cases";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2, Zap } from "lucide-react";
-import { RenderContent } from "@/components/case-content/render-content";
+import { CheckCircle2, Zap, FileEdit } from "lucide-react";
+import { getContent } from "@/content";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -112,13 +112,30 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </TabsList>
           </div>
 
-          {caseStudy.tabs.map((tab) => (
-            <TabsContent key={tab.id} value={tab.id} className="mt-0 focus-visible:outline-none">
-              <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/40 p-8 md:p-12 min-h-[400px]">
-                <RenderContent slug={caseStudy.slug} tabId={tab.id} />
-              </div>
-            </TabsContent>
-          ))}
+          {caseStudy.tabs.map((tab) => {
+            const Content = getContent(caseStudy.slug, tab.id);
+            return (
+              <TabsContent key={tab.id} value={tab.id} className="mt-0 focus-visible:outline-none">
+                <div className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/40 p-8 md:p-12 min-h-[400px]">
+                  {Content ? (
+                    <Content />
+                  ) : (
+                    <div className="min-h-[300px] flex flex-col items-center justify-center text-center space-y-4">
+                      <div className="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-400">
+                        <FileEdit className="w-6 h-6" />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="font-heading font-bold text-slate-900">本章節內容即將上線</h3>
+                        <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+                          {caseStudy.slug}/{tab.id} 正在從 v3 完整稿轉成模組化內容區塊，預計同批次內補齊。
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </TabsContent>
+            );
+          })}
         </Tabs>
       </section>
     </div>

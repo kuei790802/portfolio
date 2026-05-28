@@ -13,7 +13,6 @@ export interface CaseStudy {
   tabs: {
     id: string;
     label: string;
-    content: any; // Simplified for this data file
   }[];
 }
 
@@ -41,12 +40,12 @@ export const cases: CaseStudy[] = [
       ],
     },
     tabs: [
-      { id: "summary", label: "PM 摘要", content: null },
-      { id: "problem", label: "問題與假設", content: null },
-      { id: "validation", label: "驗證策略", content: null },
-      { id: "scope", label: "範圍取捨", content: null },
-      { id: "delivery", label: "交付流程", content: null },
-      { id: "next", label: "下一步與聯絡", content: null },
+      { id: "summary", label: "PM 摘要" },
+      { id: "problem", label: "問題與假設" },
+      { id: "validation", label: "驗證策略" },
+      { id: "scope", label: "範圍取捨" },
+      { id: "delivery", label: "交付流程" },
+      { id: "next", label: "下一步與聯絡" },
     ],
   },
   {
@@ -72,12 +71,12 @@ export const cases: CaseStudy[] = [
       ],
     },
     tabs: [
-      { id: "overview", label: "總覽", content: null },
-      { id: "research", label: "用戶研究", content: null },
-      { id: "positioning", label: "產品定位", content: null },
-      { id: "prd", label: "PRD 摘要", content: null },
-      { id: "adrs", label: "關鍵決策", content: null },
-      { id: "reflections", label: "反思", content: null },
+      { id: "overview", label: "總覽" },
+      { id: "research", label: "用戶研究" },
+      { id: "positioning", label: "產品定位" },
+      { id: "prd", label: "PRD 摘要" },
+      { id: "adrs", label: "關鍵決策" },
+      { id: "reflections", label: "反思" },
     ],
   },
   {
@@ -103,12 +102,12 @@ export const cases: CaseStudy[] = [
       ],
     },
     tabs: [
-      { id: "overview", label: "總覽", content: null },
-      { id: "strategy", label: "市場與策略", content: null },
-      { id: "play", label: "7-Eleven 上架攻防", content: null },
-      { id: "ops", label: "營運與成本", content: null },
-      { id: "decisions", label: "關鍵決策", content: null },
-      { id: "reflection", label: "反思", content: null },
+      { id: "overview", label: "總覽" },
+      { id: "strategy", label: "市場與策略" },
+      { id: "play", label: "7-Eleven 上架攻防" },
+      { id: "ops", label: "營運與成本" },
+      { id: "decisions", label: "關鍵決策" },
+      { id: "reflection", label: "反思" },
     ],
   },
 ];
