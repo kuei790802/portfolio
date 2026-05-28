@@ -48,8 +48,29 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   --color-ai-purple: var(--ai-purple);
+  --color-ai-purple-50: var(--ai-purple-50);
+  --color-ai-purple-100: var(--ai-purple-100);
+  --color-ai-purple-200: var(--ai-purple-200);
+  --color-ai-purple-500: var(--ai-purple);
+  --color-ai-purple-600: var(--ai-purple-600);
+  --color-ai-purple-700: var(--ai-purple-700);
+  --color-ai-purple-900: var(--ai-purple-900);
+
   --color-trust-blue: var(--trust-blue);
+  --color-trust-blue-50: var(--trust-blue-50);
+  --color-trust-blue-100: var(--trust-blue-100);
+  --color-trust-blue-200: var(--trust-blue-200);
+  --color-trust-blue-500: var(--trust-blue);
+  --color-trust-blue-600: var(--trust-blue-600);
+  --color-trust-blue-700: var(--trust-blue-700);
+  --color-trust-blue-900: var(--trust-blue-900);
+
   --color-glow: var(--glow);
+
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 200ms;
+  --motion-duration-slow: 300ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
@@ -87,7 +108,21 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --ai-purple: #6366f1;
+  --ai-purple-50: #eef2ff;
+  --ai-purple-100: #e0e7ff;
+  --ai-purple-200: #c7d2fe;
+  --ai-purple-600: #4f46e5;
+  --ai-purple-700: #4338ca;
+  --ai-purple-900: #312e81;
+
   --trust-blue: #0ea5e9;
+  --trust-blue-50: #f0f9ff;
+  --trust-blue-100: #e0f2fe;
+  --trust-blue-200: #bae6fd;
+  --trust-blue-600: #0284c7;
+  --trust-blue-700: #0369a1;
+  --trust-blue-900: #0c4a6e;
+
   --glow: rgba(99, 102, 241, 0.15);
 }
 
@@ -138,5 +173,38 @@
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ai-purple);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--ai-purple);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  border-radius: 0 0 0.5rem 0;
+
+  &:focus {
+    top: 0;
   }
 }
