@@ -10,6 +10,20 @@ export interface CaseStudy {
     description: string;
     points: string[];
   };
+  artifact?: {
+    title?: string;
+    subtitle?: string;
+    flow?: string;
+    layout: "wide-figure" | "image-grid";
+    cols?: 2 | 3 | 4;
+    aspect?: "9/16" | "4/3";
+    items: {
+      src: string;
+      alt: string;
+      captionTitle?: string;
+      caption?: string;
+    }[];
+  };
   tabs: {
     id: string;
     label: string;
@@ -37,6 +51,27 @@ export const cases: CaseStudy[] = [
         "能協調通路、供應鏈、包裝、冷鏈與活動檔期",
         "能用成本結構判斷產品與營運風險",
         "能在成長訊號出現時仍維持範圍與風險紀律",
+      ],
+    },
+    artifact: {
+      title: "通路與包裝實證",
+      subtitle: "7-Eleven 全國通路冰櫃實品與正式上架包裝。",
+      layout: "image-grid",
+      cols: 2,
+      aspect: "4/3",
+      items: [
+        {
+          src: "/assets/liangye-7eleven-freezer.jpg",
+          alt: "良野豆乳雪糕在 7-Eleven 冰櫃中陳列，價卡標示品名與售價",
+          captionTitle: "7-Eleven 冰櫃與價卡",
+          caption: "可看到「良野頂級熟韻豆乳雪糕」與售價，產品實際進入門市冰櫃販售場景。",
+        },
+        {
+          src: "/assets/liangye-final-packaging.jpg",
+          alt: "良野豆乳雪糕正式包裝於冰櫃中陳列",
+          captionTitle: "正式包裝",
+          caption: "被通路質疑包裝後，兩週內補上正式包裝版本，讓雪糕系列通過上架評估。",
+        },
       ],
     },
     tabs: [
@@ -70,6 +105,17 @@ export const cases: CaseStudy[] = [
         "用 ADR 留下決策背景、取捨與後果",
       ],
     },
+    artifact: {
+      layout: "wide-figure",
+      items: [
+        {
+          src: "/assets/insurance-bot-line-mockup.png",
+          alt: "保險續保 LINE Bot 的 Admin、Agent 與 Staff 實際操作截圖，敏感資訊已模糊處理",
+          captionTitle: "實際運作的 LINE Bot",
+          caption: "Admin 全局入口、Agent 案件領取、Staff 表單同步預覽（敏感資訊已模糊處理）。這是物證，不是產品介紹：用來證明本案的責任流轉設計真的跑得起來。",
+        },
+      ],
+    },
     tabs: [
       { id: "overview", label: "總覽" },
       { id: "research", label: "用戶研究" },
@@ -99,6 +145,40 @@ export const cases: CaseStudy[] = [
         "用實機 QA、handoff、風險清單控管交付品質",
         "能透過 AI agent 完成需求拆解與技術交付",
         "判斷何時不該急著上架，把資源留給更高優先序的驗證",
+      ],
+    },
+    artifact: {
+      title: "MVP 實機畫面：閱讀練習核心循環",
+      subtitle: "這個 MVP 已能支援練習入口、限時作答、結果回饋與歷史追蹤等頁面與功能。",
+      flow: "入口 → 作答 → 結果 → 留存",
+      layout: "image-grid",
+      cols: 4,
+      aspect: "9/16",
+      items: [
+        {
+          src: "/assets/toeic-snack-screen-home.png",
+          alt: "TOEIC Snack 首頁，顯示等級、連續天數、正確率、今日目標與練習時間選擇",
+          captionTitle: "練習入口",
+          caption: "用等級、連續天數、正確率與 5/10/15/20 分鐘選項，把碎片練習轉成可啟動的任務。",
+        },
+        {
+          src: "/assets/toeic-snack-screen-practice.png",
+          alt: "TOEIC Snack 作答畫面，顯示 Part 5 題目、進度、計時器與四個選項",
+          captionTitle: "限時作答",
+          caption: "保留 TOEIC Part、題目進度、倒數計時與選項狀態，對應閱讀速度訓練。",
+        },
+        {
+          src: "/assets/toeic-snack-screen-result.png",
+          alt: "TOEIC Snack 結果畫面，顯示正確率、答題時間、時間銀行、連續天數與錯題回顧",
+          captionTitle: "結果回饋",
+          caption: "把正確率、答題時間、連續天數與錯題回顧收束成一次練習的可行動回饋。",
+        },
+        {
+          src: "/assets/toeic-snack-screen-history.png",
+          alt: "TOEIC Snack 歷史紀錄畫面，顯示總練習次數、本週練習、平均正確率與多筆練習紀錄",
+          captionTitle: "歷史追蹤",
+          caption: "用 session 紀錄、週期篩選與平均正確率，支撐回訪與持續練習動機。",
+        },
       ],
     },
     tabs: [

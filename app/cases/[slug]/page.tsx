@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Zap, FileEdit } from "lucide-react";
 import { getContent } from "@/content";
+import { CaseArtifact } from "@/components/case-artifact";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -58,6 +59,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Case Artifact (hero proof) */}
+      {caseStudy.artifact && <CaseArtifact {...caseStudy.artifact} />}
 
       {/* Case Brief Section */}
       <section className="container px-4">
