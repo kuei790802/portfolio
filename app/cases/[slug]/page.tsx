@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cases } from "@/data/cases";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,31 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, Zap, FileEdit } from "lucide-react";
 import { getContent } from "@/content";
 import { CaseArtifact } from "@/components/case-artifact";
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = cases.find((c) => c.slug === slug);
+  if (!caseStudy) return {};
+
+  const title = caseStudy.title;
+  const description = caseStudy.pitch;
+  const ogTitle = `${caseStudy.title}｜${caseStudy.subtitle}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      type: "article",
+      title: ogTitle,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+    },
+  };
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
