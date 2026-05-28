@@ -22,13 +22,13 @@ import LiangyeReflection from "./liangye-7eleven/reflection.mdx";
 type CaseContentMap = Record<string, Record<string, ComponentType | undefined>>;
 
 export const contentMap: CaseContentMap = {
-  "toeic-snack": {
-    summary: ToeicSummary,
-    problem: ToeicProblem,
-    validation: ToeicValidation,
-    scope: ToeicScope,
-    delivery: ToeicDelivery,
-    next: ToeicNext,
+  "liangye-7eleven": {
+    overview: LiangyeOverview,
+    strategy: LiangyeStrategy,
+    play: LiangyePlay,
+    ops: LiangyeOps,
+    decisions: LiangyeDecisions,
+    reflection: LiangyeReflection,
   },
   "insurance-bot": {
     overview: InsuranceOverview,
@@ -38,13 +38,13 @@ export const contentMap: CaseContentMap = {
     adrs: InsuranceADRs,
     reflections: InsuranceReflections,
   },
-  "liangye-7eleven": {
-    overview: LiangyeOverview,
-    strategy: LiangyeStrategy,
-    play: LiangyePlay,
-    ops: LiangyeOps,
-    decisions: LiangyeDecisions,
-    reflection: LiangyeReflection,
+  "toeic-snack": {
+    summary: ToeicSummary,
+    problem: ToeicProblem,
+    validation: ToeicValidation,
+    scope: ToeicScope,
+    delivery: ToeicDelivery,
+    next: ToeicNext,
   },
 };
 
