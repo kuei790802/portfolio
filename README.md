@@ -1,39 +1,36 @@
-# 歸維邦 Josh Kuei · PM Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> 線上版：<https://kuei790802.github.io/portfolio/>
+## Getting Started
 
-PM 作品集，三個 case study + 一個 hub 首頁。純 HTML + 內嵌 CSS / JS，零依賴，GitHub Pages 部署。
+First, run the development server:
 
-## 內容
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-| 檔案 | 案例 | 角色 |
-|------|------|------|
-| `index.html` | Hub 首頁（一頁式 brief + 三張案例卡） | 給 HR 的快速瀏覽入口 |
-| `liangye-7eleven.html` | 良野豆乳冰品 × 7-Eleven 全國通路上架 | 創辦人 / 總經理 |
-| `insurance-bot.html` | 保險續保 LINE Bot | B2B AI 應用 · PM |
-| `toeic-snack.html` | TOEIC Snack | 多 Agent AI 開發 · PM |
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 維護規則
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- 中文內容**零破折號**（U+2014、U+2013）。台灣繁體中文。
-- 改完 `git push` 後約 1 分鐘 GitHub Pages 自動上線。
-- 每個 case study 都內建「列印完整內容」按鈕，產生 PDF 由本人 Cmd+P 自行存檔。
-- `@media print` CSS 會在列印時隱藏 tab 與返回鍵，並展開所有章節。
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 隱私分界
+## Learn More
 
-公開（在此 repo）：
-- 三個 case study 與 hub 的渲染內容
-- 不含絕對營收、成本、客戶名、保戶資料
+To learn more about Next.js, take a look at the following resources:
 
-私密（不在此 repo，留在本機工作區）：
-- 各公司投遞客製 brief、cover letter、自傳
-- 良野訪談原始素材（含財務細節）
-- 履歷 master
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 聯絡
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- Email：kuei790802@gmail.com
-- GitHub：<https://github.com/kuei790802>
-- 居住地：桃園市楊梅區
-- 認證：PMP · PSM I · Google Project Management
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
