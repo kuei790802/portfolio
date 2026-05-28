@@ -6,13 +6,14 @@
 <title>TOEIC Snack PM Case Study</title>
 <style>
   :root {
+    --primary: #1a3a5c;
+    --primary-light: #2a5580;
+    --primary-bg: #f4f7fb;
     --ink: #172033;
     --muted: #647084;
     --line: #d7dde7;
     --paper: #ffffff;
     --wash: #f5f7fb;
-    --deep: #17324d;
-    --blue: #2f6f9f;
     --teal: #0f766e;
     --amber: #b45309;
     --red: #b42318;
@@ -24,9 +25,6 @@
   body {
     margin: 0;
     color: var(--ink);
-    background:
-      radial-gradient(circle at 12% 0%, rgba(47, 111, 159, 0.12), transparent 34%),
-      linear-gradient(180deg, #fbfcff 0%, #eef3f8 100%);
     font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
     line-height: 1.75;
   }
@@ -44,28 +42,87 @@
   }
 
   .topnav a {
-    color: var(--blue);
+    color: var(--primary-light);
     text-decoration: none;
   }
 
-  .hero {
-    background: linear-gradient(135deg, var(--deep), #224f70 58%, #0f766e);
-    color: #fff;
-    border-radius: 22px;
-    padding: 34px;
-    box-shadow: 0 18px 48px rgba(23, 50, 77, 0.22);
+  header {
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
   }
 
-  .eyebrow {
+  header h1 {
+    margin: 0 0 4px 0;
+    color: var(--primary);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+
+  header .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  header .pitch {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--wash);
+    border-left: 4px solid var(--primary);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  header .pitch strong {
+    color: var(--primary);
+  }
+
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+
+  .meta-bar .item {
     display: inline-flex;
-    gap: 8px;
     align-items: center;
-    padding: 4px 12px;
-    border: 1px solid rgba(255,255,255,0.32);
-    border-radius: 999px;
+    gap: 6px;
+  }
+
+  .meta-bar .label {
+    color: var(--muted);
+  }
+
+  .meta-bar .value {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    border: 1px solid #c7d8eb;
+    border-radius: 12px;
+    padding: 2px 10px;
+    background: var(--wash);
+    color: var(--primary);
     font-size: 12px;
-    color: rgba(255,255,255,0.86);
-    margin-bottom: 14px;
+  }
+
+  .tag.alt {
+    border-color: var(--line);
+    background: #fff;
+    color: var(--muted);
   }
 
   h1 {
@@ -126,7 +183,7 @@
     border-radius: 16px;
   }
 
-  .tab {
+  .tab-btn {
     appearance: none;
     border: 0;
     border-radius: 999px;
@@ -139,12 +196,12 @@
     cursor: pointer;
   }
 
-  .tab.active {
-    background: var(--deep);
+  .tab-btn.active {
+    background: var(--primary);
     color: #fff;
   }
 
-  .panel {
+  .tab-panel {
     display: none;
     background: var(--paper);
     border: 1px solid var(--line);
@@ -153,9 +210,9 @@
     box-shadow: 0 12px 34px rgba(23, 32, 51, 0.08);
   }
 
-  .panel.active { display: block; }
+  .tab-panel.active { display: block; }
 
-  .panel-head {
+  .panel-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -167,7 +224,7 @@
 
   h2 {
     margin: 0;
-    color: var(--deep);
+    color: var(--primary);
     font-size: 25px;
     letter-spacing: -0.02em;
   }
@@ -180,7 +237,7 @@
 
   h3 {
     margin: 26px 0 10px;
-    color: var(--deep);
+    color: var(--primary);
     font-size: 17px;
   }
 
@@ -220,14 +277,14 @@
 
   .card h4 {
     margin: 0 0 6px;
-    color: var(--deep);
+    color: var(--primary);
     font-size: 15px;
   }
 
   .card p { color: var(--muted); }
 
   .callout {
-    border-left: 5px solid var(--blue);
+    border-left: 5px solid var(--primary-light);
     background: #eef6fb;
     border-radius: 0 14px 14px 0;
     padding: 15px 18px;
@@ -273,7 +330,7 @@
 
   th {
     text-align: left;
-    background: var(--deep);
+    background: var(--primary);
     color: #fff;
     padding: 10px 12px;
     border-right: 1px solid rgba(255, 255, 255, 0.18);
@@ -301,7 +358,7 @@
   }
 
   .score .name {
-    color: var(--deep);
+    color: var(--primary);
     font-weight: 800;
     font-size: 13px;
   }
@@ -316,7 +373,7 @@
   .bar span {
     display: block;
     height: 100%;
-    background: linear-gradient(90deg, var(--blue), var(--teal));
+    background: linear-gradient(90deg, var(--primary-light), var(--teal));
   }
 
   .small {
@@ -333,7 +390,7 @@
   }
 
   .split-row .name {
-    color: var(--deep);
+    color: var(--primary);
     font-weight: 800;
     font-size: 13px;
   }
@@ -357,8 +414,367 @@
     white-space: nowrap;
   }
 
-  .split-bar .seg.me { background: var(--deep); }
+  .split-bar .seg.me { background: var(--primary); }
   .split-bar .seg.ai { background: #94a3b8; }
+
+  .app-screens {
+    margin: 20px 0;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 22px;
+    background: var(--paper);
+    box-shadow: 0 12px 34px rgba(23, 32, 51, 0.08);
+  }
+
+  .app-screens-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .app-screens-head h2 {
+    margin: 0 0 6px;
+    color: var(--primary);
+    font-size: 23px;
+    letter-spacing: -0.02em;
+  }
+
+  .app-screens-head p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .app-screens-flow {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(47, 111, 159, 0.24);
+    border-radius: 999px;
+    padding: 5px 11px;
+    background: #eef6fb;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .app-screen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .app-screen-card {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(23, 32, 51, 0.09);
+  }
+
+  .app-screen-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #111827;
+  }
+
+  .app-screen-card figcaption {
+    padding: 12px 12px 13px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .app-screen-card figcaption strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--primary);
+    font-size: 13px;
+  }
+
+  .app-screen-note {
+    margin-top: 14px;
+    border: 1px solid #d7e7f3;
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: #f7fbfe;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .app-screen-note strong { color: var(--primary); }
+
+  .qa-risk-brief {
+    margin: 18px 0 22px;
+    border: 1px solid #d7e7f3;
+    border-radius: 18px;
+    padding: 18px;
+    background: #f7fbfe;
+  }
+
+  .qa-risk-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+
+  .qa-risk-head h4 {
+    margin: 0 0 5px;
+    color: var(--primary);
+    font-size: 18px;
+  }
+
+  .qa-risk-head p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .qa-risk-decision {
+    display: inline-flex;
+    border: 1px solid rgba(180, 83, 9, 0.26);
+    border-radius: 999px;
+    padding: 5px 11px;
+    background: #fff7ed;
+    color: #7c2d12;
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .qa-gate-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .qa-gate {
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 12px;
+    background: #fff;
+  }
+
+  .qa-gate .label {
+    display: block;
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .qa-gate strong {
+    display: block;
+    margin-top: 5px;
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .qa-gate span:last-child {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .risk-register {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .risk-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    background: #fff;
+  }
+
+  .risk-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .risk-card h5 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 14px;
+  }
+
+  .risk-card p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .risk-next {
+    margin-top: 9px;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .handoff-evidence {
+    margin: 16px 0 20px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    background: #f7fbfe;
+  }
+
+  .handoff-evidence-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .handoff-evidence-head h4 {
+    margin: 0 0 5px;
+    color: var(--primary);
+    font-size: 18px;
+  }
+
+  .handoff-evidence-head p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .handoff-ledger {
+    display: inline-flex;
+    border: 1px solid rgba(15, 118, 110, 0.24);
+    border-radius: 999px;
+    padding: 5px 11px;
+    background: #effaf4;
+    color: #0f5132;
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .handoff-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .handoff-step {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 13px 14px;
+    background: #fff;
+  }
+
+  .handoff-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    z-index: 1;
+    transform: translateY(-50%);
+    color: var(--primary-light);
+    font-weight: 900;
+  }
+
+  .handoff-step .kicker {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .handoff-step strong {
+    display: block;
+    color: var(--primary);
+    font-size: 14px;
+  }
+
+  .handoff-step span {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .handoff-case {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .handoff-case-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    background: #fff;
+  }
+
+  .handoff-case-card h5 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 14px;
+  }
+
+  .handoff-case-card p {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .handoff-case-card ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  .handoff-case-card li {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .handoff-source-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .handoff-source {
+    display: inline-flex;
+    border: 1px solid #d7e7f3;
+    border-radius: 999px;
+    padding: 3px 9px;
+    background: #f7fbfe;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+  }
 
   code {
     background: #eef2f7;
@@ -379,18 +795,50 @@
     .wrap { padding: 18px 14px 34px; }
     .hero { padding: 24px; border-radius: 18px; }
     .meta, .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .panel { padding: 20px; }
-    .panel-head { display: block; }
+    .tab-panel { padding: 20px; }
+    .panel-header { display: block; }
     .score { grid-template-columns: 1fr; }
     .split-row { grid-template-columns: 1fr; }
+    .app-screens { padding: 16px; }
+    .app-screens-head { display: block; }
+    .app-screens-flow { margin-top: 10px; }
+    .app-screen-grid {
+      display: flex;
+      gap: 12px;
+      margin: 0 -16px;
+      padding: 0 16px 4px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app-screen-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+    }
+    .qa-risk-brief { padding: 14px; }
+    .qa-risk-head { display: block; }
+    .qa-risk-decision { margin-top: 10px; }
+    .qa-gate-grid,
+    .risk-register { grid-template-columns: 1fr; }
+    .handoff-evidence { padding: 14px; }
+    .handoff-evidence-head { display: block; }
+    .handoff-ledger { margin-top: 10px; }
+    .handoff-flow,
+    .handoff-case { grid-template-columns: 1fr; }
+    .handoff-step:not(:last-child)::after {
+      top: auto;
+      right: 50%;
+      bottom: -13px;
+      transform: translateX(50%) rotate(90deg);
+    }
     table { display: block; overflow-x: auto; }
   }
 
   @media print {
     body { background: #fff; }
     .topnav, .nav { display: none; }
-    .panel { display: block !important; page-break-before: always; box-shadow: none; }
-    .panel:first-of-type { page-break-before: auto; }
+    .tab-panel { display: block !important; page-break-before: always; box-shadow: none; }
+    .tab-panel:first-of-type { page-break-before: auto; }
   }
 </style>
 <link rel="stylesheet" href="portfolio-redesign.css">
@@ -399,47 +847,90 @@
 <div class="wrap">
   <div class="topnav"><a href="index.html">← 返回作品集首頁</a></div>
 
-  <header class="hero">
-    <div class="eyebrow">PM Case Study · 工程專案轉產品判斷</div>
-    <h1>TOEIC Snack：用 AI 協作交付 MVP，並做出暫緩上架的產品判斷</h1>
-    <p class="lead">
-      這是一個把工程 side project 轉化成 PM case study 的產品實驗：
-      我如何從個人痛點出發，定義目標用戶與核心假設，做出可操作的 MVP，再根據驗證階段、營運成本與資源條件決定暫緩上架。
-      <strong>重點不是只做出一個 App，而是我如何用產品思維做取捨。</strong>
-    </p>
-
-    <div class="meta">
-      <div class="meta-card"><span class="label">產品狀態</span><span class="value">MVP Hold · 未上架</span></div>
-      <div class="meta-card"><span class="label">歷時 / 實際投入</span><span class="value">3.5 個月 / 約 25 天</span></div>
-      <div class="meta-card"><span class="label">交付成果</span><span class="value">13 screens · 172 tests</span></div>
-      <div class="meta-card"><span class="label">PM 核心訊息</span><span class="value">能交付，也能停下來</span></div>
+  <header>
+    <h1>TOEIC Snack PM Case Study</h1>
+    <div class="subtitle">AI 協作產品實驗｜從個人痛點到 MVP 交付與產品取捨</div>
+    <div class="pitch">
+      一個多益閱讀練習 App，如何從「碎片時間練閱讀」的個人痛點出發，收斂成限時練習 MVP，
+      再用實機試用、iOS QA、風險 register 與 AI agent 交付機制驗證產品假設。
+      這份 case 的重點不是只做出 App，而是<strong>如何定義問題、控管交付品質，並判斷何時不該急著上架</strong>。
+    </div>
+    <div class="meta-bar">
+      <div class="item"><span class="label">期間：</span><span class="value">3.5 個月 / 約 25 天實作</span></div>
+      <div class="item"><span class="label">角色：</span><span class="value">Solo PM / AI Agent Orchestrator</span></div>
+      <div class="item"><span class="label">交付：</span><span class="value">13 screens · 172 tests · iOS QA</span></div>
+      <div class="item"><span class="label">狀態：</span><span class="value">MVP demo 可用，商業驗證前暫緩上架</span></div>
+    </div>
+    <div class="tag-row">
+      <span class="tag">PM Case Study</span>
+      <span class="tag">AI Collaboration</span>
+      <span class="tag">React Native</span>
+      <span class="tag">NestJS</span>
+      <span class="tag">Supabase</span>
+      <span class="tag alt">MVP Scope</span>
+      <span class="tag alt">QA Risk Register</span>
     </div>
   </header>
 
-  <section class="case-hero pm-proof" aria-label="case proof">
-    <div class="proof-strip">
-      <div class="proof-item"><div class="value">13 screens</div><div class="label">MVP 範圍：完整練習、結果、歷史、設定與分級流程</div></div>
-      <div class="proof-item"><div class="value">172 tests</div><div class="label">品質門檻：用測試與 QA 支撐 AI agent 交付</div></div>
-      <div class="proof-item"><div class="value">5 testers</div><div class="label">早期驗證：小樣本試用，先確認方向與使用情境</div></div>
-      <div class="proof-item"><div class="value">MVP Hold</div><div class="label">產品取捨：未驗證付費、留存與題庫品質前暫緩上架</div></div>
-    </div>
-    <div class="case-actions" aria-label="related links">
-      <a class="primary-action" href="toeic-snack.html">查看完整交付紀錄</a>
-      <a class="secondary-action" href="index.html">返回作品集首頁</a>
+  <section class="case-hero" aria-label="case brief">
+    <div class="case-brief-grid">
+      <div class="brief-card highlight">
+        <div class="section-eyebrow">Case Brief</div>
+        <h3>這個案例展現的是 PM 視角的產品取捨，不只是技術交付。</h3>
+        <p>我從個人痛點出發收斂出 MVP 範圍，用實機 QA、handoff 文件與風險清單控管交付品質，並在商業假設未驗證前主動暫緩上架，把資源留給更高優先序的驗證。</p>
+      </div>
+      <div class="brief-card">
+        <h3>PM 能力證據</h3>
+        <ul>
+          <li>從個人痛點到 MVP 範圍的收斂</li>
+          <li>用實機 QA、handoff、風險清單控管交付品質</li>
+          <li>能透過 AI agent 完成需求拆解與技術交付</li>
+          <li>判斷何時不該急著上架，把資源留給更高優先序的驗證</li>
+        </ul>
+      </div>
     </div>
   </section>
 
+  <section class="app-screens" aria-labelledby="toeic-app-screens-title">
+    <div class="app-screens-head">
+      <div>
+        <h2 id="toeic-app-screens-title">MVP 實機畫面：閱讀練習核心循環</h2>
+        <p>這個 MVP 已能支援練習入口、限時作答、結果回饋與歷史追蹤等頁面與功能。</p>
+      </div>
+      <div class="app-screens-flow">入口 → 作答 → 結果 → 留存</div>
+    </div>
+    <div class="app-screen-grid" aria-label="TOEIC Snack MVP screens">
+      <figure class="app-screen-card">
+        <img src="assets/toeic-snack-screen-home.png" alt="TOEIC Snack 首頁，顯示等級、連續天數、正確率、今日目標與練習時間選擇" loading="lazy">
+        <figcaption><strong>練習入口</strong>用等級、連續天數、正確率與 5/10/15/20 分鐘選項，把碎片練習轉成可啟動的任務。</figcaption>
+      </figure>
+      <figure class="app-screen-card">
+        <img src="assets/toeic-snack-screen-practice.png" alt="TOEIC Snack 作答畫面，顯示 Part 5 題目、進度、計時器與四個選項" loading="lazy">
+        <figcaption><strong>限時作答</strong>保留 TOEIC Part、題目進度、倒數計時與選項狀態，對應閱讀速度訓練。</figcaption>
+      </figure>
+      <figure class="app-screen-card">
+        <img src="assets/toeic-snack-screen-result.png" alt="TOEIC Snack 結果畫面，顯示正確率、答題時間、時間銀行、連續天數與錯題回顧" loading="lazy">
+        <figcaption><strong>結果回饋</strong>把正確率、答題時間、連續天數與錯題回顧收束成一次練習的可行動回饋。</figcaption>
+      </figure>
+      <figure class="app-screen-card">
+        <img src="assets/toeic-snack-screen-history.png" alt="TOEIC Snack 歷史紀錄畫面，顯示總練習次數、本週練習、平均正確率與多筆練習紀錄" loading="lazy">
+        <figcaption><strong>歷史追蹤</strong>用 session 紀錄、週期篩選與平均正確率，支撐回訪與持續練習動機。</figcaption>
+      </figure>
+    </div>
+    
+  </section>
+
   <nav class="nav" role="tablist">
-    <button class="tab active" data-tab="summary">PM 摘要</button>
-    <button class="tab" data-tab="problem">問題與假設</button>
-    <button class="tab" data-tab="validation">驗證策略</button>
-    <button class="tab" data-tab="scope">範圍取捨</button>
-    <button class="tab" data-tab="delivery">交付流程</button>
-    <button class="tab" data-tab="next">下一步與聯絡</button>
+    <button class="tab-btn active" data-tab="summary">PM 摘要</button>
+    <button class="tab-btn" data-tab="problem">問題與假設</button>
+    <button class="tab-btn" data-tab="validation">驗證策略</button>
+    <button class="tab-btn" data-tab="scope">範圍取捨</button>
+    <button class="tab-btn" data-tab="delivery">交付流程</button>
+    <button class="tab-btn" data-tab="next">下一步與聯絡</button>
   </nav>
 
-  <section class="panel active" id="tab-summary">
-    <div class="panel-head">
+  <section class="tab-panel active" id="tab-summary">
+    <div class="panel-header">
       <div>
         <h2>PM 摘要</h2>
         <div class="desc">如果面試官只看 3 分鐘，我希望他看到這些判斷</div>
@@ -470,12 +961,12 @@
         <tr>
           <td><strong>問題定義</strong></td>
           <td>從個人痛點、論壇二手研究、競品掃描，收斂到「限時閱讀練習」這個切角。</td>
-          <td><span class="pill good">可展示</span></td>
+          <td><span class="pill good">可展現</span></td>
         </tr>
         <tr>
           <td><strong>範圍收斂</strong></td>
           <td>完成 MVP 後重新檢視 OAuth、徽章、通知等功能的驗證價值，後續專案已改成先列不做事項。</td>
-          <td><span class="pill good">可展示</span></td>
+          <td><span class="pill good">可展現</span></td>
         </tr>
         <tr>
           <td><strong>驗證意識</strong></td>
@@ -484,24 +975,24 @@
         </tr>
         <tr>
           <td><strong>風險判斷</strong></td>
-          <td>清楚列出下一階段要補的 outcome metrics、題庫品質、screen-level 測試與付費意願研究。</td>
-          <td><span class="pill good">可展示</span></td>
+          <td>清楚列出下一階段要補的成果指標、題庫品質、畫面層級測試與付費意願研究。</td>
+          <td><span class="pill good">可展現</span></td>
         </tr>
         <tr>
           <td><strong>技術協作</strong></td>
           <td>把需求拆到 AI agent 可執行，透過 handoff 文件、測試與 QA 控制交付品質。</td>
-          <td><span class="pill good">Technical PM 加分</span></td>
+          <td><span class="pill good">可展現</span></td>
         </tr>
       </tbody>
     </table>
 
     <div class="callout good">
-      <strong>本案的 PM 定位</strong>：完整走到 MVP 的產品實驗，呈現從模糊痛點到假設、再到 MVP 交付與下一步驗證節奏的完整決策鏈。
+      <strong>本案的 PM 定位</strong>：完整走到 MVP 的產品實驗，從模糊痛點、形成假設、MVP 交付到規劃下一步驗證的完整過程。
     </div>
   </section>
 
-  <section class="panel" id="tab-problem">
-    <div class="panel-head">
+  <section class="tab-panel" id="tab-problem">
+    <div class="panel-header">
       <div>
         <h2>問題與假設</h2>
         <div class="desc">把個人痛點轉成可驗證的產品問題，而不是直接開始做功能</div>
@@ -560,12 +1051,12 @@
 
     <div class="callout warn">
       <strong>分階段驗證</strong>：這些假設足以支持我先做 MVP 與小規模試用；若要上架與商業化，下一階段會補上付費意願、留存與題庫品質驗證。
-      這也是我選擇先 hold、而不是急著上架的主因。
+      這也是我選擇先完成 MVP、而不是急著上架的主因。
     </div>
   </section>
 
-  <section class="panel" id="tab-validation">
-    <div class="panel-head">
+  <section class="tab-panel" id="tab-validation">
+    <div class="panel-header">
       <div>
         <h2>驗證策略</h2>
         <div class="desc">先用低成本方式確認方向，再把更重的驗證留給下一階段</div>
@@ -605,15 +1096,84 @@
       </tbody>
     </table>
 
+    <h3>QA / 風險判斷</h3>
+    <div class="qa-risk-brief">
+      <div class="qa-risk-head">
+        <div>
+          <h4>不是只有「測試通過」，而是確認使用者流程真的走得完</h4>
+          <p>QA report 把技術綠燈和產品可上架拆開看：自動化測試可以通過，但 mobile guest flow、placement、screen coverage 和 production config 仍會影響是否能交給外部使用者。</p>
+        </div>
+        <div class="qa-risk-decision">Demo 可用，上架先暫緩</div>
+      </div>
+
+      <div class="qa-gate-grid" aria-label="TOEIC Snack QA evidence gates">
+        <div class="qa-gate">
+          <span class="label">Build Gate</span>
+          <strong>TypeScript / Jest 通過</strong>
+          <span>frontend 23 suites / 172 tests、backend 2 suites / 9 tests，作為 release gate 證據。</span>
+        </div>
+        <div class="qa-gate">
+          <span class="label">Mobile Gate</span>
+          <strong>iOS Result retest 通過</strong>
+          <span>Railway deploy 後，guest submit 重新測到 Result，HTTP log 留下 200。</span>
+        </div>
+        <div class="qa-gate">
+          <span class="label">Issue Gate</span>
+          <strong>11 項 QA findings</strong>
+          <span>不是只看完成度，而是把 P0/P1/P2 風險拆成可關閉的迭代。</span>
+        </div>
+        <div class="qa-gate">
+          <span class="label">Launch Gate</span>
+          <strong>仍不急著上架</strong>
+          <span>核心 demo 已可用，但 placement、screen coverage、production trust 仍需補齊。</span>
+        </div>
+      </div>
+
+      <div class="risk-register" aria-label="TOEIC Snack PM risk register">
+        <div class="risk-card">
+          <div class="risk-card-top">
+            <h5>核心練習流程中斷</h5>
+            <span class="pill good">已關閉</span>
+          </div>
+          <p>guest mode 曾能開始練習，但 submit 被 JWT guard 擋住，使用者答完後回到 Home 而不是 Result。</p>
+          <div class="risk-next">決策：先修到「選題 → 練習 → 檢討」可完整走通，再談上架。</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-top">
+            <h5>新手難度分級不可信</h5>
+            <span class="pill warn">未關閉</span>
+          </div>
+          <p>guest / first-time user 仍可能繞過 placement，直接預設 Green level，會讓個人化價值被削弱。</p>
+          <div class="risk-next">下一步：明確 placement 或 skip policy，不讓系統默默預設。</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-top">
+            <h5>P0 畫面回歸保護不足</h5>
+            <span class="pill warn">未關閉</span>
+          </div>
+          <p>Jest 通過不代表 Home、Practice、Result、Placement 的使用者路徑都有 screen-level coverage。</p>
+          <div class="risk-next">下一步：補 P0 screens 測試，讓壞掉的核心 navigation 會擋住 release。</div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-top">
+            <h5>Production trust 尚未完整</h5>
+            <span class="pill info">上架前 gate</span>
+          </div>
+          <p>legal link、Expo scheme、Railway token、OAuth config 等項目需在正式發佈前轉成檢查清單。</p>
+          <div class="risk-next">下一步：把 config placeholder 與 CI/CD secret 變成 no-ship gate。</div>
+        </div>
+      </div>
+    </div>
+
     <h3>下一階段要補強的驗證</h3>
     <div class="grid-2">
       <div class="card">
         <h4>付費意願</h4>
-        <p>規劃用 pricing test、landing page conversion、訪談或預購，確認使用者是否願意付費。</p>
+        <p>規劃用價格測試、登錄頁轉換率、訪談或預購，確認使用者是否願意付費。</p>
       </div>
       <div class="card">
         <h4>留存</h4>
-        <p>接上 DAU、retention、平均 session length、連續使用天數等 outcome metrics。</p>
+        <p>接上 DAU、留存、平均使用時長、連續使用天數等成果指標。</p>
       </div>
       <div class="card">
         <h4>題庫品質</h4>
@@ -626,13 +1186,13 @@
     </div>
 
     <div class="callout good">
-      <strong>暫緩上架是產品節奏選擇</strong>：
+      <strong>暫緩上架是產品時程的主動取捨</strong>：
       MVP 已能展示核心流程，但在商業假設完成驗證前，我選擇先保留彈性，把資源留給更高優先序的驗證與求職作品整理。
     </div>
   </section>
 
-  <section class="panel" id="tab-scope">
-    <div class="panel-head">
+  <section class="tab-panel" id="tab-scope">
+    <div class="panel-header">
       <div>
         <h2>範圍取捨</h2>
         <div class="desc">完成 MVP 後，我重新檢視哪些功能真正服務核心假設</div>
@@ -674,7 +1234,7 @@
         <tr>
           <td><strong>徽章與通知</strong></td>
           <td>做 achievements 與 notification scheduling。</td>
-          <td><span class="pill warn">延後</span> 留存驗證前，先不要過早做 engagement 包裝。</td>
+          <td><span class="pill warn">延後</span> 留存驗證前，先不要過早做互動黏著包裝。</td>
         </tr>
         <tr>
           <td><strong>離線佇列</strong></td>
@@ -697,8 +1257,8 @@
     </div>
   </section>
 
-  <section class="panel" id="tab-delivery">
-    <div class="panel-head">
+  <section class="tab-panel" id="tab-delivery">
+    <div class="panel-header">
       <div>
         <h2>交付流程</h2>
         <div class="desc">Solo + 多 agent 的交付方式，這段經驗也是我面試 AI 公司的差異化武器</div>
@@ -765,22 +1325,69 @@
       </tbody>
     </table>
 
-    <h3>配套管線：多模型 AI 出題</h3>
-    <p>
-      App 的題目來自另一個獨立 repo <code>TOEIC_Question_Generator</code>。
-      這是我第二個多 agent 設計：用 Sonnet 生成題目，再用 Haiku 做驗證與核對，通過後同步寫進 Supabase，已實際產出數百題。
-    </p>
-    <div class="grid-2">
-      <div class="card">
-        <h4>為什麼分兩個模型</h4>
-        <p>生成模型負責創造力，驗證模型負責規則與一致性。讓便宜模型做檢查，可以把單題成本壓低，並把錯誤攔在寫進資料庫之前。</p>
+    <h3>我設計的交接機制</h3>
+    <div class="handoff-evidence">
+      <div class="handoff-evidence-head">
+        <div>
+          <h4>AI 協作閉環：把 agent 產出變成可審查交付</h4>
+          <p>這套流程不是「請 AI 寫 code」，而是用規格、交接文件、測試與 QA 證據把任務切成可追溯的最小交付單元。</p>
+        </div>
+        <div class="handoff-ledger">29 份歷史交接 + 最新 closeout</div>
       </div>
-      <div class="card">
-        <h4>為什麼拆成獨立 repo</h4>
-        <p>內容生產 pipeline 與 App runtime 解耦，schema 變動、模型替換、出題策略調整都不會波及 App 部署。這是刻意的 PM 架構決策。</p>
+
+      <div class="handoff-flow">
+        <div class="handoff-step">
+          <span class="kicker">PM / Spec</span>
+          <strong>定義問題與驗收條件</strong>
+          <span>用 PRD、plan.md、wireframe 與測試清單，先界定 agent 應該交付什麼。</span>
+        </div>
+        <div class="handoff-step">
+          <span class="kicker">Claude Code</span>
+          <strong>拆邏輯、型別與測試</strong>
+          <span>負責 hooks、stores、services、interfaces 與邏輯測試，產出 HANDOFF-CC。</span>
+        </div>
+        <div class="handoff-step">
+          <span class="kicker">Gemini</span>
+          <strong>接手 UI 與 Git 流程</strong>
+          <span>依設計系統與 handoff 範圍實作畫面，執行測試、commit、merge、push。</span>
+        </div>
+        <div class="handoff-step">
+          <span class="kicker">Human Review</span>
+          <strong>QA、複測、決定是否關閉</strong>
+          <span>用真機 QA、測試結果與部署狀態決定任務完成、回補文件或重新開 issue。</span>
+        </div>
+      </div>
+
+      <div class="handoff-case">
+        <div class="handoff-case-card">
+          <h5>實例：QA-011 + P0 Result Retest</h5>
+          <p>最新 handoff 記錄了 Part 6/7 長文題在手機上選項藏在 fold 下方的問題，以及 guest submit 部署後重測到 Result 的閉環。</p>
+          <ul>
+            <li>問題：未選答案時仍可能前進，使用者不清楚要往下滑。</li>
+            <li>修正：加入 footer hint，並在未選答案前停用 Next / Submit。</li>
+            <li>交付：補 PracticeScreen screen-level regression tests。</li>
+          </ul>
+        </div>
+        <div class="handoff-case-card">
+          <h5>驗收訊號</h5>
+          <ul>
+            <li>PracticeScreen test、screen tests、TypeScript check 皆通過。</li>
+            <li>該次 closeout 完整 Jest run 通過，並保留測試紀錄。</li>
+            <li>iOS Simulator visual retest 覆蓋 Part 5、Part 6/7 scroll-to-options、Submit guard 與 Result。</li>
+            <li>Railway deploy 後 P0 Result retest 通過，留下 HTTP 200 與畫面證據。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="handoff-source-row" aria-label="AI collaboration evidence sources">
+        <span class="handoff-source">CLAUDE.md</span>
+        <span class="handoff-source">GEMINI.md</span>
+        <span class="handoff-source">HANDOFF-CC.md</span>
+        <span class="handoff-source">STATUS.yml</span>
+        <span class="handoff-source">.handoffs/</span>
       </div>
     </div>
-    <h3>我設計的交接機制</h3>
+
     <div class="grid-2">
       <div class="card">
         <h4>交接文件</h4>
@@ -800,10 +1407,26 @@
       </div>
     </div>
 
+    <h3>配套管線：多模型 AI 出題</h3>
+    <p>
+      App 的題目來自另一個獨立 repo <code>TOEIC_Question_Generator</code>。
+      這是我第二個多 agent 設計：用 Sonnet 生成題目，再用 Haiku 做驗證與核對，通過後同步寫進 Supabase，已實際產出數百題。
+    </p>
+    <div class="grid-2">
+      <div class="card">
+        <h4>為什麼分兩個模型</h4>
+        <p>生成模型負責創造力，驗證模型負責規則與一致性。讓便宜模型做檢查，可以把單題成本壓低，並把錯誤攔在寫進資料庫之前。</p>
+      </div>
+      <div class="card">
+        <h4>為什麼拆成獨立 repo</h4>
+        <p>內容生產 pipeline 與 App runtime 解耦，schema 變動、模型替換、出題策略調整都不會波及 App 部署。這是刻意的 PM 架構決策。</p>
+      </div>
+    </div>
+
   </section>
 
-  <section class="panel" id="tab-next">
-    <div class="panel-head">
+  <section class="tab-panel" id="tab-next">
+    <div class="panel-header">
       <div>
         <h2>下一步與聯絡</h2>
         <div class="desc">如果這份產品要繼續推進，下一階段會做的事</div>
@@ -812,8 +1435,7 @@
 
     <p>
       MVP 已展示核心練習迴圈與 AI 出題管線的可行性。
-      下一階段的優先序不是再加功能，而是把<strong>付費意願、留存指標、題庫品質、外部用戶試用</strong>這四件事的證據補齊。
-      在這之前選擇先 hold，把資源留給更高優先序的工作。
+      下一階段的優先序不是再加功能，而是把<strong>付費意願、留存指標、題庫品質、外部用戶試用</strong>這四件事的證據補齊，把資源留給更高優先序的工作。
     </p>
 
     <h3>聯絡方式</h3>
@@ -823,15 +1445,15 @@
     </p>
   </section>
 
-  <footer>TOEIC Snack PM Case Study · 新版定位稿，不覆蓋原始工程導向版本</footer>
+  <footer>TOEIC Snack PM Case Study · 內容均基於真實的 git 紀錄與 QA 文件</footer>
 </div>
 
 <script>
-  document.querySelectorAll('.tab').forEach((button) => {
+  document.querySelectorAll('.tab-btn').forEach((button) => {
     button.addEventListener('click', () => {
       const tab = button.dataset.tab;
-      document.querySelectorAll('.tab').forEach((item) => item.classList.remove('active'));
-      document.querySelectorAll('.panel').forEach((panel) => panel.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach((item) => item.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach((panel) => panel.classList.remove('active'));
       button.classList.add('active');
       document.getElementById('tab-' + tab).classList.add('active');
     });
