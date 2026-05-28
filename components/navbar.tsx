@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "首頁", href: "/" },
-  { name: "TOEIC Snack", href: "/cases/toeic-snack" },
-  { name: "Insurance Bot", href: "/cases/insurance-bot" },
   { name: "良野 7-Eleven", href: "/cases/liangye-7eleven" },
+  { name: "Insurance Bot", href: "/cases/insurance-bot" },
+  { name: "TOEIC Snack", href: "/cases/toeic-snack" },
 ];
 
 export function Navbar() {
@@ -20,7 +20,7 @@ export function Navbar() {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-primary">
-            <span className="bg-gradient-to-r from-ai-purple to-trust-blue bg-clip-text text-transparent">Josh Kuei</span>
+            <span className="text-ai-purple">Josh Kuei</span>
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">
@@ -46,7 +46,7 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-4">
           <Link
-            href="mailto:kuei790802@me.com"
+            href="mailto:kuei790802@gmail.com"
             className="hidden sm:inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
           >
             聯絡我

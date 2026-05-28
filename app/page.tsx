@@ -70,7 +70,7 @@ export default function Home() {
                 PM / Business Analyst Portfolio
               </div>
               <h1 className="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-slate-900">
-                歸維邦 <span className="bg-gradient-to-r from-ai-purple to-trust-blue bg-clip-text text-transparent">Josh Kuei</span>
+                歸維邦 <span className="text-ai-purple">Josh Kuei</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
                 Operations-driven PM / BA. 我把通路營運與跨部門協調經驗，轉化成可追蹤、可溝通、可交付的數位專案。
@@ -84,9 +84,9 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100">
-              <h2 className="font-heading text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
+              <h3 className="font-heading text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-ai-purple" /> 快速定位
-              </h2>
+              </h3>
               <ul className="space-y-4">
                 {[
                   "9 年以上客戶溝通、通路營運與跨部門協調經驗",
@@ -103,9 +103,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-ai-purple/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-trust-blue/5 rounded-full blur-3xl" />
       </section>
 
       {/* Proof Grid */}
@@ -246,13 +243,9 @@ export default function Home() {
             真正難的不是知道要做什麼，而是知道什麼時候該停。良野、保險 Bot、TOEIC Snack 都在呈現同一種紀律：有意識地選擇不做某些事，讓專案能被交付。
           </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          {["數位專案 PM", "Business Analyst", "產品營運", "系統導入 PM", "AI 應用 PM"].map((role) => (
-            <div key={role} className="px-6 py-3 rounded-full bg-white shadow-sm border border-slate-200 text-sm font-bold text-slate-700">
-              {role}
-            </div>
-          ))}
-        </div>
+        <p className="text-base text-slate-600 max-w-2xl mx-auto">
+          我能勝任的 role：數位專案 PM、Business Analyst、產品營運、系統導入 PM、AI 應用 PM。
+        </p>
       </section>
     </div>
   );
