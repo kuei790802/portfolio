@@ -36,7 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     li: ({ children }) => <li className="pl-1">{children}</li>,
     strong: ({ children }) => <strong className="font-bold text-slate-900">{children}</strong>,
     a: ({ children, href }) => (
-      <a href={href} className="text-ai-purple-700 underline underline-offset-4 hover:text-ai-purple-900" target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}>
+      <a href={href} className="text-brand-teal-700 underline underline-offset-4 hover:text-brand-teal-900" target={href?.startsWith("http") ? "_blank" : undefined} rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}>
         {children}
       </a>
     ),

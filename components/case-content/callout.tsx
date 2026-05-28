@@ -20,7 +20,7 @@ export function Callout({ children, variant = "default", title }: CalloutProps) 
     default: "bg-blue-50 border-blue-200 text-blue-800",
     warn: "bg-amber-50 border-amber-200 text-amber-800",
     danger: "bg-red-50 border-red-200 text-red-800",
-    success: "bg-emerald-50 border-emerald-200 text-emerald-800",
+    success: "bg-brand-forest-50 border-brand-forest-200 text-brand-forest-800",
   };
 
   return (

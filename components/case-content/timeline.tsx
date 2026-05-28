@@ -13,11 +13,11 @@ interface TimelineProps {
 
 export function Timeline({ items, className }: TimelineProps) {
   return (
-    <ol className={cn("my-6 relative border-l-2 border-ai-purple-100 pl-6 space-y-6", className)}>
+    <ol className={cn("my-6 relative border-l-2 border-brand-teal-100 pl-6 space-y-6", className)}>
       {items.map((item, i) => (
         <li key={i} className="relative">
-          <span className="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-white border-2 border-ai-purple" />
-          <div className="text-xs font-bold uppercase tracking-[0.18em] text-ai-purple-700">
+          <span className="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-white border-2 border-brand-teal" />
+          <div className="text-xs font-bold uppercase tracking-[0.18em] text-brand-teal-700">
             {item.mark}
           </div>
           <div className="mt-1 font-heading text-base font-bold text-slate-900">

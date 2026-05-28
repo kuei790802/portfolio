@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="font-heading text-lg font-bold tracking-tight text-primary">
-              <span className="text-ai-purple">Josh Kuei</span>
+              <span className="text-brand-teal">Josh Kuei</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
               Operations-driven PM / BA · 9 年通路與跨部門協調經驗，搭配 AI 協作工作流交付數位專案。

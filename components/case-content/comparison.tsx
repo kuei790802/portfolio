@@ -20,14 +20,14 @@ function Column({ column, label }: { column: ComparisonColumn; label?: string })
     <div
       className={cn(
         "rounded-xl border p-6",
-        isAccent ? "bg-ai-purple-50 border-ai-purple-200" : "bg-slate-50 border-slate-200",
+        isAccent ? "bg-brand-teal-50 border-brand-teal-200" : "bg-slate-50 border-slate-200",
       )}
     >
       {label && (
         <div
           className={cn(
             "text-xs font-bold uppercase tracking-[0.2em] mb-2",
-            isAccent ? "text-ai-purple-700" : "text-slate-500",
+            isAccent ? "text-brand-teal-700" : "text-slate-500",
           )}
         >
           {label}
@@ -36,7 +36,7 @@ function Column({ column, label }: { column: ComparisonColumn; label?: string })
       <div
         className={cn(
           "font-heading text-lg font-bold mb-4",
-          isAccent ? "text-ai-purple-900" : "text-slate-900",
+          isAccent ? "text-brand-teal-900" : "text-slate-900",
         )}
       >
         {column.title}
@@ -44,7 +44,7 @@ function Column({ column, label }: { column: ComparisonColumn; label?: string })
       <ul className="space-y-2 text-sm text-slate-600 leading-relaxed">
         {column.items.map((item, i) => (
           <li key={i} className="flex gap-2">
-            <span className={cn("mt-2 h-1 w-1 rounded-full shrink-0", isAccent ? "bg-ai-purple" : "bg-slate-400")} />
+            <span className={cn("mt-2 h-1 w-1 rounded-full shrink-0", isAccent ? "bg-brand-teal" : "bg-slate-400")} />
             <span>{item}</span>
           </li>
         ))}

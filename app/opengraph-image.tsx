@@ -27,7 +27,7 @@ export default function OpengraphImage() {
             gap: "16px",
             fontSize: "20px",
             fontWeight: 700,
-            color: "#6366f1",
+            color: "#0f766e",
             letterSpacing: "0.2em",
             textTransform: "uppercase",
           }}
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
             }}
           >
             <span style={{ display: "flex" }}>歸維邦</span>
-            <span style={{ display: "flex", color: "#6366f1" }}>Josh Kuei</span>
+            <span style={{ display: "flex", color: "#0f766e" }}>Josh Kuei</span>
           </div>
           <div
             style={{

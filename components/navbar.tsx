@@ -31,7 +31,7 @@ export function Navbar() {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-primary">
-            <span className="text-ai-purple">Josh Kuei</span>
+            <span className="text-brand-teal">Josh Kuei</span>
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-6">
@@ -48,7 +48,7 @@ export function Navbar() {
               {pathname === item.href && (
                 <motion.div
                   layoutId="navbar-indicator"
-                  className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-ai-purple"
+                  className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-brand-teal"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -65,13 +65,13 @@ export function Navbar() {
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger
               aria-label="開啟選單"
-              className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ai-purple"
+              className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             >
               <Menu className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-72 sm:w-80 flex flex-col">
               <SheetHeader>
-                <SheetTitle className="font-heading text-lg font-bold text-ai-purple text-left">
+                <SheetTitle className="font-heading text-lg font-bold text-brand-teal text-left">
                   Josh Kuei
                 </SheetTitle>
               </SheetHeader>
@@ -84,7 +84,7 @@ export function Navbar() {
                     className={cn(
                       "rounded-md px-3 py-3 text-base font-medium transition-colors",
                       pathname === item.href
-                        ? "bg-ai-purple/10 text-ai-purple"
+                        ? "bg-brand-teal/10 text-brand-teal"
                         : "text-slate-700 hover:bg-slate-100"
                     )}
                   >

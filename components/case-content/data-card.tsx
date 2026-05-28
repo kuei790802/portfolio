@@ -13,14 +13,14 @@ export function DataCard({ value, label, hint, variant = "default" }: DataCardPr
       className={cn(
         "rounded-xl border p-6 flex flex-col gap-2 transition-colors",
         variant === "accent"
-          ? "bg-ai-purple-50 border-ai-purple-200"
+          ? "bg-brand-teal-50 border-brand-teal-200"
           : "bg-white border-slate-200 hover:bg-slate-50",
       )}
     >
       <div
         className={cn(
           "font-heading text-3xl font-extrabold tracking-tight",
-          variant === "accent" ? "text-ai-purple-700" : "text-slate-900",
+          variant === "accent" ? "text-brand-teal-700" : "text-slate-900",
         )}
       >
         {value}

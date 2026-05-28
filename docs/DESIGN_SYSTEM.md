@@ -15,17 +15,20 @@
 所有顏色定義於 `app/globals.css` 的 `:root`，並透過 `@theme inline` 暴露成 Tailwind 4 utility。
 
 ### Brand accent
-- `ai-purple` 主：`#6366f1`，scale 50/100/200/500/600/700/900
-  - 場景：CTA、品牌字、focus ring、重要 badge、AI Multi-Agent 賣點
-- `trust-blue` 副：`#0ea5e9`，scale 同上
-  - 場景：proof point、互補 gradient、secondary CTA
+- `brand-teal` 主：`#0f766e`（Tailwind teal-700），scale 50/100/200/500/600/700/800/900
+  - 場景：CTA、品牌字、navbar active、focus ring、case eyebrow、Comparison after 欄、PullQuote 左條
+  - 「持續性品牌」訊號:整個 site 永遠看得到的 teal accent
+- `brand-forest` 副：`#15803d`（Tailwind green-700），scale 同上
+  - 場景：「我交付了」標記:success Callout、可展現 Badge、DecisionLog 採納中、PM 能力證據 icon、Persona eyebrow、CheckCircle2
+  - 「事件性肯定」訊號:出現在內容區的證據與成就
+- 兩色都在綠族（teal 178° + green 143°），分工原則：teal 用於持續品牌元素，forest 用於內容內的證據標記，避免兩色在同一個 card 內並列
 
 ### Neutral surface
 - 沿用 shadcn base-nova 預設：`background` 純白 / `foreground` 近黑 / `slate-50 至 slate-900` 漸層
 - 灰階主導，accent 點綴比例約 5%（不超過 10%）
 
 ### Semantic
-- success：`emerald-100 / emerald-700`（Callout success variant、可展現能力 badge）
+- success：`brand-forest-100 / brand-forest-700`（Callout success variant、可展現能力 badge）。Semantic success 跟 brand-forest 共用同一色,簡化系統
 - warn：`amber-100 / amber-700`
 - danger：`red-100 / red-700`
 - info：`blue-50 / blue-800`
@@ -95,7 +98,7 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
 - [ ] 所有 `<Image>` 有 `alt`，裝飾性圖用 `alt=""`
 - [ ] icon-only 按鈕加 `aria-label`
 - [ ] heading 順序 h1 → h2 → h3，不跳級
-- [ ] focus-visible 用 ai-purple outline（globals.css 已設）
+- [ ] focus-visible 用 brand-teal outline（globals.css 已設）
 - [ ] 互動元件 keyboard tab 可達
 - [ ] 不靠顏色單獨傳遞訊息（badge 同時用文字 + 顏色）
 - [ ] mobile 寬度 375px 無橫向捲動
@@ -120,7 +123,7 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
   rows={[["問題定義", "...", <Badge>可展現</Badge>]]}
 />
 ```
-- 第三欄常放 Badge（emerald = 可展現、blue = 早期驗證、amber = 持續強化）
+- 第三欄常放 Badge（brand-forest = 可展現、blue = 早期驗證、amber = 持續強化）
 
 ### DataCard（待實作）
 ```mdx
@@ -158,7 +161,7 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
   after={{ title: "拉式策略", items: ["...", "..."] }}
 />
 ```
-- 兩欄對比，before 灰、after ai-purple accent
+- 兩欄對比，before 灰、after brand-teal accent
 - 用於良野策略對比、PRD v1 vs v2 校準
 
 ### PersonaCard（待實作）
@@ -192,7 +195,7 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
 別問用戶他們會不會用，問他們現在怎麼解決這件事。
 </PullQuote>
 ```
-- 大字引述、左 ai-purple 4px 邊
+- 大字引述、左 brand-teal 4px 邊
 - 用於 case study 反思區
 
 ### EvidenceGrid（可選，視需要）

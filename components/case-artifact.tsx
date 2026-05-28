@@ -79,7 +79,7 @@ export function CaseArtifact({ title, subtitle, flow, layout, cols = 4, aspect =
               </div>
             )}
             {flow && (
-              <div className="font-heading text-sm font-bold text-ai-purple-700 tracking-wider whitespace-nowrap">
+              <div className="font-heading text-sm font-bold text-brand-teal-700 tracking-wider whitespace-nowrap">
                 {flow}
               </div>
             )}

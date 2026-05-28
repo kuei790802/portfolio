@@ -33,7 +33,7 @@ const cases = [
       { label: "證據", text: "3 Persona、10 功能、3 ADR、資費與市場估算。" },
     ],
     tags: ["PRD", "ADR", "The Mom Test"],
-    color: "from-emerald-500/10 to-emerald-600/10",
+    color: "from-brand-forest-500/10 to-brand-forest-600/10",
   },
   {
     slug: "toeic-snack",
@@ -47,7 +47,7 @@ const cases = [
       { label: "證據", text: "13 screens、172 tests、0 TS errors、QA bug flow。" },
     ],
     tags: ["AI Agent", "TDD", "QA"],
-    color: "from-ai-purple/10 to-ai-purple/20",
+    color: "from-brand-teal/10 to-brand-teal/20",
   },
 ];
 
@@ -66,11 +66,11 @@ export default function Home() {
         <div className="container relative z-10 px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center rounded-full border border-ai-purple/30 bg-ai-purple/5 px-3 py-1 text-sm font-medium text-ai-purple">
+              <div className="inline-flex items-center rounded-full border border-brand-teal/30 bg-brand-teal/5 px-3 py-1 text-sm font-medium text-brand-teal">
                 PM / Business Analyst Portfolio
               </div>
               <h1 className="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-slate-900">
-                歸維邦 <span className="text-ai-purple">Josh Kuei</span>
+                歸維邦 <span className="text-brand-teal">Josh Kuei</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
                 Operations-driven PM / BA. 我把通路營運與跨部門協調經驗，轉化成可追蹤、可溝通、可交付的數位專案。
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100">
               <h3 className="font-heading text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-ai-purple" /> 快速定位
+                <Zap className="w-5 h-5 text-brand-teal" /> 快速定位
               </h3>
               <ul className="space-y-4">
                 {[
@@ -95,7 +95,7 @@ export default function Home() {
                   "能運用 AI 工具拆任務、審查成果並推進產品原型",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-brand-forest-500 shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -110,7 +110,7 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {highlights.map((item, i) => (
             <div key={i} className="p-6 rounded-xl border border-slate-100 bg-white shadow-sm flex flex-col items-center text-center gap-3">
-              <item.icon className="w-6 h-6 text-ai-purple" />
+              <item.icon className="w-6 h-6 text-brand-teal" />
               <div>
                 <div className="text-2xl font-bold text-slate-900">{item.value}</div>
                 <div className="text-xs text-slate-500 font-medium uppercase tracking-wider">{item.label}</div>
@@ -123,7 +123,7 @@ export default function Home() {
       {/* Case Studies Section */}
       <section className="container px-4 space-y-12">
         <div className="max-w-3xl space-y-4">
-          <div className="text-sm font-bold uppercase tracking-[0.2em] text-ai-purple">Selected Case Studies</div>
+          <div className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal">Selected Case Studies</div>
           <h2 className="font-heading text-3xl font-bold text-slate-900">三個可深入閱讀的 PM Case Study</h2>
           <p className="text-lg text-slate-600">
             每個案例都不是只展示「做了什麼」，而是展示我如何判斷問題、設定範圍、協調資源，並在不確定中做取捨。
@@ -137,9 +137,9 @@ export default function Home() {
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{item.index}</span>
-                    <Badge variant="outline" className="bg-white/50 backdrop-blur-sm border-ai-purple/20 text-ai-purple text-[10px] font-bold">完整個案</Badge>
+                    <Badge variant="outline" className="bg-white/50 backdrop-blur-sm border-brand-teal/20 text-brand-teal text-[10px] font-bold">完整個案</Badge>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-ai-purple transition-colors">{item.title}</CardTitle>
+                  <CardTitle className="text-xl group-hover:text-brand-teal transition-colors">{item.title}</CardTitle>
                   <CardDescription className="font-medium text-slate-600">角色：{item.role}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -159,7 +159,7 @@ export default function Home() {
                       <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-white/40 border border-slate-200 text-slate-600 font-medium">{tag}</span>
                     ))}
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-bold text-ai-purple group-hover:translate-x-1 transition-transform">
+                  <div className="flex items-center gap-2 text-sm font-bold text-brand-teal group-hover:translate-x-1 transition-transform">
                     查看完整個案 <ArrowRight className="w-4 h-4" />
                   </div>
                 </CardFooter>
@@ -173,7 +173,7 @@ export default function Home() {
       <section className="bg-slate-900 py-24 text-white">
         <div className="container px-4 space-y-16">
           <div className="max-w-3xl space-y-4">
-            <div className="text-sm font-bold uppercase tracking-[0.2em] text-trust-blue">Capability Matrix</div>
+            <div className="text-sm font-bold uppercase tracking-[0.2em] text-brand-forest">Capability Matrix</div>
             <h2 className="font-heading text-3xl font-bold">我想讓招募方快速看到的能力</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -186,7 +186,7 @@ export default function Home() {
               { title: "教育訓練與轉譯", desc: "曾任政府創業課程講師，能把政策、技術或流程轉成可理解的教材與溝通內容。" },
             ].map((cap, i) => (
               <div key={i} className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
-                <h3 className="font-heading text-lg font-bold mb-3 group-hover:text-trust-blue transition-colors">{cap.title}</h3>
+                <h3 className="font-heading text-lg font-bold mb-3 group-hover:text-brand-forest transition-colors">{cap.title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{cap.desc}</p>
               </div>
             ))}
@@ -197,7 +197,7 @@ export default function Home() {
       {/* Instructor Section */}
       <section className="container px-4 space-y-12">
         <div className="max-w-3xl space-y-4">
-          <div className="text-sm font-bold uppercase tracking-[0.2em] text-ai-purple">Facilitation</div>
+          <div className="text-sm font-bold uppercase tracking-[0.2em] text-brand-teal">Facilitation</div>
           <h2 className="font-heading text-3xl font-bold text-slate-900">講師經驗：把政策轉成行動方案</h2>
         </div>
         <Card className="overflow-hidden border-slate-200 shadow-xl shadow-slate-200/50">
@@ -219,15 +219,15 @@ export default function Home() {
               </div>
               <div className="pt-6 border-t border-slate-100">
                 <div className="flex items-center gap-3 mb-4">
-                  <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-none font-bold">官方紀錄</Badge>
+                  <Badge className="bg-brand-forest-100 text-brand-forest-700 hover:bg-brand-forest-100 border-none font-bold">官方紀錄</Badge>
                   <span className="text-sm font-bold text-slate-900">政府創業課程授課紀錄</span>
                 </div>
                 <p className="text-sm text-slate-500 mb-6 leading-relaxed">
                   課程主題包含創業準備、商機選擇、產業趨勢、風險評估、適性評量、政府資源運用與貸款說明。
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link href="/src/微型創業鳳凰-課程查詢.png" target="_blank" className="text-sm font-bold text-ai-purple hover:underline underline-offset-4">微型創業鳳凰查詢 →</Link>
-                  <Link href="/src/屏東縣政府全球資訊網-活動行事曆.pdf" target="_blank" className="text-sm font-bold text-ai-purple hover:underline underline-offset-4">縣政府行事曆 →</Link>
+                  <Link href="/src/微型創業鳳凰-課程查詢.png" target="_blank" className="text-sm font-bold text-brand-teal hover:underline underline-offset-4">微型創業鳳凰查詢 →</Link>
+                  <Link href="/src/屏東縣政府全球資訊網-活動行事曆.pdf" target="_blank" className="text-sm font-bold text-brand-teal hover:underline underline-offset-4">縣政府行事曆 →</Link>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
       </section>
 
       {/* Target Roles & Final Note */}
-      <section className="container px-4 py-20 bg-ai-purple/5 rounded-3xl text-center space-y-12">
+      <section className="container px-4 py-20 bg-brand-teal/5 rounded-3xl text-center space-y-12">
         <div className="max-w-2xl mx-auto space-y-4">
           <h2 className="font-heading text-3xl font-bold text-slate-900">我的 PM 主軸</h2>
           <p className="text-xl text-slate-600 font-medium">

@@ -55,12 +55,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
               <h1 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
                 {caseStudy.title}
               </h1>
-              <p className="text-xl text-ai-purple font-bold tracking-tight">
+              <p className="text-xl text-brand-teal font-bold tracking-tight">
                 {caseStudy.subtitle}
               </p>
             </div>
             
-            <div className="p-6 bg-white rounded-xl border border-ai-purple/20 shadow-sm border-l-4 border-l-ai-purple">
+            <div className="p-6 bg-white rounded-xl border border-brand-teal/20 shadow-sm border-l-4 border-l-brand-teal">
               <p className="text-slate-600 leading-relaxed italic">
                 {caseStudy.pitch}
               </p>
@@ -94,7 +94,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           <Card className="lg:col-span-2 border-slate-200 shadow-sm bg-gradient-to-br from-white to-slate-50">
             <CardHeader>
-              <div className="text-xs font-bold uppercase tracking-[0.2em] text-ai-purple mb-2">Case Brief</div>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-teal mb-2">Case Brief</div>
               <CardTitle className="text-2xl font-bold text-slate-900 leading-snug">
                 {caseStudy.hero.title}
               </CardTitle>
@@ -108,14 +108,14 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <Card className="border-slate-200 shadow-sm bg-slate-900 text-white">
             <CardHeader>
               <CardTitle className="text-lg font-bold flex items-center gap-2">
-                <Zap className="w-5 h-5 text-trust-blue" /> PM 能力證據
+                <Zap className="w-5 h-5 text-brand-forest" /> PM 能力證據
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-4">
                 {caseStudy.hero.points.map((point, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-trust-blue shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-brand-forest shrink-0 mt-0.5" />
                     {point}
                   </li>
                 ))}
@@ -134,7 +134,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <TabsTrigger 
                   key={tab.id} 
                   value={tab.id}
-                  className="px-6 py-2.5 text-xs font-bold uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-ai-purple data-[state=active]:shadow-sm transition-all"
+                  className="px-6 py-2.5 text-xs font-bold uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-brand-teal data-[state=active]:shadow-sm transition-all"
                 >
                   {tab.label}
                 </TabsTrigger>

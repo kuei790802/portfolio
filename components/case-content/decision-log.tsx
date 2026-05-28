@@ -10,7 +10,7 @@ interface DecisionLogProps {
 }
 
 const statusVariant: Record<string, string> = {
-  採納中: "bg-emerald-100 text-emerald-700 border-emerald-200",
+  採納中: "bg-brand-forest-100 text-brand-forest-700 border-brand-forest-200",
   觀察中: "bg-amber-100 text-amber-700 border-amber-200",
   已取代: "bg-slate-200 text-slate-600 border-slate-300",
 };
@@ -22,7 +22,7 @@ export function DecisionLog({ id, title, context, decision, consequences, status
     <article className="my-6 rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
       <header className="flex items-start justify-between gap-4 p-6 border-b border-slate-100 bg-gradient-to-br from-white to-slate-50">
         <div className="space-y-1">
-          <div className="text-xs font-bold uppercase tracking-[0.2em] text-ai-purple-700">{id}</div>
+          <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-teal-700">{id}</div>
           <h4 className="font-heading text-lg font-bold text-slate-900 leading-snug">{title}</h4>
         </div>
         {status && (
