@@ -1,0 +1,98 @@
+<Callout variant="success" title="產品願景">
+幫台灣小型產險經紀辦公室，讓每張續保單從窗口送進來、行政分案、業務員領取、到聯絡客戶為止，每一步都有明確的責任人與時效，讓 2 至 10 人的小辦公室也能做到大公司等級的客戶服務水準。
+</Callout>
+
+### MVP Scope Map
+
+Phase 1 不追求完整，而是追求一條可驗證、可交付的責任閉環，避免把續保工具做成大型 CRM。範圍原則只有一條：**只做能讓「資料進來 → 責任成立 → 狀態留痕」閉環的功能**。
+
+<Comparison
+  before={{
+    title: "明確不做（避免範圍蔓延）",
+    items: [
+      "紙本全生命週期追蹤：訪談證實沒人在追",
+      "完整 CRM 或多租戶 SaaS：先服務單一前導辦公室",
+      "客戶端自助與自動發訊：先解內部責任，不碰保戶端溝通風險",
+      "AI 對話客服與 OCR 全自動化：AI 不是核心差異化，先保留人工檢查",
+    ],
+  }}
+  after={{
+    title: "Phase 1 必做（最短交付路徑）",
+    items: [
+      "Google Sheet 匯入：10 cleaned policies + 20 assignment mapping",
+      "三角色 LINE 身分：Staff / Agent / Admin 的 rich menu 與卡片入口",
+      "案件領取與狀態更新：claim / quoted / snooze / closed / not renewing",
+      "稽核與匯入紀錄：action logs、import batches、raw import rows",
+    ],
+  }}
+  beforeLabel="不做"
+  afterLabel="必做"
+/>
+
+成功定義：前導辦公室能跑完整續保責任流。每個留下的功能都必須服務資料入口、責任成立、狀態留痕其中之一。這讓前導測試可以用真實保單流量驗證，而不是在大型系統建完後才發現沒人用。
+
+### 核心使用循環
+
+<Timeline items={[
+  { mark: "01", title: "Excel 匯入", desc: "行政從加盟系統撈月清冊，預覽後同步到 Supabase。" },
+  { mark: "02", title: "到期前 90 天推播", desc: "法規一開放即推給對應業務員，先手窗口不被浪費。" },
+  { mark: "03", title: "業務員領取", desc: "點選 claim，責任正式從 Staff 轉移到 Agent，時間留痕。" },
+  { mark: "04", title: "處理加銷案", desc: "聯絡客戶、quoted、snooze、closed 或 not renewing，閉環完成。" },
+]} />
+
+### 分層升級機制（依真實作業時間軸）
+
+<InfoTable
+  headers={["時間節點", "事件", "系統動作"]}
+  rows={[
+    ["到期前 90 天", "法規開放續保", "系統推播起跑，案件出現在業務員待辦"],
+    ["到期前 60 天", "仍未處理", "升級提醒業務員"],
+    ["到期前 45 天", "仍未分配", "Admin（老闆）必須收到通知介入"],
+    ["到期前 30 天", "產險通知保戶", "先手盡失的分水嶺，斷保風險上升"],
+  ]}
+/>
+
+整套機制就是要趕在產險通知保戶之前，讓保戶被妥善接觸。
+
+### Phase 1 MVP 功能清單（F1 至 F10）
+
+<InfoTable
+  headers={["編號", "功能", "備註"]}
+  rows={[
+    ["F1", "Excel 匯入", "Google Sheets API，保留 xlsx fallback"],
+    ["F2", "LINE Webhook 三角色身份識別", "Staff / Agent / Admin"],
+    ["F3", "倒數 Flex Message", "紅 / 橘 / 綠三色對應時間節點"],
+    ["F4", "「領取」按鈕", "claim policy，責任正式轉移"],
+    ["F5", "6 種操作按鈕", "quoted / snooze / closed / not renewing / reassign / detail"],
+    ["F6", "早安推播", "每天 09:00 推送當日待辦"],
+    ["F7", "逾期升級機制（v2.0 新增）", "依 90 / 60 / 45 / 30 天節點升級"],
+    ["F8", "Admin 重新指派（v2.0 新增）", "assign / reassign 留痕"],
+    ["F9", "車險合併邏輯（v2.0 新增）", "同一客戶多張車險合併呈現"],
+    ["F10", "Rich Menu 三角色", "依登入身份切換對應入口"],
+  ]}
+/>
+
+F7、F8、F9 是 v2.0 校準後新增，補的是責任閉環真正會卡住的三個地方。
+
+### 資料模型重點
+
+- `policies` 表新增 `current_holder_agent_id`（當前責任持有者）加上 `claimed_at`（被領取時間）
+- 新增 `assignments` 表紀錄責任歸屬歷史，每次轉移都留痕，**可直接作為合規 audit log**
+- 新增狀態 `unassigned` 與 `escalated`，把「沒人領」與「逾期」從錯誤改成可管理的狀態
+
+### 非目標
+
+Phase 1 明確排除以下範圍，避免功能蔓延：壽險、客戶端自助、自動發訊息給客戶、多租戶 SaaS、Email 分流摘要。
+
+### 技術棧與協作邊界
+
+<InfoTable
+  headers={["層", "技術", "PM 對齊重點"]}
+  rows={[
+    ["介面層", "LINE（@line/bot-sdk）", "承載 Staff、Agent、Admin 的角色入口與操作回饋"],
+    ["邏輯層", "NestJS（TypeScript）", "Webhook 中樞，處理匯入、查詢、領取、狀態更新與排程提醒"],
+    ["資料層", "Supabase（PostgreSQL + Auth + RLS + Realtime）", "狀態、責任與稽核紀錄來源，讓案件歸屬可追溯"],
+    ["排程", "node-cron", "90 / 60 / 45 / 30 天節點推播與升級"],
+    ["本地開發", "Cloudflare Tunnel", "本地 webhook 接 LINE 平台，無需公開部署"],
+  ]}
+/>

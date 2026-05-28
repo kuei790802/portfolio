@@ -2,6 +2,16 @@ import type { ComponentType } from "react";
 
 import ToeicSummary from "./toeic-snack/summary.mdx";
 import ToeicProblem from "./toeic-snack/problem.mdx";
+import ToeicValidation from "./toeic-snack/validation.mdx";
+import ToeicScope from "./toeic-snack/scope.mdx";
+import ToeicDelivery from "./toeic-snack/delivery.mdx";
+import ToeicNext from "./toeic-snack/next.mdx";
+import InsuranceOverview from "./insurance-bot/overview.mdx";
+import InsuranceResearch from "./insurance-bot/research.mdx";
+import InsurancePositioning from "./insurance-bot/positioning.mdx";
+import InsurancePRD from "./insurance-bot/prd.mdx";
+import InsuranceADRs from "./insurance-bot/adrs.mdx";
+import InsuranceReflections from "./insurance-bot/reflections.mdx";
 import LiangyeOverview from "./liangye-7eleven/overview.mdx";
 import LiangyeStrategy from "./liangye-7eleven/strategy.mdx";
 import LiangyePlay from "./liangye-7eleven/play.mdx";
@@ -15,18 +25,18 @@ export const contentMap: CaseContentMap = {
   "toeic-snack": {
     summary: ToeicSummary,
     problem: ToeicProblem,
-    validation: undefined,
-    scope: undefined,
-    delivery: undefined,
-    next: undefined,
+    validation: ToeicValidation,
+    scope: ToeicScope,
+    delivery: ToeicDelivery,
+    next: ToeicNext,
   },
   "insurance-bot": {
-    overview: undefined,
-    research: undefined,
-    positioning: undefined,
-    prd: undefined,
-    adrs: undefined,
-    reflections: undefined,
+    overview: InsuranceOverview,
+    research: InsuranceResearch,
+    positioning: InsurancePositioning,
+    prd: InsurancePRD,
+    adrs: InsuranceADRs,
+    reflections: InsuranceReflections,
   },
   "liangye-7eleven": {
     overview: LiangyeOverview,

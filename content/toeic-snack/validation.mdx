@@ -1,0 +1,96 @@
+### 我把驗證拆成兩段：低成本能做完、重的留給下一階段
+
+MVP 階段資源有限，硬要把付費意願、留存、題庫品質一次驗完，每件事都只做到一半。我選擇先用個人使用、論壇研究、家人同事試用、iOS QA 這四個低成本動作把方向確認下來，把付費意願、留存指標、題庫品質這類重的驗證留到下一階段，再決定要不要上架。
+
+<EvidenceGrid cols={2} items={[
+  {
+    src: "/assets/toeic-snack-screen-practice.png",
+    alt: "TOEIC Snack 練習頁畫面，限時閱讀題目與計時器",
+    caption: "練習頁：核心限時閱讀流程，自己使用約 10 次共做 80 題驗證。",
+  },
+  {
+    src: "/assets/toeic-snack-screen-result.png",
+    alt: "TOEIC Snack 結果頁畫面，作答結果與檢討",
+    caption: "結果頁：guest submit 修復後的 P0 retest 路徑，HTTP 200 與畫面證據完整留存。",
+  },
+]} />
+
+### 我實際做過的驗證
+
+<InfoTable
+  headers={["驗證方式", "得到什麼", "我的判斷"]}
+  rows={[
+    [
+      "個人使用",
+      "自己使用約 10 次、做約 80 題，確認核心限時練習流程能支援碎片時間。",
+      <Badge key="1" className="bg-blue-100 text-blue-700">早期驗證</Badge>,
+    ],
+    [
+      "論壇二手研究",
+      "PTT、Dcard、知乎都看到「閱讀做不完、時間配置抓不準」是常見討論。",
+      <Badge key="2" className="bg-blue-100 text-blue-700">方向性</Badge>,
+    ],
+    [
+      "5 位家人同事試用",
+      "回饋一致：如果準備多益會想用，沒有質疑時間區間設計。",
+      <Badge key="3" className="bg-emerald-100 text-emerald-700">可展現</Badge>,
+    ],
+    [
+      "iOS QA",
+      "找出 11 個問題，其中 guest submit P0 已部署複測，留下 HTTP 200 與畫面證據。",
+      <Badge key="4" className="bg-emerald-100 text-emerald-700">可展現</Badge>,
+    ],
+  ]}
+/>
+
+### QA 與風險判斷：技術綠燈不等於可上架
+
+QA report 把技術綠燈與產品可上架拆開看。自動化測試可以全綠，但 mobile guest flow、placement、screen coverage、production config 仍會影響能不能交給外部使用者。我用四個 gate 把這件事拆清楚。
+
+<KPIGrid cols={2} items={[
+  { value: "Build Gate", label: "TypeScript / Jest 通過", hint: "frontend 23 suites / 172 tests、backend 2 suites / 9 tests，作為 release gate 證據。" },
+  { value: "Mobile Gate", label: "iOS Result retest 通過", hint: "Railway deploy 後 guest submit 重新測到 Result，HTTP log 留下 200。" },
+  { value: "Issue Gate", label: "11 項 QA findings", hint: "不只看完成度，而是把 P0/P1/P2 風險拆成可關閉的迭代。" },
+  { value: "Launch Gate", label: "仍不急著上架", hint: "核心 demo 已可用，placement、screen coverage、production trust 仍要補。" },
+]} />
+
+### Risk register：哪些已關閉、哪些刻意留下
+
+<InfoTable
+  headers={["風險", "狀態", "PM 決策"]}
+  rows={[
+    [
+      <strong key="r1">核心練習流程中斷</strong>,
+      <Badge key="s1" className="bg-emerald-100 text-emerald-700">已關閉</Badge>,
+      "guest mode 曾因 JWT guard 擋住 submit。先修到「選題、練習、檢討」可完整走通，再談上架。",
+    ],
+    [
+      <strong key="r2">新手難度分級不可信</strong>,
+      <Badge key="s2" className="bg-amber-100 text-amber-700">未關閉</Badge>,
+      "guest / first-time user 可能繞過 placement 預設 Green level。下一步明確 placement 或 skip policy。",
+    ],
+    [
+      <strong key="r3">P0 畫面回歸保護不足</strong>,
+      <Badge key="s3" className="bg-amber-100 text-amber-700">未關閉</Badge>,
+      "Jest 通過不代表 Home、Practice、Result、Placement 都有 screen-level coverage。下一步補 P0 screens 測試。",
+    ],
+    [
+      <strong key="r4">Production trust 尚未完整</strong>,
+      <Badge key="s4" className="bg-blue-100 text-blue-700">上架前 gate</Badge>,
+      "legal link、Expo scheme、Railway token、OAuth config 需轉成 no-ship 檢查清單。",
+    ],
+  ]}
+/>
+
+### 下一階段要補強的驗證
+
+<KPIGrid cols={2} items={[
+  { value: "付費意願", label: "下一階段要補", hint: "規劃用價格測試、登錄頁轉換率、訪談或預購，確認使用者是否願意付費。" },
+  { value: "留存指標", label: "下一階段要補", hint: "接上 DAU、留存、平均使用時長、連續使用天數等成果指標。" },
+  { value: "題庫品質", label: "下一階段要補", hint: "AI 產題可行，下一步系統化檢查題目準確性、難度分布與解析品質。" },
+  { value: "營運成本", label: "下一階段要補", hint: "上架前補 App Store、server、題庫維護、客服與錯題回報流程的成本試算。" },
+]} />
+
+<Callout variant="success" title="暫緩上架是產品時程的主動取捨">
+MVP 已能展示核心流程，在商業假設完成驗證前，我選擇先保留彈性，把資源留給更高優先序的驗證與求職作品整理。
+</Callout>

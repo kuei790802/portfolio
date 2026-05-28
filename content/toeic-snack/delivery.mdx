@@ -1,0 +1,133 @@
+### Solo 加多 agent 的交付方式
+
+這個專案是我刻意把工程實作整段交給 AI agent 的實驗。我有 Java、Spring Boot、React、SQL、RESTful API 基礎，但這次刻意不寫產品 code，把時間集中在規格、架構與品質卡控，讓「PM 把問題拆到 agent 可執行」這個假設被真正驗證一次。這段經驗也是我面試 AI 公司的差異化武器。
+
+<KPIGrid cols={3} items={[
+  { value: "13", label: "screens", hint: "練習、結果、歷史、設定、profile、placement test。" },
+  { value: "172", label: "tests passing", hint: "0 TypeScript errors，並補 iOS QA 11 項。" },
+  { value: "MVP", label: "可 demo、暫不上架", hint: "保留為可討論的產品原型。" },
+]} />
+
+### AI Contribution Split：我刻意把工程工作交出去
+
+<InfoTable
+  headers={["工作", "我", "AI", "我如何驗收"]}
+  rows={[
+    [
+      "規格定義（PRD、驗收條件）",
+      <strong key="m1">80%</strong>,
+      "20%",
+      "功能是否符合使用情境、AI 草稿是否被我覆寫到位。",
+    ],
+    [
+      "架構與資料結構決策",
+      <strong key="m2">60%</strong>,
+      "40%",
+      "schema、模組邊界、interface 是否撐得起後續變更。",
+    ],
+    [
+      "Code Review、agent 產出驗收",
+      <strong key="m3">25%</strong>,
+      "75%",
+      "Jest、TypeScript、iOS QA 通不通過、結果能不能重現。",
+    ],
+    [
+      "親手寫產品 code、debug",
+      <strong key="m4">0%</strong>,
+      "100%",
+      "由 agent 完成實作，我審查 diff 與測試結果。",
+    ],
+  ]}
+/>
+
+<Callout variant="warn" title="關於「親手寫 code 0%」">
+這是有意識的取捨，不是能力限制。守住兩件事就能保證品質：規格寫到 agent 能執行、Review 時能判斷產出對不對。
+</Callout>
+
+### 我設計的 AI 協作閉環
+
+這套流程不是「請 AI 寫 code」，而是用規格、交接文件、測試與 QA 證據把任務切成可追溯的最小交付單元。目前累積 29 份歷史交接加最新 closeout。
+
+<Timeline items={[
+  {
+    mark: "PM / Spec",
+    title: "定義問題與驗收條件",
+    desc: "用 PRD、plan.md、wireframe 與測試清單，先界定 agent 應該交付什麼。",
+  },
+  {
+    mark: "Claude Code",
+    title: "拆邏輯、型別與測試",
+    desc: "負責 hooks、stores、services、interfaces 與邏輯測試，產出 HANDOFF-CC.md。",
+  },
+  {
+    mark: "Gemini CLI",
+    title: "接手 UI 與 Git 流程",
+    desc: "依設計系統與 handoff 範圍實作畫面，執行測試、commit、merge、push。",
+  },
+  {
+    mark: "Human Review",
+    title: "QA、複測、決定是否關閉",
+    desc: "用真機 QA、測試結果與部署狀態決定任務完成、回補文件或重新開 issue。",
+  },
+]} />
+
+### 交接機制的四份核心文件
+
+<InfoTable
+  headers={["文件", "用途", "服務的協作環節"]}
+  rows={[
+    [
+      <code key="c1">CLAUDE.md / GEMINI.md</code>,
+      "兩 agent 各自的 system prompt 與專案規約。",
+      "讓 agent 上下文一致，避免每次重新解釋專案。",
+    ],
+    [
+      <code key="c2">HANDOFF-CC.md / HANDOFF-GEMINI.md</code>,
+      "規格、介面、注意事項與完成狀態。",
+      "Claude Code 與 Gemini CLI 之間的工作交接。",
+    ],
+    [
+      <code key="c3">STATUS.yml</code>,
+      "current task、progress、blockers、loop control。",
+      "降低 session 中斷風險，可從任何點接回。",
+    ],
+    [
+      <code key="c4">.handoffs/</code>,
+      "每次交接歸檔，含 plan、diff、測試結果。",
+      "讓決策與交付過程可被回看、被審查、被學習。",
+    ],
+  ]}
+/>
+
+### 實例：QA-011 加 P0 Result retest 的閉環
+
+最新一次 closeout 記錄 Part 6/7 長文題在手機上選項藏在 fold 下方的問題，以及 guest submit 部署後重測到 Result 的閉環。
+
+- **問題**：未選答案時仍可能前進，使用者不清楚要往下滑。
+- **修正**：加入 footer hint，並在未選答案前停用 Next 與 Submit。
+- **交付**：補 PracticeScreen screen-level regression tests。
+
+驗收訊號完整對齊：
+
+- PracticeScreen test、screen tests、TypeScript check 皆通過。
+- 該次 closeout 完整 Jest run 通過，並保留測試紀錄。
+- iOS Simulator visual retest 覆蓋 Part 5、Part 6/7 scroll-to-options、Submit guard 與 Result。
+- Railway deploy 後 P0 Result retest 通過，留下 HTTP 200 與畫面證據。
+
+### 配套管線：多模型 AI 出題
+
+App 的題目來自另一個獨立 repo <code>TOEIC_Question_Generator</code>。這是我第二個多 agent 設計：Sonnet 負責生成、Haiku 負責驗證與核對，通過後同步寫進 Supabase，已實際產出數百題。
+
+#### 為什麼分兩個模型
+
+- Sonnet 負責創造力與題目多樣性
+- Haiku 負責規則與一致性檢查
+- 便宜模型做驗證，把單題成本壓低
+- 錯誤被攔在寫進資料庫之前
+
+#### 為什麼拆成獨立 repo
+
+- 內容生產 pipeline 與 App runtime 解耦
+- schema 變動不會波及 App 部署
+- 模型替換、出題策略調整可獨立迭代
+- 刻意的 PM 架構決策，不是事後拆分
