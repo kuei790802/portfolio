@@ -499,6 +499,416 @@
   .ev-card p { font-size: 12px; margin: 4px 0 0 0; }
   @media (max-width: 768px) { .ev-grid { grid-template-columns: 1fr; } }
 
+  .collaboration-boundary {
+    margin-top: 16px;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f8fafc;
+  }
+  .collaboration-boundary h4 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 16px;
+  }
+  .collaboration-boundary p {
+    max-width: 820px;
+    margin: 0 0 14px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .boundary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .boundary-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+  }
+  .boundary-card strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 13px;
+  }
+  .boundary-card span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .visual-artifact {
+    margin: 18px 0 24px;
+  }
+  .visual-artifact figure {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+  .visual-artifact img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #f8fafc;
+  }
+  .visual-artifact figcaption {
+    padding: 14px 16px 16px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .visual-artifact figcaption strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary);
+    font-size: 15px;
+  }
+  .calibration-diagram {
+    margin: 18px 0 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: #f8fafc;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  }
+  .diagram-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .diagram-head h4 {
+    margin: 0 0 6px;
+    color: var(--primary);
+    font-size: 18px;
+  }
+  .diagram-head p {
+    max-width: 820px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .calibration-flow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 44px minmax(0, 1fr);
+    align-items: stretch;
+    gap: 12px;
+  }
+  .calibration-panel {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+  }
+  .calibration-panel.assumption {
+    border-color: #fed7aa;
+    background: #fff7ed;
+  }
+  .calibration-panel.evidence {
+    border-color: #fde68a;
+    background: #fffbeb;
+  }
+  .calibration-panel.revised {
+    border-color: #bbf7d0;
+    background: #f0fdf4;
+  }
+  .calibration-panel .panel-kicker {
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .calibration-panel.assumption .panel-kicker { color: #c2410c; }
+  .calibration-panel.evidence .panel-kicker { color: #b45309; }
+  .calibration-panel.revised .panel-kicker { color: #047857; }
+  .calibration-panel h5 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 16px;
+  }
+  .calibration-items {
+    display: grid;
+    gap: 10px;
+  }
+  .calibration-item {
+    border: 1px solid rgba(148, 163, 184, 0.38);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.82);
+  }
+  .calibration-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary);
+    font-size: 13px;
+  }
+  .calibration-item span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .calibration-result {
+    margin-top: 12px;
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .calibration-panel.assumption .calibration-result {
+    background: #ffedd5;
+    color: #9a3412;
+  }
+  .calibration-panel.evidence .calibration-result {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  .calibration-panel.revised .calibration-result {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .calibration-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0369a1;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .responsibility-diagram {
+    margin: 18px 0 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: #f8fafc;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  }
+  .responsibility-lanes {
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .flow-lane {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 14px;
+    align-items: stretch;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .flow-lane.staff { background: #eff6ff; border-color: #bfdbfe; }
+  .flow-lane.system { background: #fff; }
+  .flow-lane.agent { background: #f0fdf4; border-color: #bbf7d0; }
+  .flow-lane.admin { background: #fff7ed; border-color: #fed7aa; }
+  .lane-title {
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .lane-title span {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .lane-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .flow-lane.staff .lane-steps,
+  .flow-lane.system .lane-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .flow-step-card {
+    position: relative;
+    min-height: 86px;
+    border: 1px solid rgba(148, 163, 184, 0.42);
+    border-radius: 6px;
+    padding: 11px 12px;
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .flow-step-card:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -17px;
+    z-index: 1;
+    transform: translateY(-50%);
+    color: #0369a1;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .flow-step-card strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 13px;
+  }
+  .flow-step-card span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .flow-step-card.escalation::after {
+    color: var(--warning);
+  }
+  .responsibility-note {
+    margin-top: 14px;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .responsibility-note strong { color: var(--primary); }
+  .scope-diagram {
+    margin: 18px 0 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: #f8fafc;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  }
+  .scope-principle {
+    margin: 14px 0 16px;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .scope-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .scope-column {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .scope-column.must {
+    border-color: #bbf7d0;
+    background: #f0fdf4;
+  }
+  .scope-column.no {
+    border-color: #fed7aa;
+    background: #fff7ed;
+  }
+  .scope-column.later {
+    border-color: #bfdbfe;
+    background: #eff6ff;
+  }
+  .scope-column h5 {
+    margin: 0 0 4px;
+    color: var(--primary);
+    font-size: 17px;
+  }
+  .scope-column > p {
+    margin: 0 0 14px;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .scope-list {
+    display: grid;
+    gap: 10px;
+  }
+  .scope-item {
+    border: 1px solid rgba(148, 163, 184, 0.38);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.86);
+  }
+  .scope-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary);
+    font-size: 13px;
+  }
+  .scope-item span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .scope-chip {
+    display: inline-flex;
+    margin-top: 8px;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .must .scope-chip { background: #dcfce7; color: #047857; }
+  .no .scope-chip { background: #ffedd5; color: #c2410c; }
+  .later .scope-chip { background: #dbeafe; color: #0369a1; }
+  .scope-result {
+    margin-top: 12px;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .must .scope-result {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .no .scope-result {
+    background: #ffedd5;
+    color: #9a3412;
+  }
+  .later .scope-result {
+    background: #dbeafe;
+    color: #075985;
+  }
+  .scope-note {
+    margin-top: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .scope-note strong { color: var(--primary); }
+  @media (max-width: 768px) {
+    .boundary-grid { grid-template-columns: 1fr; }
+    .diagram-head { display: block; }
+    .calibration-flow { grid-template-columns: 1fr; }
+    .calibration-arrow { transform: rotate(90deg); padding: 2px 0; }
+    .flow-lane { grid-template-columns: 1fr; }
+    .lane-steps,
+    .flow-lane.staff .lane-steps,
+    .flow-lane.system .lane-steps { grid-template-columns: 1fr; }
+    .flow-step-card:not(:last-child)::after {
+      top: auto;
+      right: 50%;
+      bottom: -18px;
+      transform: translateX(50%) rotate(90deg);
+    }
+    .scope-columns { grid-template-columns: 1fr; }
+  }
+
   footer {
     margin-top: 40px;
     padding-top: 16px;
@@ -524,7 +934,7 @@
 <body class="case-page">
 <div class="container">
 
-<div class="topnav" style="margin-bottom:16px;"><a href="index.html" style="color:#4a90c2;text-decoration:none;font-size:13px;font-weight:600;">← 返回作品集首頁</a></div>
+<div class="topnav"><a href="index.html">← 返回作品集首頁</a></div>
 
 <header>
   <h1>保險續保 LINE Bot PM Case Study</h1>
@@ -532,7 +942,7 @@
   <div class="pitch">
     為台灣小型產險經紀辦公室打造的續保管理系統。
     這份 case study 的重點不是最終的 PRD，而是中間那次<strong>關鍵的自我校準</strong>，
-    以及修正所依據的判斷邏輯。以 PRD v1.0 作為「假設基線」，
+    以及修正所依據的判斷邏輯。以 PRD v1.0 作為「待驗證假設」，
     透過《The Mom Test》紀律的訪談，將產品定位、Persona 與流程精準校準為 v2.0。
   </div>
   <div class="meta-bar">
@@ -553,13 +963,17 @@
   </div>
 </header>
 
+<section class="visual-artifact" data-artifact="line-mockup" aria-label="LINE Bot 實機畫面" style="max-width: 760px; margin: 0 auto 24px;">
+  <figure>
+    <img src="assets/insurance-bot-line-mockup.png" alt="保險續保 LINE Bot 的 Admin、Agent 與 Staff 實際操作截圖，敏感資訊已模糊處理" style="width: 100%; height: auto; border-radius: 12px;">
+    <figcaption>
+      <strong>實際運作的 LINE Bot</strong>
+      Admin 全局入口、Agent 案件領取、Staff 表單同步預覽（敏感資訊已模糊處理）。這是物證，不是產品介紹：用來證明本案的責任流轉設計真的跑得起來。
+    </figcaption>
+  </figure>
+</section>
+
 <section class="case-hero" aria-label="case brief">
-  <div class="proof-strip">
-    <div class="proof-item"><div class="value">B2B</div><div class="label">小型產險經紀辦公室續保流程工具</div></div>
-    <div class="proof-item"><div class="value">3</div><div class="label">Persona 與責任流轉角色重新定義</div></div>
-    <div class="proof-item"><div class="value">10</div><div class="label">MVP 功能範圍，搭配明確 Non-Goals</div></div>
-    <div class="proof-item"><div class="value">3 ADR</div><div class="label">關鍵產品與架構決策紀錄</div></div>
-  </div>
   <div class="case-brief-grid">
     <div class="brief-card highlight">
       <div class="section-eyebrow">Case Brief</div>
@@ -570,8 +984,8 @@
       <h3>PM 能力證據</h3>
       <ul>
         <li>用《The Mom Test》修正 PRD v1.0 假設</li>
-        <li>把功能範圍切成 Phase 1 MVP 與 Non-Goals</li>
-        <li>建立 Persona、資料模型、技術棧與導測節奏</li>
+        <li>把功能範圍切成 Phase 1 MVP 與非目標</li>
+        <li>建立 Persona、資料模型、技術棧與導測時程</li>
         <li>用 ADR 留下決策背景、取捨與後果</li>
       </ul>
     </div>
@@ -682,32 +1096,101 @@
 <section class="tab-panel" id="tab-research">
   <div class="panel-header">
     <div>
-      <h2>用戶研究：用初版 PRD 作為假設基線去驗證</h2>
-      <div class="desc">假設基線驗證的三個關鍵發現，以及證據分級的紀律</div>
+      <h2>用戶研究：把初版 PRD 當作待驗證假設，實際向客戶校準</h2>
+      <div class="desc">訪談校準後得到的三個關鍵發現，以及怎麼判斷哪些可以信</div>
     </div>
     <button class="print-btn" onclick="window.print()" title="會印出整份 case study 的所有章節，可存成 PDF">列印完整內容</button>
   </div>
 
   <div class="callout">
-    <strong>核心判斷</strong>：透過初版 PRD 向客戶討論，作為「假設基線」，能有效引導客戶揭露核心業務細節，
-    並促成與關鍵使用者（行政人員）的對話。這個判斷直接啟動了隔天的行政訪談，以及這次以「假設基線」為基礎的修正。
+    <strong>我這次的判斷</strong>：與其用空白問卷問客戶「你想要什麼」，我直接拿初版 PRD 給他看、用它當話頭。一份具體的草稿比抽象的問題更能引出客戶藏在腦袋裡的業務細節，也促成了我跟關鍵使用者（行政人員）的對話。這個判斷直接啟動了隔天的行政訪談，以及這次以草稿為基礎的全面修正。
+  </div>
+
+  <div class="calibration-diagram" data-artifact="v1-v2-calibration">
+    <div class="diagram-head">
+      <div>
+        <h4>V1 → V2 假設校準圖</h4>
+        <p>我把初版 PRD 當成待驗證假設，而不是正確答案。訪談的價值，是把「我想像中的流程」校準成真實辦公室會跑得動的產品定義。</p>
+      </div>
+    </div>
+    <div class="calibration-flow">
+      <div class="calibration-panel assumption">
+        <div class="panel-kicker">PRD V1 · 待驗證假設</div>
+        <h5>校準前的產品想像</h5>
+        <div class="calibration-items">
+          <div class="calibration-item">
+            <strong>Persona：2 角色</strong>
+            <span>業務員 + Admin，預設業務會主動管理續保。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>入口：業務上傳 PDF</strong>
+            <span>把保單解析視為主入口，AI 被當成主要差異化。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>流程：追蹤紙本續保單</strong>
+            <span>設計完整生命週期追蹤，但這是我想像出來的、沒驗證過的流程。</span>
+          </div>
+        </div>
+        <div class="calibration-result">核心風險：從競品與想像出發</div>
+      </div>
+      <div class="calibration-arrow">→</div>
+      <div class="calibration-panel evidence">
+        <div class="panel-kicker">The Mom Test · 訪談證據</div>
+        <h5>現場行為揭露的落差</h5>
+        <div class="calibration-items">
+          <div class="calibration-item">
+            <strong>行政才是資料入口</strong>
+            <span>保單登記、分案、通知由行政處理，訪談 10 分鐘內取得直接證據。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>紙本續保單沒人在追</strong>
+            <span>「有看到就處理，沒看到就漏掉」直接推翻紙本追蹤需求。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>先手窗口被浪費</strong>
+            <span>到期前 90 天可啟動，但實務常拖到剩兩三週。</span>
+          </div>
+        </div>
+        <div class="calibration-result">方法：只問實際發生過的事</div>
+      </div>
+      <div class="calibration-arrow">→</div>
+      <div class="calibration-panel revised">
+        <div class="panel-kicker">PRD V2 · 產品定義</div>
+        <h5>校準後的責任系統</h5>
+        <div class="calibration-items">
+          <div class="calibration-item">
+            <strong>Persona：3 角色</strong>
+            <span>Staff + Agent + Admin，先補資料入口，再談責任流轉。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>入口：Excel / Google Sheet</strong>
+            <span>行政匯出、檢查、同步到 Supabase，AI 降級為輔助工具。</span>
+          </div>
+          <div class="calibration-item">
+            <strong>流程：90 天主動推播</strong>
+            <span>claim、quoted、snooze、closed 留痕，把責任硬編碼進系統流程。</span>
+          </div>
+        </div>
+        <div class="calibration-result">產品定位：責任流轉系統</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
-    <h3 class="section-title">訪談方法</h3>
+    <h3 class="section-title">訪談怎麼問</h3>
     <p>
-      我遵循 Rob Fitzpatrick《The Mom Test》的紀律：
+      我訪談前讀完 Rob Fitzpatrick 的《The Mom Test》，把書裡幾個關鍵動作直接套進這場訪談：
     </p>
     <ul>
-      <li>只問<strong>實際發生過的事</strong>，不問假設情境</li>
-      <li>避免引導式問題</li>
-      <li>聽到痛點就追問「上次發生是什麼時候」</li>
-      <li>嚴格區分「應然」（該怎麼做）與「實然」（實際怎麼做）</li>
+      <li>只問<strong>對方實際發生過的事</strong>，不問「如果有這個功能你會用嗎」這種假設題</li>
+      <li>不在問題裡藏答案，避免引導對方說我想聽的話</li>
+      <li>聽到痛點立刻追問「上一次發生是什麼時候」，逼出真實頻率</li>
+      <li>隨時提醒自己分清楚對方說的是「他覺得應該怎麼做」還是「他實際上怎麼做」（兩件事常常不一樣）</li>
     </ul>
   </div>
 
   <div class="section">
-    <h3 class="section-title">假設基線驗證的三個關鍵發現</h3>
+    <h3 class="section-title">訪談校準後得到的三個關鍵發現</h3>
     <div class="three-col">
       <div class="card warn">
         <div class="card-tag">關鍵發現 01</div>
@@ -732,31 +1215,31 @@
   </div>
 
   <div class="callout">
-    <strong>假設基線方法的價值</strong>：PRD v1 的「應然流程」若不主動驗證，容易與用戶實際行為脫節。所以我把 v1 當成「待驗證假設」而非「正確答案」，讓訪談的角色不是事後修正，而是事前的校準工具。
+    <strong>為什麼這樣做有用</strong>：PRD v1 寫的是「我想像中這套流程該怎麼跑」。如果直接拿去開發，很容易做出一個跟真實辦公室對不上的東西。我把 v1 當成假設、不是答案，訪談的角色就從「事後檢討」前移到「事前確認」，讓修正發生在還沒寫程式的時候。
   </div>
 
   <div class="section">
-    <h3 class="section-title">區分「直接證據」與「推論」的紀律</h3>
+    <h3 class="section-title">訪談聽到的東西，我不會全部當證據用</h3>
+    <p>訪談收完一輪後，我把聽到的素材分三層處理，免得自己把「對方順口一提」當成「鐵證」：</p>
     <div class="ev-grid">
       <div class="ev-card direct">
-        <div class="ev-label">Direct Evidence</div>
+        <div class="ev-label">第 1 層</div>
         <h5>直接證據</h5>
-        <p>受訪者明確說過的話。可直接寫進 PRD 並做設計依據。</p>
+        <p>受訪者明確說過的具體事實。這層可以直接寫進 PRD，當設計依據。</p>
       </div>
       <div class="ev-card strong">
-        <div class="ev-label">Strong Signal</div>
+        <div class="ev-label">第 2 層</div>
         <h5>強訊號</h5>
-        <p>反覆提到、語氣強烈。可作為次要設計依據。</p>
+        <p>對方反覆提到、語氣明顯加重的事。可以拿來輔助設計判斷，但不單獨支撐重大決策。</p>
       </div>
       <div class="ev-card inference">
-        <div class="ev-label">Inference</div>
+        <div class="ev-label">第 3 層</div>
         <h5>推論</h5>
-        <p>合理推測但非訪談本身。這部分<strong>需要再驗證</strong>，不能直接寫進設計。</p>
+        <p>我從訪談材料延伸出來的猜測，本身不是訪談內容。這層<strong>只能當假設</strong>，還沒驗證之前不能寫進設計。</p>
       </div>
     </div>
     <p style="font-size:13px; color:var(--text-muted); margin-top:12px;">
-      這個分類讓我能明確標記 v2.0 的核心假設「業務員會接受系統的領取與銷案流程」為<strong>中強度推論</strong>，
-      後續透過讓業務員無引導試用驗證，升級到中高強度（完整應對見反思分頁）。
+      用這個分層，我把 v2.0 最關鍵的假設「業務員會願意接受系統的領取與銷案流程」誠實標成<strong>中強度推論</strong>。訪談裡沒直接問到這件事，是我推的。後來透過讓業務員無引導試用，這個推論才升到中高強度（完整應對見反思分頁）。
     </p>
   </div>
 </section>
@@ -794,6 +1277,58 @@
         <li>強制責任閉環機制</li>
         <li style="color:var(--success); font-weight:600;">從訪談直接證據出發</li>
       </ul>
+    </div>
+  </div>
+
+  <div class="responsibility-diagram" data-artifact="responsibility-flow">
+    <div class="diagram-head">
+      <div>
+        <h4>責任流轉圖</h4>
+        <p>v2.0 的核心不是提醒，而是讓每張保單在 Staff、System、Agent、Admin 之間有明確責任狀態與交接節點。</p>
+      </div>
+    </div>
+    <div class="responsibility-lanes">
+      <div class="flow-lane staff">
+        <div class="lane-title">Staff<span>行政整理資料、確認匯入，處理待分派與逾期包。</span></div>
+        <div class="lane-steps">
+          <div class="flow-step-card"><strong>匯出月清冊</strong><span>兩套產險來源系統，每月續保資料起點。</span></div>
+          <div class="flow-step-card"><strong>Google Sheet 檢查</strong><span>檢查 cleaned policies 與 assignment mapping。</span></div>
+          <div class="flow-step-card"><strong>同步表單</strong><span>先預覽再寫入，避免錯誤資料進 DB。</span></div>
+          <div class="flow-step-card"><strong>待分派處理</strong><span>匯入成功但責任人未知，不視為錯誤。</span></div>
+          <div class="flow-step-card"><strong>逾期包</strong><span>未處理案件推進例外管理。</span></div>
+        </div>
+      </div>
+      <div class="flow-lane system">
+        <div class="lane-title">System<span>讀取清冊、解析責任歸屬，產生 LINE 卡片與紀錄。</span></div>
+        <div class="lane-steps">
+          <div class="flow-step-card"><strong>讀取表單合約</strong><span>Google Sheets API，保留 xlsx fallback。</span></div>
+          <div class="flow-step-card"><strong>寫入 Supabase</strong><span>policies、agents、import batches、raw rows。</span></div>
+          <div class="flow-step-card"><strong>產生續保隊列</strong><span>依到期日、狀態與責任人查詢。</span></div>
+          <div class="flow-step-card"><strong>LINE 卡片</strong><span>依角色呈現 rich menu 與 flex card。</span></div>
+          <div class="flow-step-card escalation"><strong>升級提醒</strong><span>接近門檻仍未處理時通知 Staff / Admin。</span></div>
+        </div>
+      </div>
+      <div class="flow-lane agent">
+        <div class="lane-title">Agent<span>從待辦領取案件，跟進保戶並更新續保狀態。</span></div>
+        <div class="lane-steps">
+          <div class="flow-step-card"><strong>查看待辦</strong><span>list / my cases，先看可處理續保案件。</span></div>
+          <div class="flow-step-card"><strong>領取案件</strong><span>claim policy，責任正式轉移。</span></div>
+          <div class="flow-step-card"><strong>更新狀態</strong><span>quoted、snooze、closed、not renewing。</span></div>
+          <div class="flow-step-card escalation"><strong>未處理升級</strong><span>避免案件消失在個人待辦。</span></div>
+        </div>
+      </div>
+      <div class="flow-lane admin">
+        <div class="lane-title">Admin<span>查看例外、指定責任人，決定封存或放棄。</span></div>
+        <div class="lane-steps">
+          <div class="flow-step-card"><strong>查看例外</strong><span>逾期或卡住案件，回到主管視野。</span></div>
+          <div class="flow-step-card"><strong>指定責任人</strong><span>assign / reassign，由主管做最後介入。</span></div>
+          <div class="flow-step-card"><strong>封存或放棄</strong><span>保留歷史與原因，不讓狀態不明。</span></div>
+          <div class="flow-step-card"><strong>回到隊列</strong><span>重新分派後，案件回到可處理流程。</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="responsibility-note">
+      <strong>責任閉環：</strong>每次 claim、quoted、snooze、closed、not renewing、reassign 都寫入紀錄；主管看到的是狀態與責任，不是零散聊天紀錄。
     </div>
   </div>
 
@@ -852,8 +1387,56 @@
   </div>
 
   <div class="callout">
-    <strong>產品願景</strong>：幫台灣小型產險經紀辦公室，把「窗口 → 行政 → 業務員 → 客戶」這條鏈的<strong>責任歸屬與時效性顯性化</strong>，
-    讓 2 至 10 人的小辦公室也能跑出大公司等級的客戶服務節奏。
+    <strong>產品願景</strong>：幫台灣小型產險經紀辦公室，讓每張續保單從窗口送進來、行政分案、業務員領取、到聯絡客戶為止，每一步都有<strong>明確的責任人與時效</strong>，
+    讓 2 至 10 人的小辦公室也能做到大公司等級的客戶服務水準。
+  </div>
+
+  <div class="scope-diagram" data-artifact="mvp-scope-map">
+    <div class="diagram-head">
+      <div>
+        <h4>MVP Scope Map</h4>
+        <p>Phase 1 不追求完整，而是追求一條可驗證、可交付的責任閉環，避免把續保工具做成大型 CRM。</p>
+      </div>
+    </div>
+    <div class="scope-principle">範圍原則：只做能讓「資料進來 → 責任成立 → 狀態留痕」閉環的功能。</div>
+    <div class="scope-columns">
+      <div class="scope-column must">
+        <h5>Phase 1 必做</h5>
+        <p>能讓前導測試跑起來的最短交付路徑。</p>
+        <div class="scope-list">
+          <div class="scope-item"><strong>Google Sheet 匯入</strong><span>10 cleaned policies + 20 assignment mapping。</span><em class="scope-chip">入口</em></div>
+          <div class="scope-item"><strong>三角色 LINE 身分</strong><span>Staff / Agent / Admin rich menu 與卡片入口。</span><em class="scope-chip">分流</em></div>
+          <div class="scope-item"><strong>案件領取與狀態更新</strong><span>claim / quoted / snooze / close / not renewing。</span><em class="scope-chip">責任</em></div>
+          <div class="scope-item"><strong>稽核與匯入紀錄</strong><span>action logs、import batches、raw import rows。</span><em class="scope-chip">留痕</em></div>
+        </div>
+        <div class="scope-result">成功定義：前導辦公室能跑完整續保責任流</div>
+      </div>
+      <div class="scope-column no">
+        <h5>明確不做</h5>
+        <p>避免範圍蔓延，留下可說明的 PM 取捨。</p>
+        <div class="scope-list">
+          <div class="scope-item"><strong>紙本全生命週期追蹤</strong><span>訪談證實沒人在追，Phase 1 砍掉。</span><em class="scope-chip">砍</em></div>
+          <div class="scope-item"><strong>完整 CRM / 多租戶 SaaS</strong><span>先服務單一前導辦公室，不急著平台化。</span><em class="scope-chip">延</em></div>
+          <div class="scope-item"><strong>客戶端自助與自動發訊</strong><span>先解內部責任，不碰保戶端溝通風險。</span><em class="scope-chip">避</em></div>
+          <div class="scope-item"><strong>AI 對話客服 / OCR 全自動化</strong><span>AI 不是核心差異化，先保留人工檢查。</span><em class="scope-chip">降</em></div>
+        </div>
+        <div class="scope-result">拒絕原則：不做無法立即驗證責任閉環的功能</div>
+      </div>
+      <div class="scope-column later">
+        <h5>擴充功能</h5>
+        <p>等閉環穩定後，才值得投資的擴充。</p>
+        <div class="scope-list">
+          <div class="scope-item"><strong>主管例外儀表板</strong><span>等 action logs 穩定後再做趨勢與總覽。</span><em class="scope-chip">後台</em></div>
+          <div class="scope-item"><strong>更完整的分派 UI</strong><span>agent picker、escalation queue、bulk actions。</span><em class="scope-chip">操作</em></div>
+          <div class="scope-item"><strong>續保率與先手窗口分析</strong><span>用 90 / 60 / 45 / 30 天節點看成效。</span><em class="scope-chip">分析</em></div>
+          <div class="scope-item"><strong>AI 輔助摘要與資料清理</strong><span>入口流程穩定後，再降低行政負擔。</span><em class="scope-chip">效率</em></div>
+        </div>
+        <div class="scope-result">投資條件：先證明流程有人用、狀態有人更新</div>
+      </div>
+    </div>
+    <div class="scope-note">
+      <strong>PM 取捨：</strong>每個留下的功能都必須服務資料入口、責任成立、狀態留痕其中之一。這讓前導測試可以用真實保單流量驗證，而不是在大型系統建完後才發現沒人用。
+    </div>
   </div>
 
   <div class="section">
@@ -960,7 +1543,7 @@
       </ul>
     </div>
     <div>
-      <h3 class="section-title">非目標（Non-Goals）</h3>
+      <h3 class="section-title">非目標</h3>
       <p style="font-size:12px; color:var(--text-muted);">明確排除於 Phase 1 以避免範圍蔓延：</p>
       <div class="non-goals">
         <span class="non-goal-tag">壽險</span>
@@ -981,6 +1564,25 @@
       <span class="tech-tag">node-cron 排程</span>
       <span class="tech-tag">Cloudflare Tunnel (本地開發)</span>
     </div>
+
+    <div class="collaboration-boundary">
+      <h4>工程協作邊界</h4>
+      <p>這裡只保留 PM 需要對齊的責任分工，不展開完整架構圖或資料表細節。</p>
+      <div class="boundary-grid">
+        <div class="boundary-card">
+          <strong>LINE</strong>
+          <span>使用者操作介面，承載 Staff、Agent、Admin 的角色入口與操作回饋。</span>
+        </div>
+        <div class="boundary-card">
+          <strong>NestJS</strong>
+          <span>流程邏輯與 webhook 中樞，處理匯入、查詢、領取、狀態更新與排程提醒。</span>
+        </div>
+        <div class="boundary-card">
+          <strong>Supabase</strong>
+          <span>狀態、責任與稽核紀錄來源，讓案件歸屬和操作歷史可以被追溯。</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -997,7 +1599,7 @@
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-001 · PERSONA &amp; POSITIONING</div>
-      <div class="adr-status">● 採納中</div>
+      <div class="adr-status">● 採納</div>
     </div>
     <h4>Persona 重新定義與產品定位修正</h4>
     <div class="adr-row"><strong>背景</strong>訪談發現三個意外（見「用戶研究」分頁）。</div>
@@ -1015,7 +1617,7 @@
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-002 · COMPLIANCE FRAMEWORK</div>
-      <div class="adr-status">● 採納中</div>
+      <div class="adr-status">● 採納</div>
     </div>
     <h4>合規分級框架 A / B / C</h4>
     <div class="adr-row"><strong>背景</strong>訪談中發現資料來源決策涉及合規灰區（例如從加盟系統撈資料是否違反規範）。需要一個框架，而不是逐案處理。</div>
@@ -1039,14 +1641,14 @@
     <div class="adr-row">
       <strong>為什麼要框架化</strong>
       未來所有「要不要接這個資料來源」的決策都套用此框架，避免一時方便就走險路；
-      面對客戶或合規審查時有明確說法。<strong>這是可套用到其他資料合規產品的方法論</strong>。
+      面對客戶或合規審查時有明確說法。<strong>這套做法可以套用到其他資料合規敏感的產品</strong>。
     </div>
   </div>
 
   <div class="adr-card">
     <div class="adr-head">
       <div class="adr-id">ADR-003 · SCOPE</div>
-      <div class="adr-status">● 採納中</div>
+      <div class="adr-status">● 採納</div>
     </div>
     <h4>Phase 1 不做紙本追蹤流程</h4>
     <div class="adr-row"><strong>背景</strong>訪談前我預設「紙本續保單需要全生命週期追蹤」，但訪談證實<strong>根本沒人在追</strong>。</div>
@@ -1120,16 +1722,16 @@
     <h3 class="section-title">帶到未來專案的三件事</h3>
     <ol>
       <li>
-        <strong>用戶研究的紀律</strong>：使用 The Mom Test 方法論，嚴格區分事實與推論。
-        不問假設情境、聽到痛點就追問「上次發生是什麼時候」、區分「應然」與「實然」。
+        <strong>用戶研究怎麼做才不會被誤導</strong>：用《The Mom Test》的幾個動作，把事實跟推論分清楚。
+        不問假設題、聽到痛點就追問「上次發生是什麼時候」、隨時分清楚對方在說「他覺得該怎麼做」還是「他實際上怎麼做」。
       </li>
       <li>
-        <strong>PRD 撰寫的完整度</strong>：涵蓋狀態機、資料模型、邊際案例、成功指標、非目標（Non-Goals）。
+        <strong>PRD 要寫到多完整才算夠</strong>：涵蓋狀態機、資料模型、邊際案例、成功指標、非目標。
         非目標跟目標一樣重要，沒寫清楚不做什麼，就會什麼都想做。
       </li>
       <li>
-        <strong>決策紀錄的習慣</strong>：用 ADR 紀錄每個重要決策，
-        包含背景、決策、證據強度。不可變文件、可追溯的演進過程。
+        <strong>養成留決策紀錄的習慣</strong>：用 ADR 紀錄每個重要決策的背景、抉擇與證據強度。
+        寫下來的當下不改，要改就寫新一份，這樣才能看出產品判斷怎麼演進的。
       </li>
     </ol>
   </div>
