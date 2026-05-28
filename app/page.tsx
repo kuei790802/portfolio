@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2, Trophy, Users, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { assetPath } from "@/lib/asset-path";
 
 const cases = [
   {
@@ -206,7 +207,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2">
             <div className="relative aspect-video md:aspect-auto">
               <Image 
-                src="/assets/instructor-classroom.jpg" 
+                src={assetPath("/assets/instructor-classroom.jpg")} 
                 alt="政府創業課程授課現場" 
                 fill 
                 className="object-cover"

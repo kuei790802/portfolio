@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { assetPath } from "@/lib/asset-path";
 
 interface EvidenceItem {
   src: string;
@@ -30,7 +31,7 @@ export function EvidenceGrid({ cols = 3, items }: EvidenceGridProps) {
         >
           <div className="relative aspect-[4/3] bg-slate-100">
             <Image
-              src={item.src}
+              src={assetPath(item.src)}
               alt={item.alt}
               fill
               className="object-cover"
