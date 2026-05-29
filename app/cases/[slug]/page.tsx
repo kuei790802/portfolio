@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {/* Case Header */}
       <section className="bg-slate-50 py-16 lg:py-24 border-b border-slate-200">
         <div className="container px-4">
-          <div className="space-y-8 max-w-4xl">
+          <div className="mx-auto max-w-4xl space-y-8">
             <div className="space-y-4">
               <h1 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-slate-900">
                 {caseStudy.title}
@@ -59,7 +59,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 {caseStudy.subtitle}
               </p>
             </div>
-            
+
             <div className="p-6 bg-white rounded-xl border border-brand-teal/20 shadow-sm border-l-4 border-l-brand-teal">
               <p className="text-slate-600 leading-relaxed italic">
                 {caseStudy.pitch}
@@ -68,7 +68,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {caseStudy.meta.map((item, i) => (
-                <div key={i} className="space-y-1">
+                <div key={i} className="space-y-1 rounded-xl border border-slate-200 bg-white/70 p-4">
                   <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{item.label}</div>
                   <div className="text-sm font-bold text-slate-700">{item.value}</div>
                 </div>
@@ -91,7 +91,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Case Brief Section */}
       <section className="container px-4">
-        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+        <div className="mx-auto grid max-w-4xl gap-8 items-stretch lg:grid-cols-3">
           <Card className="lg:col-span-2 border-slate-200 shadow-sm bg-gradient-to-br from-white to-slate-50">
             <CardHeader>
               <div className="text-xs font-bold uppercase tracking-[0.2em] text-brand-teal mb-2">Case Brief</div>
@@ -127,8 +127,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Tabs Content */}
       <section className="container px-4">
-        <Tabs defaultValue={caseStudy.tabs[0].id} className="space-y-8">
-          <div className="sticky top-16 z-40 bg-white/80 backdrop-blur-md py-4 -mx-4 px-4 overflow-x-auto border-b border-slate-100">
+        <Tabs defaultValue={caseStudy.tabs[0].id} className="mx-auto max-w-4xl space-y-8">
+          <div className="sticky top-16 z-40 overflow-x-auto rounded-xl border border-slate-200 bg-white/90 p-2 shadow-sm backdrop-blur-md">
             <TabsList className="bg-slate-100/50 p-1 h-auto flex w-max sm:w-full">
               {caseStudy.tabs.map((tab) => (
                 <TabsTrigger 

@@ -16,22 +16,22 @@ import {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h2 className="font-heading text-2xl font-bold text-slate-900 mt-8 mb-4">{children}</h2>
+      <h2 className="mx-auto max-w-3xl font-heading text-2xl font-bold text-slate-900 mt-8 mb-4">{children}</h2>
     ),
     h2: ({ children }) => (
-      <h3 className="font-heading text-xl font-bold text-slate-900 mt-8 mb-3">{children}</h3>
+      <h3 className="mx-auto max-w-3xl font-heading text-xl font-bold text-slate-900 mt-8 mb-3">{children}</h3>
     ),
     h3: ({ children }) => (
-      <h4 className="font-heading text-lg font-bold text-slate-900 mt-6 mb-2">{children}</h4>
+      <h4 className="mx-auto max-w-3xl font-heading text-lg font-bold text-slate-900 mt-6 mb-2">{children}</h4>
     ),
     p: ({ children }) => (
-      <p className="text-base text-slate-600 leading-relaxed my-4">{children}</p>
+      <p className="mx-auto max-w-3xl text-base text-slate-600 leading-relaxed my-4">{children}</p>
     ),
     ul: ({ children }) => (
-      <ul className="my-4 space-y-2 text-slate-600 leading-relaxed list-disc pl-6">{children}</ul>
+      <ul className="mx-auto my-4 max-w-3xl space-y-2 text-slate-600 leading-relaxed list-disc pl-6">{children}</ul>
     ),
     ol: ({ children }) => (
-      <ol className="my-4 space-y-2 text-slate-600 leading-relaxed list-decimal pl-6">{children}</ol>
+      <ol className="mx-auto my-4 max-w-3xl space-y-2 text-slate-600 leading-relaxed list-decimal pl-6">{children}</ol>
     ),
     li: ({ children }) => <li className="pl-1">{children}</li>,
     strong: ({ children }) => <strong className="font-bold text-slate-900">{children}</strong>,
@@ -42,7 +42,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: () => <hr className="my-8 border-slate-200" />,
     blockquote: ({ children }) => (
-      <blockquote className="my-6 border-l-4 border-slate-300 bg-slate-50 rounded-r-lg p-4 italic text-slate-700">
+      <blockquote className="mx-auto my-6 max-w-3xl border-l-4 border-slate-300 bg-slate-50 rounded-r-lg p-4 italic text-slate-700">
         {children}
       </blockquote>
     ),

@@ -60,7 +60,7 @@ const highlights = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 pb-20">
+    <div className="flex flex-col gap-20 pb-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-slate-50 py-20 lg:py-32">
         <div className="container relative z-10 px-4">
@@ -72,7 +72,7 @@ export default function Home() {
               <h1 className="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-slate-900">
                 歸維邦 <span className="text-brand-teal">Josh Kuei</span>
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
+              <p className="max-w-2xl text-xl text-slate-600 leading-relaxed">
                 Operations-driven PM / BA. 我把通路營運與跨部門協調經驗，轉化成可追蹤、可溝通、可交付的數位專案。
               </p>
               <div className="flex flex-wrap gap-2">
@@ -83,9 +83,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100">
-              <h3 className="font-heading text-lg font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-brand-teal" /> 快速定位
+
+            <div className="rounded-2xl border border-slate-100 bg-white p-8 shadow-xl shadow-slate-200/50">
+              <h3 className="mb-6 flex items-center gap-2 font-heading text-lg font-bold text-slate-900">
+                <Zap className="w-5 h-5 text-brand-teal" />
+                快速定位
               </h3>
               <ul className="space-y-4">
                 {[
@@ -94,7 +96,7 @@ export default function Home() {
                   "具 PMP、PSM I，能用 PM 語言整理需求與交付物",
                   "能運用 AI 工具拆任務、審查成果並推進產品原型",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
+                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-slate-600">
                     <CheckCircle2 className="w-5 h-5 text-brand-forest-500 shrink-0 mt-0.5" />
                     {item}
                   </li>
@@ -107,7 +109,7 @@ export default function Home() {
 
       {/* Proof Grid */}
       <section className="container px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-8">
           {highlights.map((item, i) => (
             <div key={i} className="p-6 rounded-xl border border-slate-100 bg-white shadow-sm flex flex-col items-center text-center gap-3">
               <item.icon className="w-6 h-6 text-brand-teal" />
@@ -130,7 +132,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {cases.map((item) => (
             <Link key={item.slug} href={`/cases/${item.slug}`} className="group h-full">
               <Card className={cn("h-full border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 overflow-hidden", item.color)}>
@@ -176,7 +178,7 @@ export default function Home() {
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-brand-forest">Capability Matrix</div>
             <h2 className="font-heading text-3xl font-bold">我想讓招募方快速看到的能力</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "需求釐清與規格化", desc: "能把現場問題、客戶語言與營運流程整理成 PRD、流程、驗收條件與非目標。" },
               { title: "跨部門與外部協作", desc: "熟悉通路、物流、客戶、工程與外部合作窗口之間的時程與責任控管。" },

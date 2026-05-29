@@ -41,7 +41,7 @@ export function CaseArtifact({ title, subtitle, flow, layout, cols = 4, aspect =
     if (!item) return null;
     return (
       <section className="container px-4">
-        <figure className="mx-auto max-w-3xl rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <figure className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={assetPath(item.src)}
@@ -65,7 +65,7 @@ export function CaseArtifact({ title, subtitle, flow, layout, cols = 4, aspect =
 
   return (
     <section className="container px-4">
-      <div className="space-y-6">
+      <div className="mx-auto max-w-4xl space-y-6">
         {(title || subtitle || flow) && (
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             {(title || subtitle) && (
@@ -96,6 +96,7 @@ export function CaseArtifact({ title, subtitle, flow, layout, cols = 4, aspect =
                   src={assetPath(item.src)}
                   alt={item.alt}
                   fill
+                  priority={i === 0}
                   className={objectFitMap[aspect]}
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />

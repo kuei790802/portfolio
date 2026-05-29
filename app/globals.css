@@ -200,6 +200,12 @@
   }
 }
 
+.container {
+  width: 100%;
+  max-width: 80rem; /* 1280px = max-w-7xl */
+  margin-inline: auto;
+}
+
 @utility skip-link {
   position: absolute;
   top: -40px;

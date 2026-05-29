@@ -4,12 +4,12 @@ export function Footer() {
   return (
     <footer className="border-t border-border/40 bg-background py-8 md:py-12">
       <div className="container px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4 md:text-left">
           <div className="md:col-span-2">
             <Link href="/" className="font-heading text-lg font-bold tracking-tight text-primary">
               <span className="text-brand-teal">Josh Kuei</span>
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+            <p className="mx-auto mt-4 max-w-xs text-sm text-muted-foreground md:mx-0">
               Operations-driven PM / BA · 9 年通路與跨部門協調經驗，搭配 AI 協作工作流交付數位專案。
             </p>
           </div>
@@ -30,7 +30,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-border/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border/10 pt-8 md:flex-row">
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Josh Kuei. All rights reserved.
           </p>
