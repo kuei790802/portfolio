@@ -61,7 +61,7 @@ build 紀錄:
   4. PullQuote 每 tab 最多 1 次,只留最金的單句,長版本留在 DecisionLog consequences 或 prose
   5. EvidenceGrid 當 scene-setter 放 tab intro 之後,不塞進敘事 subsection 中間
   6. DecisionLog status 只有 採納中/觀察中/已取代 三個會 styling,其他 fallback grey
-  7. InfoTable 最末欄塞 Badge 走 shadcn API,key="N" 必填(`bg-emerald-100 text-emerald-700` 可展現、`bg-blue-100 text-blue-700` 早期驗證、`bg-amber-100 text-amber-700` 持續強化)
+  7. InfoTable 最末欄塞 Badge 走 shadcn API,key="N" 必填(`bg-emerald-100 text-emerald-700` 具備實績、`bg-blue-100 text-blue-700` 初期驗證、`bg-amber-100 text-amber-700` 持續強化)
 - 政策決定備忘(Round 2):
   - 「閉環」例外保留(insurance-bot 跟 toeic delivery 場景下意義精準,不算 AI 套話)
   - 三案不互引嚴格執行,只有 liangye-reflection 那段三案 throughline 是例外
@@ -73,7 +73,7 @@ build 紀錄:
 - 5.3 SEO 全套:`metadataBase` + title template + per-case `generateMetadata` + OpenGraph + Twitter Card + 1200×630 OG image(via `app/opengraph-image.tsx` 用 next/og ImageResponse build-time 生成)+ favicon 64×64(`app/icon.tsx`)。Commit `815250d6`
 - 5.4 Mobile sheet 漢堡選單(shadcn sheet,base-ui Dialog primitive,不支援 `asChild`,用直接 children + onClick manual close)。Commit `815250d6`
 - 5.5 dark mode token:被動健康檢查,token 都還在 globals.css,未啟用切換
-- 5.6 品牌色翻新:`ai-purple + trust-blue + emerald` 三色 → `brand-teal + brand-forest` 兩色。teal 用於品牌持續元素(navbar、CTA、focus ring),forest 用於內容內證據標記(success Callout、可展現 Badge、DecisionLog 採納中)。同步改 OG image / favicon hex、DESIGN_SYSTEM.md。Commit `00190e57`
+- 5.6 品牌色翻新:`ai-purple + trust-blue + emerald` 三色 → `brand-teal + brand-forest` 兩色。teal 用於品牌持續元素(navbar、CTA、focus ring),forest 用於內容內證據標記(success Callout、具備實績 Badge、DecisionLog 採納中)。同步改 OG image / favicon hex、DESIGN_SYSTEM.md。Commit `00190e57`
 
 ### Phase 6 部署 完成(2026-05-29)
 - 改部署目標:從原計畫 `kuei790802.github.io/portfolio/` 改成自有域名 `https://bykuei.com`

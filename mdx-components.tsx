@@ -11,6 +11,7 @@ import {
   DecisionLog,
   PullQuote,
   EvidenceGrid,
+  ResponsibilityFlow,
 } from "@/components/case-content";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -57,6 +58,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DecisionLog,
     PullQuote,
     EvidenceGrid,
+    ResponsibilityFlow,
     ...components,
   };
 }

@@ -8,3 +8,4 @@ export { PersonaCard } from "./persona-card";
 export { DecisionLog } from "./decision-log";
 export { PullQuote } from "./pull-quote";
 export { EvidenceGrid } from "./evidence-grid";
+export { ResponsibilityFlow } from "./responsibility-flow";

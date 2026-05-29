@@ -29,7 +29,23 @@
 
 ### 責任流轉的四個角色節點
 
-V2.0 的核心不是提醒，而是讓每張保單在 Staff、System、Agent、Admin 之間有明確責任狀態與交接節點。
+V2.0 的核心不是提醒，而是讓每張保單在 Staff、System、Agent、Admin 之間有明確責任狀態與交接節點。下圖把「誰負責」與「何時升級」這兩條線合在一起：保單責任沿著時間關卡在四條角色泳道間移動，逾期就往 Admin 升級。
+
+<ResponsibilityFlow
+  lanes={["Staff（行政）", "System", "Agent（業務員）", "Admin（老闆）"]}
+  gates={["到期前 90 天", "到期前 60 天", "到期前 45 天", "到期前 30 天"]}
+  nodes={[
+    { lane: 0, gate: 0, label: "匯出清冊、同步 Supabase", tone: "own" },
+    { lane: 1, gate: 0, label: "推播續保卡片到對應業務員待辦", tone: "system" },
+    { lane: 2, gate: 0, label: "claim 領取", note: "責任從 Staff → Agent，log 留存", tone: "handoff" },
+    { lane: 2, gate: 1, label: "quoted / snooze / closed 閉環", tone: "done" },
+    { lane: 1, gate: 1, label: "仍未處理，升級提醒業務員", tone: "warn" },
+    { lane: 3, gate: 2, label: "仍未分配，Admin 收到通知介入、指派責任業務員", tone: "escalate" },
+    { lane: 3, gate: 2, label: "封存 / 放棄 / 回到列列", tone: "own" },
+  ]}
+  dangerGate={3}
+  dangerLabel="產險通知保戶，先手盡失的分水嶺，斷保風險上升"
+/>
 
 <InfoTable
   headers={["角色", "職責", "關鍵動作"]}
@@ -83,6 +99,6 @@ V2.0 的核心不是提醒，而是讓每張保單在 Staff、System、Agent、A
     ["紙本續保單沒人在追", <Badge key="2" className="bg-brand-forest-100 text-brand-forest-700">高 · 直接證據</Badge>, "受訪者原話確認。"],
     ["先手窗口被浪費", <Badge key="3" className="bg-brand-forest-100 text-brand-forest-700">高 · 直接證據</Badge>, "90 / 60 / 45 / 30 天時間軸對應實務。"],
     ["業務員接受系統流程", <Badge key="4" className="bg-blue-100 text-blue-700">中高 · 無引導試用</Badge>, "兩位業務員直覺照畫面操作完成。"],
-    ["營運下的閉環穩定性", <Badge key="5" className="bg-amber-100 text-amber-700">未驗證 · 待前導</Badge>, "完整風險應對見反思分頁。"],
+    ["營運下的閉環穩定性", <Badge key="5" className="bg-amber-100 text-amber-700">未驗證 · 待前導</Badge>, "完整風險應對見經驗沉澱分頁。"],
   ]}
 />

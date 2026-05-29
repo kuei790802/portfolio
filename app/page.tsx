@@ -240,9 +240,9 @@ export default function Home() {
       {/* Target Roles & Final Note */}
       <section className="container px-4 py-20 bg-brand-teal/5 rounded-3xl text-center space-y-12">
         <div className="max-w-2xl mx-auto space-y-4">
-          <h2 className="font-heading text-3xl font-bold text-slate-900">我的 PM 主軸</h2>
+          <h2 className="font-heading text-3xl font-bold text-slate-900">我的核心思想</h2>
           <p className="text-xl text-slate-600 font-medium">
-            真正難的不是知道要做什麼，而是知道什麼時候該停。良野、保險 Bot、TOEIC Snack 都在呈現同一種紀律：有意識地選擇不做某些事，讓專案能被交付。
+            真正難的不是知道要做什麼，而是知道什麼時候該停。良野、保險 Bot、TOEIC Snack 都在呈現同一種紀律：有意識地選擇不做某些事，讓專案能被精準交付。
           </p>
         </div>
         <p className="text-base text-slate-600 max-w-2xl mx-auto">

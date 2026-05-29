@@ -19,7 +19,7 @@
   - 場景：CTA、品牌字、navbar active、focus ring、case eyebrow、Comparison after 欄、PullQuote 左條
   - 「持續性品牌」訊號:整個 site 永遠看得到的 teal accent
 - `brand-forest` 副：`#15803d`（Tailwind green-700），scale 同上
-  - 場景：「我交付了」標記:success Callout、可展現 Badge、DecisionLog 採納中、PM 能力證據 icon、Persona eyebrow、CheckCircle2
+  - 場景：「我交付了」標記:success Callout、具備實績 Badge、DecisionLog 採納中、PM 能力證據 icon、Persona eyebrow、CheckCircle2
   - 「事件性肯定」訊號:出現在內容區的證據與成就
 - 兩色都在綠族（teal 178° + green 143°），分工原則：teal 用於持續品牌元素，forest 用於內容內的證據標記，避免兩色在同一個 card 內並列
 
@@ -28,7 +28,7 @@
 - 灰階主導，accent 點綴比例約 5%（不超過 10%）
 
 ### Semantic
-- success：`brand-forest-100 / brand-forest-700`（Callout success variant、可展現能力 badge）。Semantic success 跟 brand-forest 共用同一色,簡化系統
+- success：`brand-forest-100 / brand-forest-700`（Callout success variant、具備實績能力 badge）。Semantic success 跟 brand-forest 共用同一色,簡化系統
 - warn：`amber-100 / amber-700`
 - danger：`red-100 / red-700`
 - info：`blue-50 / blue-800`
@@ -109,7 +109,7 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
 
 ### Callout（已實作）
 ```mdx
-<Callout variant="success" title="PM 定位">
+<Callout variant="success" title="專案核心洞察">
 完整走到 MVP 的產品實驗。
 </Callout>
 ```
@@ -120,10 +120,10 @@ CSS 變數：`--motion-duration-fast: 150ms` / `--motion-duration-base: 200ms` /
 ```mdx
 <InfoTable
   headers={["PM 能力", "本案證據", "成熟度"]}
-  rows={[["問題定義", "...", <Badge>可展現</Badge>]]}
+  rows={[["問題定義", "...", <Badge>具備實績</Badge>]]}
 />
 ```
-- 第三欄常放 Badge（brand-forest = 可展現、blue = 早期驗證、amber = 持續強化）
+- 第三欄常放 Badge（brand-forest = 具備實績、blue = 初期驗證、amber = 持續強化）
 
 ### DataCard（待實作）
 ```mdx

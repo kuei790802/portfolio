@@ -16,7 +16,7 @@ import {
 
 const navItems = [
   { name: "首頁", href: "/" },
-  { name: "良野 7-Eleven", href: "/cases/liangye-7eleven" },
+  { name: "良野 × 7-Eleven", href: "/cases/liangye-7eleven" },
   { name: "Insurance Bot", href: "/cases/insurance-bot" },
   { name: "TOEIC Snack", href: "/cases/toeic-snack" },
 ];

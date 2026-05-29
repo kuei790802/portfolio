@@ -64,7 +64,7 @@ export const cases: CaseStudy[] = [
           src: "/assets/liangye-7eleven-freezer.jpg",
           alt: "良野豆乳雪糕在 7-Eleven 冰櫃中陳列，價卡標示品名與售價",
           captionTitle: "7-Eleven 冰櫃與價卡",
-          caption: "可看到「良野頂級熟韻豆乳雪糕」與售價，產品實際進入門市冰櫃販售場景。",
+          caption: "可看到良野豆乳雪糕與售價，產品實際進入門市冰櫃販售場景。",
         },
         {
           src: "/assets/liangye-final-packaging.jpg",
@@ -80,7 +80,7 @@ export const cases: CaseStudy[] = [
       { id: "play", label: "7-Eleven 上架攻防" },
       { id: "ops", label: "營運與成本" },
       { id: "decisions", label: "關鍵決策" },
-      { id: "reflection", label: "反思" },
+      { id: "reflection", label: "經驗沉澱" },
     ],
   },
   {
@@ -102,7 +102,7 @@ export const cases: CaseStudy[] = [
         "用《The Mom Test》修正 PRD v1.0 假設",
         "把功能範圍切成 Phase 1 MVP 與非目標",
         "建立 Persona、資料模型、技術棧與導測時程",
-        "用 ADR 留下決策背景、取捨與後果",
+        "用 ADR 留下遇到的討站決策背景、取捨與後果",
       ],
     },
     artifact: {
@@ -122,7 +122,7 @@ export const cases: CaseStudy[] = [
       { id: "positioning", label: "產品定位" },
       { id: "prd", label: "PRD 摘要" },
       { id: "adrs", label: "關鍵決策" },
-      { id: "reflections", label: "反思" },
+      { id: "reflections", label: "經驗沉澱" },
     ],
   },
   {
@@ -139,7 +139,7 @@ export const cases: CaseStudy[] = [
     tags: ["PM Case Study", "AI Collaboration", "React Native", "NestJS", "Supabase"],
     hero: {
       title: "這個案例展現的是 PM 視角的產品取捨，不只是技術交付。",
-      description: "我從個人痛點出發收斂出 MVP 範圍，用實機 QA、handoff 文件與風險清單控管交付品質。",
+      description: "我從個人痛點出發收斂出 MVP 範圍，用實機 QA、handoff 文件控管交付品質。",
       points: [
         "從個人痛點到 MVP 範圍的收斂",
         "用實機 QA、handoff、風險清單控管交付品質",
