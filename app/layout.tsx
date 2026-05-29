@@ -15,7 +15,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kuei790802.github.io/portfolio"),
+  metadataBase: new URL("https://bykuei.com"),
   title: {
     default: "歸維邦 Josh Kuei｜PM / BA Portfolio",
     template: "%s｜歸維邦 Josh Kuei",
